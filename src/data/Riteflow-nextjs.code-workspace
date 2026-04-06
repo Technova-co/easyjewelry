@@ -1,0 +1,12 @@
+{
+    "folders": [
+        {
+            "name": "Riteflow-nextjs",
+            "path": "../.."
+        },
+        {
+            "name": "Riteflow-HTML",
+            "path": "../../../Riteflow-HTML"
+        }
+    ]
+}
