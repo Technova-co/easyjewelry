@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./styles/globals.css";
 import NextTopLoader from "nextjs-toploader";
 import LenisProvider from "@/components/Layouts/LenisProvider";
-import Preloader from "@/components/Layouts/Preloader";
+//import Preloader from "@/components/Layouts/Preloader";
 
 const themeInitScript = `
 (function () {
@@ -16,6 +16,7 @@ const themeInitScript = `
 })();
 `;
 
+/*
 const preloaderInitScript = `
 (function () {
   try {
@@ -24,6 +25,7 @@ const preloaderInitScript = `
   } catch (e) {}
 })();
 `;
+*/
 
 export const metadata: Metadata = {
   title: "RiteFlow - Next.js SaaS Template",
@@ -38,11 +40,11 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <meta name="color-scheme" content="dark" />
-        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
-        <script dangerouslySetInnerHTML={{ __html: preloaderInitScript }} />
+        {/*<script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+        <script dangerouslySetInnerHTML={{ __html: preloaderInitScript }} />*/}
       </head>
       <body>
-        <Preloader />
+        {/*<Preloader />*/}
         <NextTopLoader
           color="#1d4ed8"
           initialPosition={0.08}

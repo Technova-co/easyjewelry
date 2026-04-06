@@ -5,9 +5,15 @@ import HomepagesSection from '@/components/demo/HomepagesSection';
 import InnerPagesSection from '@/components/demo/InnerPagesSection';
 import Newsletter from '@/components/shortCode/Newsletter';
 
+
+import HomeV2Banner from '@/components/home-v2/HomeV2Banner';
+import HomeBannerOne from '@/components/home-v1/HomeBannerOne';
+
 export default function DemoPage() {
   return (
     <>
+      <HomeV2Banner />
+      <HomeBannerOne />
       <DemoBanner />
 
       <WhyChooseSection />

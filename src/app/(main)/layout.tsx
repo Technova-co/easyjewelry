@@ -3,10 +3,27 @@ import React from 'react';
 import HeaderFooterWrapper from '@/components/Layouts/HeaderFooterWrapper';
 
 export const metadata: Metadata = {
-  title: 'RiteFlow Demo',
+  title: 'EasyJewelry — Jewelry Store Management Software',
   description:
-    'Where AI Meets Human Insight. RiteFlow automates the busywork, uncovers hidden data, and fuels your next big idea. Focus on the craft, let AI handle the rest.',
-  keywords: ['AI tools', 'automation', 'productivity', 'RiteFlow'],
+    'The easiest jewelry ERP for retailers & wholesalers. Manage inventory, POS, invoicing and multi-branch — all from one screen.',
+  keywords: [
+    'jewelry ERP software',
+    'jewelry store management software',
+    'jewelry inventory management software',
+    'jewelry POS software',
+    'jewelry inventory system',
+    'jewelry store software',
+    'jewelry business software',
+    'jewelry retail software',
+    'jewelry wholesale software',
+    'jewellery ERP software',
+    'jewellery store management software',
+    'jewellery inventory management software',
+    'jewellery POS software',
+    'jewellery inventory system',
+    'jewellery store software',
+    'jewellery business software',
+  ],
 };
 
 export default function MainLayout({
