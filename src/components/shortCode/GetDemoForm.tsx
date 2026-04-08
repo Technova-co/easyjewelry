@@ -3,14 +3,16 @@
 import React, { useRef, useState, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
 import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 
 export interface GetDemoFormData {
   name: string;
+  company_name: string;
+  phoneNumber: string;
   email: string;
-  projectName: string;
-  message: string;
+  businessType: string[];
+  commodities: string[];
+  extras: string[];
 }
 
 export interface GetDemoFormProps {
@@ -20,35 +22,45 @@ export interface GetDemoFormProps {
 
 interface FormErrors {
   name: string;
+  company_name: string;
+  phoneNumber: string;
   email: string;
-  projectName: string;
-  message: string;
+  businessType: string;
+  commodities: string;
 }
 
-const GetDemoForm: React.FC<GetDemoFormProps> = ({ 
+const BUSINESS_TYPES = ['Retailer', 'Wholesaler'];
+const COMMODITIES = ['Gold', 'Silver', 'Diamond'];
+const EXTRAS = ['Loan', 'Layaway', 'Online Store'];
+
+const GetDemoForm: React.FC<GetDemoFormProps> = ({
   onSubmit,
-  className = '' 
+  className = ''
 }) => {
   const form = useRef<HTMLFormElement>(null);
   const [formData, setFormData] = useState<GetDemoFormData>({
     name: '',
+    company_name: '',
+    phoneNumber: '',
     email: '',
-    projectName: '',
-    message: '',
+    businessType: [],
+    commodities: [],
+    extras: [],
   });
 
   const [errors, setErrors] = useState<FormErrors>({
     name: '',
+    company_name: '',
+    phoneNumber: '',
     email: '',
-    projectName: '',
-    message: '',
+    businessType: '',
+    commodities: '',
   });
 
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // Cleanup success message timeout
   useEffect(() => {
     if (success) {
       const timer = setTimeout(() => setSuccess(false), 3000);
@@ -59,9 +71,11 @@ const GetDemoForm: React.FC<GetDemoFormProps> = ({
   const validate = (data: GetDemoFormData = formData): boolean => {
     const newErrors: FormErrors = {
       name: '',
+      company_name: '',
+      phoneNumber: '',
       email: '',
-      projectName: '',
-      message: '',
+      businessType: '',
+      commodities: '',
     };
     let isValid = true;
 
@@ -78,16 +92,18 @@ const GetDemoForm: React.FC<GetDemoFormProps> = ({
       isValid = false;
     }
 
-    if (!data.projectName.trim()) {
-      newErrors.projectName = 'Project name is required';
+    if (!data.phoneNumber.trim()) {
+      newErrors.phoneNumber = 'Phone number is required';
       isValid = false;
     }
 
-    if (!data.message.trim()) {
-      newErrors.message = 'Message is required';
+    if (data.businessType.length === 0) {
+      newErrors.businessType = 'Please select at least one business type';
       isValid = false;
-    } else if (data.message.trim().length < 10) {
-      newErrors.message = 'Message must be at least 10 characters';
+    }
+
+    if (data.commodities.length === 0) {
+      newErrors.commodities = 'Please select at least one commodity';
       isValid = false;
     }
 
@@ -96,82 +112,82 @@ const GetDemoForm: React.FC<GetDemoFormProps> = ({
   };
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement>
   ) => {
     const { name, value } = e.target;
     const updatedData = { ...formData, [name]: value };
     setFormData(updatedData);
-    
-    // Clear error for this field when user starts typing
     if (errors[name as keyof FormErrors]) {
       setErrors((prev) => ({ ...prev, [name]: '' }));
     }
-    
-    // Optional: Real-time validation (can be removed if you want validation only on submit)
-    // validate(updatedData);
+  };
+
+  const handleCheckbox = (
+    group: 'businessType' | 'commodities' | 'extras',
+    value: string
+  ) => {
+    setFormData((prev) => {
+      const current = prev[group];
+      const updated = current.includes(value)
+        ? current.filter((v) => v !== value)
+        : [...current, value];
+      return { ...prev, [group]: updated };
+    });
+    if (group === 'businessType' || group === 'commodities') {
+      setErrors((prev) => ({ ...prev, [group]: '' }));
+    }
   };
 
   const sendEmail = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError(null);
 
-    // Validate form
-    if (!validate()) {
-      return;
-    }
-
+    if (!validate()) return;
     if (!form.current) {
       setError('Form reference is missing');
       return;
     }
 
-    // Check if EmailJS environment variables are set
     const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
     const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
     const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
 
     if (!serviceId || !templateId || !publicKey) {
-      setError('Email service configuration is missing. Please check your environment variables.');
-      console.error('Missing EmailJS environment variables');
+      setError('Email service configuration is missing.');
       return;
     }
 
     setSubmitting(true);
 
     try {
-      // Call custom onSubmit if provided
-      if (onSubmit) {
-        onSubmit(formData);
-      }
+      if (onSubmit) onSubmit(formData);
 
-      // Send email via EmailJS
-      await emailjs.sendForm(
-        serviceId,
-        templateId,
-        form.current,
-        { publicKey }
-      );
+      await emailjs.sendForm(serviceId, templateId, form.current, { publicKey });
 
-      // Success
       setSuccess(true);
       setFormData({
         name: '',
+        company_name: '',
+        phoneNumber: '',
         email: '',
-        projectName: '',
-        message: '',
+        businessType: [],
+        commodities: [],
+        extras: [],
       });
       setErrors({
         name: '',
+        company_name: '',
+        phoneNumber: '',
         email: '',
-        projectName: '',
-        message: '',
+        businessType: '',
+        commodities: '',
       });
       form.current.reset();
     } catch (err) {
       console.error('EmailJS error:', err);
       setError(
-        err instanceof Error 
-          ? err.message 
+        err instanceof Error
+          ? err.message
           : 'Failed to send message. Please try again later.'
       );
     } finally {
@@ -179,82 +195,166 @@ const GetDemoForm: React.FC<GetDemoFormProps> = ({
     }
   };
 
+  const renderCheckboxGroup = (
+    group: 'businessType' | 'commodities' | 'extras',
+    items: string[]
+  ) => (
+    <div className="flex flex-wrap gap-3">
+      {items.map((item) => (
+        <label
+          key={item}
+          className="flex items-center gap-2 cursor-pointer select-none"
+        >
+          <input
+            type="checkbox"
+            name={group}
+            value={item}
+            checked={formData[group].includes(item)}
+            onChange={() => handleCheckbox(group, item)}
+            className="hidden"
+          />
+         <span
+          className={`w-4 h-4 rounded border flex items-center justify-center transition-colors ${
+            formData[group].includes(item)
+              ? 'bg-primary border-primary'
+              : 'border-primary/40 bg-transparent'
+          }`}
+        >
+            {formData[group].includes(item) && (
+              <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                <path
+                  d="M1 4L3.5 6.5L9 1"
+                  stroke="white"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            )}
+          </span>
+          <span className="text-sm text-paragraph">{item}</span>
+        </label>
+      ))}
+      <input type="hidden" name={group} value={formData[group].join(', ')} />
+    </div>
+  );
+
   return (
-    <div className={`lg:max-w-[561px] w-full ${className}`} data-sttr-wrapper>
+    <div className={`lg:max-w-[561px] w-full ${className}`}>
       <form
         ref={form}
         onSubmit={sendEmail}
         className="grid sm:grid-cols-2 gap-y-4 sm:gap-y-5 gap-x-4"
         noValidate
       >
-        <div className="" data-sttr-card>
+        {/* Name */}
+        <div data-sttr-card>
           <Input
             type="text"
-            label="Full Name"
-            placeholder="Enter your full name"
+            label="Name"
+            placeholder="Your name"
             name="name"
             value={formData.name}
-            onChange={handleChange as (e: React.ChangeEvent<HTMLInputElement>) => void}
+            onChange={handleChange}
             error={errors.name}
           />
         </div>
-        <div className="" data-sttr-card>
+
+        {/* Company Name */}
+        <div data-sttr-card>
+          <Input
+            type="text"
+            label="Company Name"
+            placeholder="Your company name"
+            name="company_name"
+            value={formData.company_name}
+            onChange={handleChange}
+            error={errors.company_name}
+          />
+        </div>
+
+        {/* Phone */}
+        <div data-sttr-card>
+          <Input
+            type="tel"
+            label="Phone Number"
+            placeholder="Your phone number"
+            name="phoneNumber"
+            value={formData.phoneNumber}
+            onChange={handleChange}
+            error={errors.phoneNumber}
+          />
+        </div>
+
+        {/* Email */}
+        <div data-sttr-card>
           <Input
             type="email"
             label="Email"
             placeholder="Enter your email address"
             name="email"
             value={formData.email}
-            onChange={handleChange as (e: React.ChangeEvent<HTMLInputElement>) => void}
+            onChange={handleChange}
             error={errors.email}
           />
         </div>
+
+        {/* Business Type — required */}
         <div className="sm:col-span-2" data-sttr-card>
-          <Input
-            type="text"
-            label="Project Name"
-            placeholder="What's your project called?"
-            name="projectName"
-            value={formData.projectName}
-            onChange={handleChange as (e: React.ChangeEvent<HTMLInputElement>) => void}
-            error={errors.projectName}
-          />
+          <p className="text-sm font-medium text-offWhite mb-3">
+            I am a <span className="text-red-500">*</span>
+          </p>
+          {renderCheckboxGroup('businessType', BUSINESS_TYPES)}
+          {errors.businessType && (
+            <p className="text-xs text-red-500 mt-2">{errors.businessType}</p>
+          )}
         </div>
+
+        {/* Commodities — required */}
         <div className="sm:col-span-2" data-sttr-card>
-          <Textarea
-            label="Message"
-            name="message"
-            placeholder="Write your message here..."
-            value={formData.message}
-            onChange={handleChange as (e: React.ChangeEvent<HTMLTextAreaElement>) => void}
-            error={errors.message}
-          />
+          <p className="text-sm font-medium text-offWhite mb-3">
+            Which commodities do you deal in?{' '}
+            <span className="text-red-500">*</span>
+          </p>
+          {renderCheckboxGroup('commodities', COMMODITIES)}
+          {errors.commodities && (
+            <p className="text-xs text-red-500 mt-2">{errors.commodities}</p>
+          )}
         </div>
+
+        {/* Extras — optional */}
         <div className="sm:col-span-2" data-sttr-card>
-          <Button 
-            type="submit" 
-            variant="gradient" 
+          <p className="text-sm font-medium text-offWhite mb-3">
+            Are you interested in any of these?{' '}
+            <span className="text-xs text-paragraph">(Optional)</span>
+          </p>
+          {renderCheckboxGroup('extras', EXTRAS)}
+        </div>
+
+        {/* Submit */}
+        <div className="sm:col-span-2" data-sttr-card>
+          <Button
+            type="submit"
+            variant="gradient"
             fullWidth
             disabled={submitting}
             loading={submitting}
           >
-            {submitting ? 'Sending...' : 'Send'}
+            {submitting ? 'Booking...' : 'Book a Demo'}
           </Button>
         </div>
 
         {success && (
           <div className="sm:col-span-2">
             <p className="text-base text-green-500 mt-2">
-              Form submitted successfully! We&apos;ll get back to you soon.
+              Demo booked! We&apos;ll get back to you soon.
             </p>
           </div>
         )}
 
         {error && (
           <div className="sm:col-span-2">
-            <p className="text-base text-red-500 mt-2">
-              {error}
-            </p>
+            <p className="text-base text-red-500 mt-2">{error}</p>
           </div>
         )}
       </form>

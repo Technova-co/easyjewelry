@@ -1,9 +1,14 @@
 import React from 'react';
+
+
+import ClientLogosOne from '@/components/home/ClientLogos';
+import HomeBannerOne from '@/components/home/HomeBanner';
+
+
+
 import AboutSection from '@/components/home-v2/AboutSection';
 import PricingSection from '@/components/pricing/PricingSection';
 import Newsletter from '@/components/shortCode/Newsletter';
-import HomeBannerOne from '@/components/home-v1/HomeBannerOne';
-import ClientLogosOne from '@/components/home-v1/ClientLogosOne';
 import ProcessSection from '@/components/home-v1/ProcessSection';
 import WorkflowSection from '@/components/home-v1/WorkflowSection';
 import TestimonialOne from '@/components/home-v1/TestimonialOne';

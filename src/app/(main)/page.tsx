@@ -6,8 +6,8 @@ import InnerPagesSection from '@/components/demo/InnerPagesSection';
 import Newsletter from '@/components/shortCode/Newsletter';
 
 
-import HomeV2Banner from '@/components/home-v2/HomeV2Banner';
-import ClientLogos from '@/components/home-v2/ClientLogos';
+import HomeV2Banner from '@/components/home/HomeBanner';
+import ClientLogos from '@/components/home/ClientLogos';
 
 
 export default function DemoPage() {

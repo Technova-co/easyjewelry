@@ -145,17 +145,12 @@ export default function GetDemo() {
                     className="sm:max-w-[487px] lg:max-w-none"
                     data-container="process-area"
                   >
-                    <Heading as="h1" data-title>Get Your Free Demo</Heading>
-                    <p data-excerpt className="mt-4 md:mt-5 text-offWhite/80">
-                      Book a personalized demo and discover how RiteFlow fits
-                      your workflow. We&apos;ll show you real use cases, answer
-                      questions, and tailor solutions to your goals.
-                    </p>
+                    <Heading as="h1" >Get Your Free Demo</Heading>
+                  
                   </div>
                   
                   <div
                     className="flex flex-col gap-4"
-                    data-sttr-wrapper
                     data-lag="0.1"
                   >
                     {/* Testimonial Card */}
@@ -173,10 +168,10 @@ export default function GetDemo() {
                         />
                         <div className="flex-1">
                           <h3 className="font-dmSans text-offWhite text-base leading-tight font-normal">
-                            Michael Tan
+                            Farhad Sayed
                           </h3>
                           <p className="text-offWhite/60 text-sm leading-tight mt-1">
-                            Product Manager, NexaCore
+                            Founder & CEO, Technova
                           </p>
                         </div>
                       </div>
@@ -185,9 +180,9 @@ export default function GetDemo() {
                         data-sttr-card
                       ></div>
                       <p className="text-offWhite" data-sttr-card>
-                        &quot;We integrated RiteFlow into our dev pipeline and
-                        were blown away. The AI suggestions saved us from
-                        endless backlog grooming and helped ship 2x faster.&quot;
+                      Book your personalized demo and discover how EasyJewelry fits
+                      your jewelry business. We&apos;ll show you the software, answer
+                      questions, and give you a free trial to explore on your own.
                       </p>
                     </div>
                   </div>

@@ -73,7 +73,7 @@ const Header: React.FC = () => {
               <div className="flex items-center gap-6">
                 <div className="hidden sm:block">
                   <Link
-                    href="/contact"
+                    href="/request-demo"
                     className="button-primary inline-flex items-center justify-center px-[22px] py-3 text-white font-medium text-sm leading-normal rounded-[10px] relative z-1 overflow-hidden text-center tracking-[0.1px]"
                   >
                     Request Demo
@@ -161,7 +161,7 @@ const Header: React.FC = () => {
               {/* Mobile CTA */}
               <div className="container pb-8">
                 <Link
-                  href="/contact"
+                  href="/request-demo"
                   onClick={() => setMobileOpen(false)}
                   className="button-primary inline-flex w-full items-center justify-center px-[22px] py-3 text-white font-medium text-sm leading-normal rounded-[10px] text-center tracking-[0.1px]"
                 >

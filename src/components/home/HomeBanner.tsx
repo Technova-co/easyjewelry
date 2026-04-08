@@ -48,25 +48,24 @@ export interface HomeV2BannerProps {
  * <HomeV2Banner />
  */
 const HomeV2Banner: React.FC<HomeV2BannerProps> = ({
-  badgeText = 'All-in-One AI Platform',
-  title = 'Empower Your Work with',
-  titleHighlight = 'AI Tools',
-  description = 'RiteFlow unites smart AI with human creativity, automating tasks, surfacing insights, and sparking ideas so you ship projects faster and focus on what matters.',
-  primaryButtonText = 'Get Started',
-  primaryButtonLink = '#',
-  secondaryButtonText = 'Browse AI Tools',
-  secondaryButtonLink = '#',
+  badgeText = 'Retailers & Wholesalers',
+  title = 'Your Jewelry Business',
+  titleHighlight = 'From One Screen',
+  description = 'EasyJewelry handles everything — your inventory, POS, invoices, and finance across all your locations.',
+  primaryButtonText = 'Request Demo',
+  primaryButtonLink = '/request-demo',
+  secondaryButtonText = 'Watch Video',
+  secondaryButtonLink = '#demo',
   features = [
-    { text: 'From $0 to $500,000 in revenue.' },
-    { text: '47% growth in new customers.' },
+    { text: 'Works on any device — no installation needed.' },
+    { text: 'Set up and running in less than a day.' },
   ],
   thumbnailImage = '/images/home/banner.png',
-  videoSrc = '/images/home-v2/home-v2-banner.mp4',
 }) => {
   useHomeV2BannerAnimation();
   
   return (
-    <section className="section-bottom-border overflow-hidden relative z-1" data-container="homeV2-hero">
+    <section className="section-bottom-border overflow-hidden relative z-1" >
       {/* Video Background */}
     
 

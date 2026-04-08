@@ -1,5 +1,5 @@
 import React from 'react';
-import HomeV2Banner from '@/components/home-v2/HomeV2Banner';
+import HomeV2Banner from '@/components/home/HomeBanner';
 import ClientLogos from '@/components/home-v2/ClientLogos';
 import AboutSection from '@/components/home-v2/AboutSection';
 import IntegrationSection from '@/components/integration/IntegrationSection';
