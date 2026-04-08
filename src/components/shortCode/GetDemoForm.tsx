@@ -5,6 +5,7 @@ import emailjs from '@emailjs/browser';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 
+
 export interface GetDemoFormData {
   name: string;
   company_name: string;
@@ -251,7 +252,7 @@ const GetDemoForm: React.FC<GetDemoFormProps> = ({
         <div data-sttr-card>
           <Input
             type="text"
-            label="Name"
+            label="Name *"
             placeholder="Your name"
             name="name"
             value={formData.name}
@@ -264,7 +265,7 @@ const GetDemoForm: React.FC<GetDemoFormProps> = ({
         <div data-sttr-card>
           <Input
             type="text"
-            label="Company Name"
+            label="Company Name *"
             placeholder="Your company name"
             name="company_name"
             value={formData.company_name}
@@ -273,11 +274,25 @@ const GetDemoForm: React.FC<GetDemoFormProps> = ({
           />
         </div>
 
+        {/* Email */}
+        <div data-sttr-card>
+          <Input
+            type="email"
+            label="Email *"
+            placeholder="Your email address"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            error={errors.email}
+          />
+        </div>
+
+
         {/* Phone */}
         <div data-sttr-card>
           <Input
             type="tel"
-            label="Phone Number"
+            label="Phone Number *"
             placeholder="Your phone number"
             name="phoneNumber"
             value={formData.phoneNumber}
@@ -286,23 +301,13 @@ const GetDemoForm: React.FC<GetDemoFormProps> = ({
           />
         </div>
 
-        {/* Email */}
-        <div data-sttr-card>
-          <Input
-            type="email"
-            label="Email"
-            placeholder="Enter your email address"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            error={errors.email}
-          />
-        </div>
+      
 
         {/* Business Type — required */}
         <div className="sm:col-span-2" data-sttr-card>
           <p className="text-sm font-medium text-offWhite mb-3">
             I am a <span className="text-red-500">*</span>
+
           </p>
           {renderCheckboxGroup('businessType', BUSINESS_TYPES)}
           {errors.businessType && (
@@ -340,7 +345,7 @@ const GetDemoForm: React.FC<GetDemoFormProps> = ({
             disabled={submitting}
             loading={submitting}
           >
-            {submitting ? 'Booking...' : 'Book a Demo'}
+            {submitting ? 'Booking...' : 'Book'}
           </Button>
         </div>
 

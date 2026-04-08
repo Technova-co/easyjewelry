@@ -3,9 +3,6 @@
 import React, { useEffect, useRef } from 'react';
 import ContactInfo from '@/components/shortCode/ContactInfo';
 import ContactForm from '@/components/shortCode/ContactForm';
-import FAQSection from '@/components/faq/FAQSection';
-import Newsletter from '@/components/shortCode/Newsletter';
-import { faqData } from '@/data/faqData';
 import type { ContactFormData } from '@/components/shortCode/ContactForm';
 import Heading from '@/components/ui/heading';
 import { gsap } from 'gsap';
@@ -146,27 +143,26 @@ export default function Contact() {
                 <div className="lg:max-w-[487px] w-full flex flex-col md:flex-row lg:flex-col justify-between gap-6 sm:gap-10">
 
                   {/* Section Banner */}
-                  <div ref={containerRef} className="sm:max-w-[487px] lg:max-w-none" data-container="process-area" >
-                    <Heading as="h1" data-title>
-                      Let&apos;s Build Something Amazing Together
+                  <div ref={containerRef} className="sm:max-w-[487px] lg:max-w-none" data-container="process-area">
+                    <Heading as="h1" >
+                      Get in Touch with EasyJewelry
                     </Heading>
-                    <p data-excerpt className="mt-4 md:mt-5 text-offWhite/80">
-                      Have questions or ideas? We&apos;re here to help. Connect
-                      with RiteFlow to explore AI solutions, partnerships, or
-                      support for your next project.
+                    <p  className="mt-4 md:mt-5 text-offWhite/80">
+                      Have a question about our jewelry solution? We&apos;re here to help.
+                      Reach out and our team will get back to you as soon as possible.
                     </p>
                   </div>
                   {/* Contact Info */}
-                  <div className="flex flex-col gap-4" data-sttr-wrapper>
+                  <div className="flex flex-col gap-4" >
                     <ContactInfo
                       type="email"
-                      value="mail@example.com"
-                      href="mailto:mail@example.com"
+                      value="support@easyjewelry.co"
+                      href="mailto:support@easyjewelry.co"
                     />
                     <ContactInfo
                       type="phone"
-                      value="+123-456-7890"
-                      href="tel:+1234567890"
+                      value="+1 (800) 111-1111"
+                      href="tel:+8001111111"
                     />
                     <ContactInfo
                       type="address"
@@ -184,17 +180,7 @@ export default function Contact() {
       </section>
       {/* Contact Area End */}
 
-      {/* FAQ Area Start */}
-      <FAQSection
-        title="Frequently Asked Questions About RiteFlow"
-        description="Get quick answers about our AI tools, features, and services. Learn how RiteFlow helps you simplify work, boost creativity, and achieve smarter results."
-        faqData={faqData}
-      />
-      {/* FAQ Area End */}
-
-      {/* Newsletter Start */}
-      <Newsletter />
-      {/* Newsletter End */}
+    
     </>
   );
 }

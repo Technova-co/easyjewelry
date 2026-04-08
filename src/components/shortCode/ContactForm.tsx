@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 
 export interface ContactFormData {
   name: string;
-  location: string;
+  companyName: string;
   email: string;
   phoneNumber: string;
   projectName: string;
@@ -22,7 +22,7 @@ export interface ContactFormProps {
 
 interface FormErrors {
   name: string;
-  location: string;
+  companyName: string;
   email: string;
   phoneNumber: string;
   projectName: string;
@@ -36,7 +36,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
   const form = useRef<HTMLFormElement>(null);
   const [formData, setFormData] = useState<ContactFormData>({
     name: '',
-    location: '',
+    companyName: '',
     email: '',
     phoneNumber: '',
     projectName: '',
@@ -45,7 +45,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
 
   const [errors, setErrors] = useState<FormErrors>({
     name: '',
-    location: '',
+    companyName: '',
     email: '',
     phoneNumber: '',
     projectName: '',
@@ -67,7 +67,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
   const validate = (data: ContactFormData = formData): boolean => {
     const newErrors: FormErrors = {
       name: '',
-      location: '',
+      companyName: '',
       email: '',
       phoneNumber: '',
       projectName: '',
@@ -80,8 +80,8 @@ const ContactForm: React.FC<ContactFormProps> = ({
       isValid = false;
     }
 
-    if (!data.location.trim()) {
-      newErrors.location = 'Location is required';
+    if (!data.companyName.trim()) {
+      newErrors.companyName = 'Company Name is required';
       isValid = false;
     }
 
@@ -179,7 +179,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
       setSuccess(true);
       setFormData({
         name: '',
-        location: '',
+        companyName: '',
         email: '',
         phoneNumber: '',
         projectName: '',
@@ -187,7 +187,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
       });
       setErrors({
         name: '',
-        location: '',
+        companyName: '',
         email: '',
         phoneNumber: '',
         projectName: '',
@@ -207,7 +207,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
   };
 
   return (
-    <div className={`lg:max-w-[561px] w-full ${className}`} data-sttr-wrapper>
+    <div className={`lg:max-w-[561px] w-full ${className}`} >
       <form
         ref={form}
         onSubmit={sendEmail}
@@ -217,8 +217,8 @@ const ContactForm: React.FC<ContactFormProps> = ({
         <div className="" data-sttr-card>
           <Input
             type="text"
-            label="Full Name"
-            placeholder="Enter your full name"
+            label="Name *"
+            placeholder="Your name"
             name="name"
             value={formData.name}
             onChange={handleChange as (e: React.ChangeEvent<HTMLInputElement>) => void}
@@ -228,19 +228,19 @@ const ContactForm: React.FC<ContactFormProps> = ({
         <div className="" data-sttr-card>
           <Input
             type="text"
-            label="Location"
-            placeholder="Where are you located?"
-            name="location"
-            value={formData.location}
+            label="Company Name *"
+            placeholder="Your company name"
+            name="comapanyName"
+            value={formData.companyName}
             onChange={handleChange as (e: React.ChangeEvent<HTMLInputElement>) => void}
-            error={errors.location}
+            error={errors.companyName}
           />
         </div>
         <div className="" data-sttr-card>
           <Input
             type="email"
-            label="Email"
-            placeholder="Enter your email address"
+            label="Email *"
+            placeholder="Your email address"
             name="email"
             value={formData.email}
             onChange={handleChange as (e: React.ChangeEvent<HTMLInputElement>) => void}
@@ -250,7 +250,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
         <div className="" data-sttr-card>
           <Input
             type="tel"
-            label="Phone Number"
+            label="Phone Number *"
             placeholder="Your phone number"
             name="phoneNumber"
             value={formData.phoneNumber}
@@ -259,19 +259,8 @@ const ContactForm: React.FC<ContactFormProps> = ({
           />
         </div>
         <div className="sm:col-span-2" data-sttr-card>
-          <Input
-            type="text"
-            label="Project Name"
-            placeholder="What's your project called?"
-            name="projectName"
-            value={formData.projectName}
-            onChange={handleChange as (e: React.ChangeEvent<HTMLInputElement>) => void}
-            error={errors.projectName}
-          />
-        </div>
-        <div className="sm:col-span-2" data-sttr-card>
           <Textarea
-            label="Message"
+            label="Message *"
             name="message"
             placeholder="Write your message here..."
             value={formData.message}
@@ -294,7 +283,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
         {success && (
           <div className="sm:col-span-2">
             <p className="text-base text-green-500 mt-2">
-              Form submitted successfully! We&apos;ll get back to you soon.
+              Form submitted! We&apos;ll get back to you soon.
             </p>
           </div>
         )}

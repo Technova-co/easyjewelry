@@ -9,9 +9,9 @@ import type { Metadata } from 'next';
  * Layout files are always Server Components and can export metadata.
  */
 export const metadata: Metadata = {
-  title: 'Get Demo',
+  title: 'Request Demo | EasyJewelry',
   description:
-    'Get a free demo of Riteflow AI and discover how it can help your business. Book a personalized demo and see real use cases.',
+    'Book a free personalized demo of EasyJewelry and see how it can transform your jewelry business.',
 };
 
 /**

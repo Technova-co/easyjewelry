@@ -7,11 +7,10 @@ import type { Metadata } from 'next';
  * the page.tsx is a client component (needed for form state).
  */
 export const metadata: Metadata = {
-  title: 'Contact Us',
+  title: 'Contact Us | EasyJewelry',
   description:
-    'Have questions or ideas? We\'re here to help. Connect with RiteFlow to explore AI solutions, partnerships, or support for your next project.',
+    'Have questions? Get in touch with the EasyJewelry team for support, partnerships, or anything about our jewelry software.',
 };
-
 export default function ContactLayout({
   children,
 }: {

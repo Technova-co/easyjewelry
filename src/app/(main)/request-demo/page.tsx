@@ -8,6 +8,8 @@ import testimonialImg from '@/../public/images/home/testimonial/testimonial-05.j
 import type { GetDemoFormData } from '@/components/shortCode/GetDemoForm';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import ContactInfo from '@/components/shortCode/ContactInfo';
+
 
 // Register ScrollTrigger plugin
 if (typeof window !== 'undefined') {
@@ -185,6 +187,20 @@ export default function GetDemo() {
                       questions, and give you a free trial to explore on your own.
                       </p>
                     </div>
+                        <ContactInfo
+                      type="email"
+                      value="support@easyjewelry.co"
+                      href="mailto:support@easyjewelry.co"
+                    />
+                    <ContactInfo
+                      type="phone"
+                      value="+1 (800) 111-1111"
+                      href="tel:+18001111111"
+                    />
+                    <ContactInfo
+                      type="address"
+                      value="123 Fifth Ave, New York, NY 12004"
+                    />
                   </div>
                 </div>
 
