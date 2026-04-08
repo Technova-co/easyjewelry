@@ -22,9 +22,8 @@ if (typeof window !== 'undefined') {
  */
 const ResearchSection: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const title = 'AI Research';
-  const description = 'At RiteFlow, our AI research drives innovation that transforms ideas into intelligent solutions. We explore cutting-edge machine learning, automation, and data science to build tools that think, learn, and adapt — empowering businesses and individuals to achieve more with the power of AI.';
-
+ const title = 'Our Clients';
+const description = 'From independent wholesalers and multi-branch retailers  to jewelry manufacturers, EasyJewelry is trusted by jewelry businesses of all sizes across the globe. Our software adapts to the way you work, whether you are running a single counter or managing operations across multiple locations.';
   // Set initial hidden state immediately on mount
   useEffect(() => {
     if (typeof window === 'undefined' || !containerRef.current) return;

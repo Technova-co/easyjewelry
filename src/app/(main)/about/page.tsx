@@ -19,20 +19,15 @@ export default function AboutPage() {
   return (
     <>
       {/* Banner/Mission Section */}
-      <AboutBanner
-        title="Our Mission"
-        description="At RiteFlow, our mission is to empower every professional with the power of AI. We simplify complex workflows, automate daily tasks, and inspire innovation across all domains — from business to creativity. Our goal is to make AI accessible, reliable, and impactful for everyone, driving smarter and faster results."
-        image="/images/about/banner-thumb.jpg"
-      />
-
-      {/* Team Section */}
-      <TeamSection />
+    <AboutBanner
+  title="Our Mission"
+  description="At EasyJewelry, our mission is to simplify how jewelry businesses operate. We built software that handles the day-to-day — inventory, sales, invoicing, finance, online store and more so owners can focus on what they do best: serving their customers and growing their business."
+  image="/images/about/office.webp"
+/>
 
       {/* Research Section */}
-      <ResearchSection />
-
-      {/* Newsletter */}
-      <Newsletter />
+    <ResearchSection />
+     
     </>
   );
 }

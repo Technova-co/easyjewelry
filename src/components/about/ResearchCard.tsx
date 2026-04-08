@@ -56,14 +56,7 @@ const ResearchCard: React.FC<ResearchCardProps> = ({ title, description, logo, l
           <h3 className="text-lg text-offWhite font-medium font-dmSans">{title}</h3>
           <p className="text-sm text-offWhite/60">{description}</p>
         </div>
-        <Link
-          href={link}
-          className="w-11 h-9 flex items-center justify-center bg-linear-to-b from-slateBlue/20 to-royalBlue/20 rounded-[10px] relative overflow-hidden"
-          aria-label={`Learn more about ${title}`}
-        >
-          <ArrowTopRight className="w-6 h-6 fill-current text-white transition-all duration-300 ease-in-out group-hover:translate-x-6 group-hover:-translate-y-5 group-hover:opacity-0" />
-          <ArrowTopRight className="w-6 h-6 fill-current text-white absolute transform -translate-x-6 translate-y-5 transition-all duration-300 ease-in-out group-hover:translate-x-0 group-hover:-translate-y-0 opacity-0 group-hover:opacity-100" />
-        </Link>
+       
       </div>
     </div>
   );

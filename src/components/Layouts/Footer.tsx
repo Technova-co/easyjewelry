@@ -58,7 +58,7 @@ const Footer: React.FC = () => {
     <footer>
         <div className="container">
             <div className="border-container pt-15 sm:pt-20 lg:pt-24 xl:pt-[100px] pb-4 sm:pb-5 md:pb-6 lg:pb-20 xl:pb-8 2xl:pb-10">
-                <div className="px-4 py-8 sm:p-8 md:p-10 bg-blue rounded-[20px] border border-lineColor/70" data-sttr-wrapper>
+                <div className="px-4 py-8 sm:p-8 md:p-10 bg-blue rounded-[20px] border border-lineColor/70">
                     <div className="flex items-start justify-between gap-10 flex-col lg:flex-row" data-sttr-card>
                         <div className="lg:max-w-[320px] w-full flex flex-col sm:flex-row lg:flex-col justify-between gap-5 sm:gap-7">
                            
@@ -178,7 +178,7 @@ const Footer: React.FC = () => {
                         </div>
                     </div>
                     <div className="mt-4 sm:mt-12 flex items-center justify-center md:justify-between gap-4 flex-col md:flex-row pt-5 lg:pt-6 border-t border-lineColor/50 overflow-hidden relative z-50" data-sttr-card>
-                        <p className="text-black/80 text-center">Copyright &copy; 2020-2026 Technova. All Rights Reserved</p>
+                        <p className="text-black/80 text-center">Copyright &copy; 2026 Technova. All Rights Reserved</p>
                        
                     </div>
                   
