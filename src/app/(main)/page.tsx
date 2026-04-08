@@ -7,12 +7,15 @@ import Newsletter from '@/components/shortCode/Newsletter';
 
 
 import HomeV2Banner from '@/components/home-v2/HomeV2Banner';
-import HomeBannerOne from '@/components/home-v1/HomeBannerOne';
+import ClientLogos from '@/components/home-v2/ClientLogos';
+
 
 export default function DemoPage() {
   return (
     <>
       <HomeV2Banner />
+      <ClientLogos />
+      
       <DemoBanner />
 
       <WhyChooseSection />

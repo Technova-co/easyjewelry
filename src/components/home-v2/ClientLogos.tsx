@@ -27,20 +27,15 @@ export interface ClientLogosProps {
  * />
  */
 const ClientLogos: React.FC<ClientLogosProps> = ({
-  title = 'Trusted by innovative teams',
+  title = 'Trusted by retailers & wholesalers',
   logos = [
-    { src: '/images/client-logos/logo-01.svg', alt: 'client logo' },
-    { src: '/images/client-logos/logo-02.svg', alt: 'client logo' },
-    { src: '/images/client-logos/logo-03.svg', alt: 'client logo' },
-    { src: '/images/client-logos/logo-04.svg', alt: 'client logo' },
-    { src: '/images/client-logos/logo-05.svg', alt: 'client logo' },
-    { src: '/images/client-logos/logo-06.svg', alt: 'client logo' },
-    { src: '/images/client-logos/logo-07.svg', alt: 'client logo' },
-    { src: '/images/client-logos/logo-08.svg', alt: 'client logo' },
-    { src: '/images/client-logos/logo-01.svg', alt: 'client logo' },
-    { src: '/images/client-logos/logo-02.svg', alt: 'client logo' },
-    { src: '/images/client-logos/logo-03.svg', alt: 'client logo' },
-    { src: '/images/client-logos/logo-04.svg', alt: 'client logo' },
+    { src: '/images/client-logos/logo-01.avif', alt: 'client logo' },
+    { src: '/images/client-logos/logo-02.avif', alt: 'client logo' },
+    { src: '/images/client-logos/logo-03.png', alt: 'client logo' },
+    { src: '/images/client-logos/logo-04.png', alt: 'client logo' },
+    { src: '/images/client-logos/logo-05.webp', alt: 'client logo' },
+    { src: '/images/client-logos/logo-06.webp', alt: 'client logo' },
+  
   ],
 }) => {
     // Custom options

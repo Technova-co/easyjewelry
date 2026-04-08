@@ -60,7 +60,7 @@ const HomeV2Banner: React.FC<HomeV2BannerProps> = ({
     { text: 'From $0 to $500,000 in revenue.' },
     { text: '47% growth in new customers.' },
   ],
-  thumbnailImage = '/images/home-v2/banner-thumb.png',
+  thumbnailImage = '/images/home/banner.png',
   videoSrc = '/images/home-v2/home-v2-banner.mp4',
 }) => {
   useHomeV2BannerAnimation();
@@ -71,7 +71,7 @@ const HomeV2Banner: React.FC<HomeV2BannerProps> = ({
     
 
       <div className="container">
-        <div className="border-container py-15 sm:py-20 md:py24 lg:py-[130px]">
+        <div className="border-container py-15 ">
           <div className="flex items-center justify-between gap-10 flex-col md:flex-row">
             {/* Left Content */}
             <div className="md:max-w-[450px] lg:max-w-[570px] w-full">
@@ -121,7 +121,7 @@ const HomeV2Banner: React.FC<HomeV2BannerProps> = ({
               <Image
                 className="w-full"
                 src={thumbnailImage}
-                alt="RiteFlow AI platform dashboard preview"
+                alt="EasyJewelry — Jewelry Business Management Software"
                 width={608}
                 height={500}
                 priority
