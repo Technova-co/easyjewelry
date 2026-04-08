@@ -684,4 +684,7 @@ html:not(.preloader-active) body > *:not(.preloader-area) {
     justify-content: space-between;
     width: 100%;
   }
+  .main-menu ul li a{
+    color:#0d0d0d
+  }
 }
