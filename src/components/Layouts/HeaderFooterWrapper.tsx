@@ -19,7 +19,7 @@ export default function HeaderFooterWrapper({
 
   return (
     <>
-      {isDemoPage ? <HeaderTwo /> : <Header />}
+      {isDemoPage ? <Header /> : <Header />}
       {children}
       <Footer />
     </>

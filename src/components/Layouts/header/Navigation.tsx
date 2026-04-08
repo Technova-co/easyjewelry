@@ -74,12 +74,7 @@ const Navigation: React.FC<NavigationProps> = ({
         />
       ))}
 
-      {/* Mobile Sign-up */}
-      <li className="inline-block lg:hidden !w-auto ">
-        <Link href="/sign-up" className="button-primary inline-flex items-center justify-center px-[22px] py-3 text-white font-medium text-sm leading-normal rounded-[10px] relative z-1 overflow-hidden tracking-[0.1px]">
-            Buy Template
-        </Link>
-      </li>
+     
     </ul>
   );
 };

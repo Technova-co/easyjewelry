@@ -195,7 +195,7 @@ const Footer: React.FC = () => {
         </div>
     </footer>
 
-    {/* Scroll Top Button Start */}
+    {/* Scroll Top Button Start 
     <AnimatePresence>
       {showScrollTop && (
         <motion.div
@@ -234,6 +234,7 @@ const Footer: React.FC = () => {
       )}
     </AnimatePresence>
     {/* Scroll Top Button End */}
+    
     </>
   )
 }

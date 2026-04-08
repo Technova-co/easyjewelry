@@ -13,7 +13,6 @@ export default function DemoPage() {
   return (
     <>
       <HomeV2Banner />
-      <HomeBannerOne />
       <DemoBanner />
 
       <WhyChooseSection />

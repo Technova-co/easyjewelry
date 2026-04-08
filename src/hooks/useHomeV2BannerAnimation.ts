@@ -119,7 +119,6 @@ export function useHomeV2BannerAnimation(options: UseHomeV2BannerAnimationOption
       }
       if (video) gsap.set(video, { opacity: 0 });
       if (thumbnail) gsap.set(thumbnail, { opacity: 0 });
-      if (header) gsap.set(header, { opacity: 0 });
     };
 
     // Set initial states immediately
@@ -227,9 +226,7 @@ export function useHomeV2BannerAnimation(options: UseHomeV2BannerAnimationOption
       if (thumbnail) {
         gsap.set(thumbnail, { x: 100, opacity: 0, filter: 'blur(16px)' });
       }
-      if (header) {
-        gsap.set(header, { y: -100, opacity: 0, filter: 'blur(16px)' });
-      }
+     
 
       // Create timeline
       const tl = gsap.timeline({ paused: true });
@@ -315,21 +312,7 @@ export function useHomeV2BannerAnimation(options: UseHomeV2BannerAnimationOption
         );
       }
 
-      // Animate header
-      if (header) {
-        tl.fromTo(
-          header,
-          { y: -100, opacity: 0, filter: 'blur(16px)' },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 0.6,
-            filter: 'blur(0px)',
-            ease: 'power3.out',
-          },
-          '-=0.8'
-        );
-      }
+     
 
       timelines.push(tl);
 

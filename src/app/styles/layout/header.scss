@@ -3,7 +3,8 @@
 .header-area {
   &.sticky-header {
       pointer-events: visible !important;
-      @apply z-[99999] shadow-md backdrop-blur-md bg-secondary/80;
+      @apply z-[99999]  ;
+      
   }
 }
 @keyframes fadeInDown {
@@ -344,6 +345,7 @@
 .header-v2 {
   .border-container {
     @apply py-4;
+
   }
   .header-wrapper {
     @apply border border-lineColor rounded-xl lg:rounded-[20px] pl-3.5 pr-5 lg:px-3.5 py-1 sm:py-3 lg:py-0;

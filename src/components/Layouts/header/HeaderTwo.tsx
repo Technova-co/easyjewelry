@@ -45,13 +45,16 @@ export default function HeaderTwo() {
     <>
       <motion.header
         ref={headerRef}
-        className={`header-area fixed w-full left-0 top-0 right-0 z-[999] border-b border-lineColor header-v2 ${headerClass}`}
+        className={`header-area fixed w-full left-0 top-0 right-0 z-[999] header-v2`}
         data-smooth-ignore="true"
         {...motionProps}
       >
+
+        
+
         <div className="container">
           <div className="border-container">
-            <div className="header-wrapper flex items-center justify-between gap-5 relative py-3 lg:py-0">
+            <div className="header-wrapper flex items-center justify-between gap-5 relative py-3 lg:py-0 !bg-secondary">
               <Link href="/" className="logo">
                 <BrandLogo className="w-full max-w-[120px]" />
               </Link>

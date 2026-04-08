@@ -68,18 +68,7 @@ const HomeV2Banner: React.FC<HomeV2BannerProps> = ({
   return (
     <section className="section-bottom-border overflow-hidden relative z-1" data-container="homeV2-hero">
       {/* Video Background */}
-      <video
-        className="absolute top-0 left-0 w-full h-[calc(100%+50px)] object-cover z-[-1]"
-        src={videoSrc}
-        autoPlay
-        loop
-        muted
-        playsInline
-        aria-label="Background video showcasing RiteFlow AI platform"
-        data-lag="0.2"
-        data-speed="0.6"
-        data-video
-      />
+    
 
       <div className="container">
         <div className="border-container py-15 sm:py-20 md:py24 lg:py-[130px]">
