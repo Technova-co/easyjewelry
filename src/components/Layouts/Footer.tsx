@@ -7,6 +7,8 @@ import shapeImage from '@/../public/images/footer-logo-shape.svg';
 import largeLogo from '@/../public/images/footer-logo.svg';
 import clsx from 'clsx';
 import { motion, AnimatePresence } from 'framer-motion';
+import BrandLogo from '../icons/BrandLogo';
+import ContactInfo from '../shortCode/ContactInfo';
 
 const Footer: React.FC = () => {
   // State to track which footer menu is open (for mobile only)
@@ -59,35 +61,34 @@ const Footer: React.FC = () => {
                 <div className="px-4 py-8 sm:p-8 md:p-10 bg-blue rounded-[20px] border border-lineColor/70" data-sttr-wrapper>
                     <div className="flex items-start justify-between gap-10 flex-col lg:flex-row" data-sttr-card>
                         <div className="lg:max-w-[320px] w-full flex flex-col sm:flex-row lg:flex-col justify-between gap-5 sm:gap-7">
+                           
                             <div className="max-w-[320px] lg:max-w-none w-full">
-                                <h2 className="text-[25px]">Stay Updated</h2>
-                                <p className="mt-3 sm:mt-4.5 ">Subscribe to our newsletter for the latest updates, news, and insights.</p>
-                            </div>
-                            <div className="max-w-[320px] lg:max-w-none w-full">
-                                <form action="#" name="footer-form" className="lg:max-w-[292px] relative">
-                                    <input className="h-[58px] w-full p-3 pr-20 text-sm text-white placeholder:text-offWhite/60 font-medium leading-none bg-linear-to-b from-slateBlue/20 to-royalBlue/20 rounded-[10px] outline-none border border-[#7D76FF]/20" type="email" placeholder="example@example.com" name="footer-email" />
-                                    <button className="button-secondary h-11.5 !absolute top-[6px] right-[6px]">Join</button>
-                                </form>
-                                <div className="flex items-center gap-6 mt-5 sm:mt-7">
-                                    <Link href="#" className="text-white hover:text-tertiary transition-colors duration-300">
-                                        <Facebook className="w-5 h-5" />
-                                    </Link>
-                                    <Link href="#" className="text-white hover:text-tertiary transition-colors duration-300">
-                                        <Twitter className="w-5 h-5" />
-                                    </Link>
-                                    <Link href="#" className="text-white hover:text-tertiary transition-colors duration-300">
-                                        <Instagram className="w-5 h-5" />
-                                    </Link>
-                                    <Link href="#" className="text-white hover:text-tertiary transition-colors duration-300">
-                                        <Linkedin className="w-5 h-5" />
-                                    </Link>
+                              
+                                <Link href="/" className="logo">
+                                  <BrandLogo className="w-full max-w-[120px]" />
+                                </Link>
+                                <div className="flex flex-col gap-4 mt-5 sm:mt-7">
+                                    <ContactInfo
+                                      type="email"
+                                      value="support@easyjewelry.co"
+                                      href="mailto:support@easyjewelry.co"
+                                    />
+                                    <ContactInfo
+                                      type="phone"
+                                      value="+1 (800) 111-1111"
+                                      href="tel:+8001111111"
+                                    />
+                                    <ContactInfo
+                                      type="address"
+                                      value="123 Fifth Ave, New York, NY 12004"
+                                    />
                                 </div>
                             </div>
                         </div>
                         <div className="lg:max-w-[560px] w-full flex items-start justify-between gap-4 sm:gap-10 flex-col sm:flex-row footer-menu-wrapper">
                             <div className={clsx("w-full sm:w-auto pb-4 sm:pb-0 border-b sm:border-b-0 border-lineColor last:border-b-0 last:pb-0", openMenuIndex === 0 && "active")}>
                                 <button 
-                                  className="!text-lg text-white font-medium -tracking-tight flex items-center justify-between gap-5 w-full footer-menu-toggle"
+                                  className="!text-lg text-primary font-medium -tracking-tight flex items-center justify-between gap-5 w-full footer-menu-toggle"
                                   onClick={() => toggleMenu(0)}
                                 >
                                     Company
@@ -117,7 +118,7 @@ const Footer: React.FC = () => {
                             </div>
                             <div className={clsx("w-full sm:w-auto pb-4 sm:pb-0 border-b sm:border-b-0 border-lineColor last:border-b-0 last:pb-0", openMenuIndex === 1 && "active")}>
                                 <button 
-                                  className="!text-lg text-white font-medium -tracking-tight flex items-center justify-between gap-5 w-full footer-menu-toggle"
+                                  className="!text-lg text-primary font-medium -tracking-tight flex items-center justify-between gap-5 w-full footer-menu-toggle"
                                   onClick={() => toggleMenu(1)}
                                 >
                                     Insight
@@ -148,7 +149,7 @@ const Footer: React.FC = () => {
                             </div>
                             <div className={clsx("w-full sm:w-auto pb-4 sm:pb-0 border-b sm:border-b-0 border-lineColor last:border-b-0 last:pb-0", openMenuIndex === 2 && "active")}>
                                 <button 
-                                  className="!text-lg text-white font-medium -tracking-tight flex items-center justify-between gap-5 w-full footer-menu-toggle"
+                                  className="!text-lg text-primary font-medium -tracking-tight flex items-center justify-between gap-5 w-full footer-menu-toggle"
                                   onClick={() => toggleMenu(2)}
                                 >
                                     Utility
@@ -177,19 +178,10 @@ const Footer: React.FC = () => {
                         </div>
                     </div>
                     <div className="mt-4 sm:mt-12 flex items-center justify-center md:justify-between gap-4 flex-col md:flex-row pt-5 lg:pt-6 border-t border-lineColor/50 overflow-hidden relative z-50" data-sttr-card>
-                        <p className="text-white/80 text-center">Copyright &copy; 2025 Riteflow Inc. All Rights Reserved</p>
-                        <div className="flex items-center gap-2 sm:gap-5 flex-wrap sm:flex-nowrap justify-center">
-                            <Link href="/ai-policy" className="text-offWhite/80 transition-colors duration-300 hover:text-offWhite">AI Policy</Link>
-                            <div className="w-[5px] h-[5px] rounded-full bg-offWhite/80"></div>
-                            <Link href="/security-and-privacy" className="text-offWhite/80 transition-colors duration-300 hover:text-offWhite">Security & Privacy</Link>
-                        </div>
+                        <p className="text-black/80 text-center">Copyright &copy; 2020-2026 Technova. All Rights Reserved</p>
+                       
                     </div>
-                    <div className="relative overflow-hidden" data-sttr-card>
-                        {/* <img src="./assets/img/footer-logo-shape.svg" alt="Decorative footer background shape" className="absolute top-0 left-0 w-fit z-10" data-lag="0.1"> */}
-                        <Image src={shapeImage} alt="Decorative footer background shape" className="absolute top-0 left-0 w-fit z-10" data-lag="0.1" />
-                        <Image src={largeLogo} alt="RiteFlow footer logo" data-lag="0.1" />
-                        {/* <img src="./assets/img/footer-logo.svg" alt="RiteFlow footer logo" data-lag="0.1"> */}
-                    </div>
+                  
                 </div>
             </div>
         </div>
