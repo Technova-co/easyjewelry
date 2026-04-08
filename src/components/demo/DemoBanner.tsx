@@ -84,7 +84,6 @@ export default function DemoBanner() {
       const excerpt = demoHero.querySelector('p');
       const sttrCard = demoHero.querySelectorAll('.sttr-card');
       const marquee = demoHero.querySelector('[data-slider-animi]');
-      const header = document.querySelector('.header-wrapper');
 
       if (title) {
         gsap.set(title, sharedFrom);
@@ -97,9 +96,7 @@ export default function DemoBanner() {
           gsap.set(card, sharedFrom);
         });
       }
-      if (header) {
-        gsap.set(header, { y: -100, opacity: 0, filter: 'blur(16px)' });
-      }
+    
       if (marquee) {
         gsap.set(marquee, { transformOrigin: 'top center', opacity: 0, filter: 'blur(16px)' });
       }
@@ -150,7 +147,6 @@ export default function DemoBanner() {
       if (!demoBannerRef.current) return;
 
       const demoHero = demoBannerRef.current;
-      const header = document.querySelector('.header-wrapper');
       const title = demoHero.querySelector('h1');
       const excerpt = demoHero.querySelector('p');
       const sttrCard = demoHero.querySelectorAll('.sttr-card');
@@ -169,15 +165,7 @@ export default function DemoBanner() {
       // Animation sequence for smooth sequential flow:
       // Header (earliest) -> Title -> Excerpt -> Cards (stagger) -> Marquee (last)
       
-      // 1. Header animates first (can start slightly before title)
-      if (header) {
-        tl.fromTo(
-          header,
-          { y: -100, opacity: 0, filter: 'blur(16px)' },
-          { y: 0, opacity: 1, duration: 0.6, filter: 'blur(0px)', ease: 'power3.out' },
-          0
-        );
-      }
+     
 
       // 2. Title starts (can overlap slightly with header)
       if (title) {

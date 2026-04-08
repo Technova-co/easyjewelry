@@ -174,9 +174,7 @@ const HomeBannerOne: React.FC<HomeBannerOneProps> = ({
       if (thumbnail) {
         gsap.set(thumbnail, { opacity: 0, y: 50 });
       }
-      if (header) {
-        gsap.set(header, { y: -100, opacity: 0, filter: 'blur(16px)' });
-      }
+     
 
       // Create timeline for scroll animation
       tl = gsap.timeline({ paused: true });
