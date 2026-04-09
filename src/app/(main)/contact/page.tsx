@@ -161,12 +161,12 @@ export default function Contact() {
                     />
                     <ContactInfo
                       type="phone"
-                      value="+1 (800) 111-1111"
-                      href="tel:+8001111111"
+                      value="+1 (415) 767-6362"
+                      href="tel:+14157676362"
                     />
                     <ContactInfo
                       type="address"
-                      value="123 Fifth Ave, New York, NY 12004"
+                      value="255 Primera Blvd., Suite 160, Lake Mary, FL 32746"
                     />
                   </div>
                 </div>

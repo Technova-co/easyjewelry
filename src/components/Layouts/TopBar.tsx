@@ -9,11 +9,11 @@ export default function TopBar() {
         <div className="flex items-center justify-between">
 
           <Link
-            href="tel:+18001111111"
+            href="tel:+14157676362"
             className="flex items-center gap-1.5 text-white text-xs hover:text-white/80 transition-colors no-underline"
           >
             <Phone size={12} />
-            +1 (800) 111-1111
+            +1 (415) 767 6362
           </Link>
 
           <Link
