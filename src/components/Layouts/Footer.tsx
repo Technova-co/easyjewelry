@@ -107,15 +107,16 @@ const Footer: React.FC = () => {
                                       className="footer-menu-list overflow-hidden"
                                     >
                                       <ul className="flex flex-col gap-2.5 pt-4.5">
-                                        <li><Link href="/about" className="text-offWhite/80 transition-colors duration-300 hover:text-offWhite">About</Link></li>
-                                        <li><Link href="/contact" className="text-offWhite/80 transition-colors duration-300 hover:text-offWhite">Contact</Link></li>
-                                        <li><Link href="/get-demo" className="text-offWhite/80 transition-colors duration-300 hover:text-offWhite">Get a Demo</Link></li>
-                                        <li><Link href="/join-wishlist" className="text-offWhite/80 transition-colors duration-300 hover:text-offWhite">Join Wishlist</Link></li>
+                                        <li><Link href="/" className="text-offWhite/80 transition-colors duration-300 hover:text-offWhite">Home</Link></li>
+                                        <li><Link href="/about" className="text-offWhite/80 transition-colors duration-300 hover:text-offWhite">About Us</Link></li>
+                                        <li><Link href="/contact" className="text-offWhite/80 transition-colors duration-300 hover:text-offWhite">Contact Us</Link></li>
+                                        <li><Link href="/request-demo" className="text-offWhite/80 transition-colors duration-300 hover:text-offWhite">Request Demo</Link></li>
                                       </ul>
                                     </motion.div>
                                   )}
                                 </AnimatePresence>
                             </div>
+                            {/*
                             <div className={clsx("w-full sm:w-auto pb-4 sm:pb-0 border-b sm:border-b-0 border-lineColor last:border-b-0 last:pb-0", openMenuIndex === 1 && "active")}>
                                 <button 
                                   className="!text-lg text-primary font-medium -tracking-tight flex items-center justify-between gap-5 w-full footer-menu-toggle"
@@ -175,6 +176,8 @@ const Footer: React.FC = () => {
                                   )}
                                 </AnimatePresence>
                             </div>
+
+                            */}
                         </div>
                     </div>
                     <div className="mt-4 sm:mt-12 flex items-center justify-center md:justify-between gap-4 flex-col md:flex-row pt-5 lg:pt-6 border-t border-lineColor/50 overflow-hidden relative z-50" data-sttr-card>
