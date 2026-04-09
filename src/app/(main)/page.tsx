@@ -16,21 +16,6 @@ export default function DemoPage() {
       <HomeV2Banner />
       <ClientLogos />
       
-      <DemoBanner />
-
-      <WhyChooseSection />
-
-      <HomepagesSection />
-
-      <InnerPagesSection />
-      
-
-      <Newsletter
-        title="Start automating today. Let us handle the tasks."
-        excerpt="Unlock the power of AI with RiteFlow. Simplify your work, boost creativity, and stay ahead — start your smarter journey now."
-        buttonText="Get a Demo"
-        buttonLink="/get-demo"
-      />
 
 
     </>

@@ -60,7 +60,7 @@ const HomeV2Banner: React.FC<HomeV2BannerProps> = ({
     { text: 'Works on any device — no installation needed.' },
     { text: 'Set up and running in less than a day.' },
   ],
-  thumbnailImage = '/images/home/banner.png',
+  thumbnailImage = '/images/home/easyjewelry.png',
 }) => {
   useHomeV2BannerAnimation();
   

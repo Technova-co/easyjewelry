@@ -9,7 +9,7 @@ import clsx from 'clsx';
 import { motion, AnimatePresence } from 'framer-motion';
 import BrandLogo from '../icons/BrandLogo';
 import ContactInfo from '../shortCode/ContactInfo';
-
+import Newsletter from '../shortCode/Newsletter';
 const Footer: React.FC = () => {
   // State to track which footer menu is open (for mobile only)
   const [openMenuIndex, setOpenMenuIndex] = useState<number | null>(null);
@@ -56,6 +56,14 @@ const Footer: React.FC = () => {
   return (
     <>
     <footer>
+
+       <Newsletter
+       title="Run your jewelry business smarter."
+        excerpt="From inventory to accounting, EasyJewelry takes care of the day-to-day so you can focus on growing your business. Get started in less than a day."
+        buttonText="Request Demo"
+        buttonLink="/request-demo"
+      />
+
         <div className="container">
             <div className="border-container pt-15 sm:pt-20 lg:pt-24 xl:pt-[100px] pb-4 sm:pb-5 md:pb-6 lg:pb-20 xl:pb-8 2xl:pb-10">
                 <div className="px-4 py-8 sm:p-8 md:p-10 bg-blue rounded-[20px] border border-lineColor/70">

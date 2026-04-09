@@ -64,45 +64,18 @@ const Newsletter: React.FC<NewsletterProps> = ({
       <div className="container">
         <div className="border-container section-spacing-lg">
           <div data-lag="0.15">
-            <div className="bg-blue sm:bg-transparent rounded-20 border border-lineColor/70 px-4 sm:px-6 md:px-9 py-10 sm:py-14 md:py-20 lg:py-[90px] relative z-1 overflow-hidden" data-newsletter-wrapper>
+            <div className="bg-blue rounded-20 border border-lineColor/70 px-4 sm:px-6 md:px-9 py-10 sm:py-14 md:py-20 lg:py-[90px] relative z-1 overflow-hidden" >
               {/* Video Background - Desktop */}
-              <video 
-                className="hidden sm:block absolute top-0 right-0 w-full h-full object-cover bg-top-right -z-1 scale-110"
-                src="/images/newsletter.webm"
-                autoPlay
-                loop
-                muted
-                playsInline
-                aria-label="Newsletter section background video"
-                data-news-video
-              >
-              </video>
-              
-              {/* Mobile Images - Decorative */}
+             
               <Image 
-                src="/images/newsletter-shape.png" 
-                alt="" 
-                className="block sm:hidden absolute top-0 right-0 z-[-1] w-[30%] lg:w-auto"
-                width={200}
-                height={200}
+                src="/images/home/easyjewelry.png" 
+                alt="EasyJewelry — Jewelry Business Management Software" 
+                className="float-right"
+                width={500}
+                height={500}
                 aria-hidden="true"
               />
-              <Image 
-                src="/images/newsletter-top-glow-shape.png" 
-                alt="" 
-                className="block sm:hidden absolute top-0 right-0 z-[-1]"
-                width={300}
-                height={300}
-                aria-hidden="true"
-              />
-              <Image 
-                src="/images/newsletter-bottom-glow-shape.png" 
-                alt="" 
-                className="block sm:hidden absolute bottom-0 left-0 z-[-1]"
-                width={300}
-                height={300}
-                aria-hidden="true"
-              />
+
 
               {/* Content */}
               <div className="w-full sm:w-[80%] lg:w-full max-w-[400px] md:max-w-[580px]">
@@ -112,13 +85,21 @@ const Newsletter: React.FC<NewsletterProps> = ({
                 <p data-news-excerpt className="mt-4 sm:mt-5 text-offWhite/80">
                   {excerpt}
                 </p>
-                <div data-news-button className="mt-5 sm:mt-8 lg:mt-12">
+                <div data-news-button className="mt-5 sm:mt-8 lg:mt-12 flex flex-wrap gap-3 sm:gap-4">
                   <Button 
                     href={buttonLink}
                     variant="primary"
                     size="md"
                   >
                     {buttonText}
+                  </Button>
+
+                     <Button 
+                    href="/watch-video"
+                    variant="secondary"
+                    size="md"
+                  >
+                    Watch Video
                   </Button>
                 </div>
               </div>
