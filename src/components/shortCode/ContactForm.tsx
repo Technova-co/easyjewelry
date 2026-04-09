@@ -11,7 +11,6 @@ export interface ContactFormData {
   companyName: string;
   email: string;
   phoneNumber: string;
-  projectName: string;
   message: string;
 }
 
@@ -25,7 +24,6 @@ interface FormErrors {
   companyName: string;
   email: string;
   phoneNumber: string;
-  projectName: string;
   message: string;
 }
 
@@ -39,7 +37,6 @@ const ContactForm: React.FC<ContactFormProps> = ({
     companyName: '',
     email: '',
     phoneNumber: '',
-    projectName: '',
     message: '',
   });
 
@@ -48,7 +45,6 @@ const ContactForm: React.FC<ContactFormProps> = ({
     companyName: '',
     email: '',
     phoneNumber: '',
-    projectName: '',
     message: '',
   });
 
@@ -70,7 +66,6 @@ const ContactForm: React.FC<ContactFormProps> = ({
       companyName: '',
       email: '',
       phoneNumber: '',
-      projectName: '',
       message: '',
     };
     let isValid = true;
@@ -101,10 +96,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
       isValid = false;
     }
 
-    if (!data.projectName.trim()) {
-      newErrors.projectName = 'Project name is required';
-      isValid = false;
-    }
+ 
 
     if (!data.message.trim()) {
       newErrors.message = 'Message is required';
@@ -182,7 +174,6 @@ const ContactForm: React.FC<ContactFormProps> = ({
         companyName: '',
         email: '',
         phoneNumber: '',
-        projectName: '',
         message: '',
       });
       setErrors({
@@ -190,7 +181,6 @@ const ContactForm: React.FC<ContactFormProps> = ({
         companyName: '',
         email: '',
         phoneNumber: '',
-        projectName: '',
         message: '',
       });
       form.current.reset();
@@ -230,7 +220,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
             type="text"
             label="Company Name *"
             placeholder="Your company name"
-            name="comapanyName"
+            name="companyName"
             value={formData.companyName}
             onChange={handleChange as (e: React.ChangeEvent<HTMLInputElement>) => void}
             error={errors.companyName}
@@ -282,7 +272,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
 
         {success && (
           <div className="sm:col-span-2">
-            <p className="text-base text-green-500 mt-2">
+            <p className="text-base text-primary-500 mt-2">
               Form submitted! We&apos;ll get back to you soon.
             </p>
           </div>

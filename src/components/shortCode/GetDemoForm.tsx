@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 
 export interface GetDemoFormData {
   name: string;
-  company_name: string;
+  companyName: string;
   phoneNumber: string;
   email: string;
   businessType: string[];
@@ -23,7 +23,7 @@ export interface GetDemoFormProps {
 
 interface FormErrors {
   name: string;
-  company_name: string;
+  companyName: string;
   phoneNumber: string;
   email: string;
   businessType: string;
@@ -41,7 +41,7 @@ const GetDemoForm: React.FC<GetDemoFormProps> = ({
   const form = useRef<HTMLFormElement>(null);
   const [formData, setFormData] = useState<GetDemoFormData>({
     name: '',
-    company_name: '',
+    companyName: '',
     phoneNumber: '',
     email: '',
     businessType: [],
@@ -51,7 +51,7 @@ const GetDemoForm: React.FC<GetDemoFormProps> = ({
 
   const [errors, setErrors] = useState<FormErrors>({
     name: '',
-    company_name: '',
+    companyName: '',
     phoneNumber: '',
     email: '',
     businessType: '',
@@ -72,7 +72,7 @@ const GetDemoForm: React.FC<GetDemoFormProps> = ({
   const validate = (data: GetDemoFormData = formData): boolean => {
     const newErrors: FormErrors = {
       name: '',
-      company_name: '',
+      companyName: '',
       phoneNumber: '',
       email: '',
       businessType: '',
@@ -150,7 +150,7 @@ const GetDemoForm: React.FC<GetDemoFormProps> = ({
     }
 
     const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID_DEMO_REQUEST;
     const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
 
     if (!serviceId || !templateId || !publicKey) {
@@ -168,7 +168,7 @@ const GetDemoForm: React.FC<GetDemoFormProps> = ({
       setSuccess(true);
       setFormData({
         name: '',
-        company_name: '',
+        companyName: '',
         phoneNumber: '',
         email: '',
         businessType: [],
@@ -177,7 +177,7 @@ const GetDemoForm: React.FC<GetDemoFormProps> = ({
       });
       setErrors({
         name: '',
-        company_name: '',
+        companyName: '',
         phoneNumber: '',
         email: '',
         businessType: '',
@@ -240,6 +240,12 @@ const GetDemoForm: React.FC<GetDemoFormProps> = ({
     </div>
   );
 
+  useEffect(() => {
+  if (success) {
+    window.location.href = 'https://calendly.com/admin-easyjewelry/demo';
+  }
+}, [success]);
+
   return (
     <div className={`lg:max-w-[561px] w-full ${className}`}>
       <form
@@ -267,10 +273,10 @@ const GetDemoForm: React.FC<GetDemoFormProps> = ({
             type="text"
             label="Company Name *"
             placeholder="Your company name"
-            name="company_name"
-            value={formData.company_name}
+            name="companyName"
+            value={formData.companyName}
             onChange={handleChange}
-            error={errors.company_name}
+            error={errors.companyName}
           />
         </div>
 
@@ -349,13 +355,7 @@ const GetDemoForm: React.FC<GetDemoFormProps> = ({
           </Button>
         </div>
 
-        {success && (
-          <div className="sm:col-span-2">
-            <p className="text-base text-green-500 mt-2">
-              Demo booked! We&apos;ll get back to you soon.
-            </p>
-          </div>
-        )}
+      
 
         {error && (
           <div className="sm:col-span-2">
