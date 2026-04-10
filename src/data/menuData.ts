@@ -6,6 +6,22 @@ export const menuData: MenuItem[] = [
     title: "Home",
     link: "/",
   },
+  {
+    title: "Features",
+    link: "/features",
+  },
+  {
+    title: "Retailers",
+    link: "/retailers",
+  },
+   {
+    title: "Wholesalers",
+    link: "/wholesalers",
+  },
+   {
+    title: "Online Store",
+    link: "/online-store",
+  },
    {
     title: "About Us",
     link: "/about",
@@ -13,10 +29,6 @@ export const menuData: MenuItem[] = [
    {
     title: "Contact Us",
     link: "/contact",
-  },
-  {
-    title: "Blog",
-    link: "/blog",
-  },
+  }
   
 ];

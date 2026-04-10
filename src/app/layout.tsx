@@ -28,9 +28,29 @@ const preloaderInitScript = `
 */
 
 export const metadata: Metadata = {
-  title: "RiteFlow - Next.js SaaS Template",
-  description: "RiteFlow is a premium Next.js Template designed for AI startups, SaaS products, and tech companies. Fast, scalable, and built for high conversions.",
+  title: 'EasyJewelry — Jewelry Business Management Software',
+  description:
+    'The easiest jewelry software for retailers & wholesalers. Manage inventory, POS, invoicing and finance — all from one screen.',
+  keywords: [
+    'jewelry ERP software',
+    'jewelry store management software',
+    'jewelry inventory management software',
+    'jewelry POS software',
+    'jewelry inventory system',
+    'jewelry store software',
+    'jewelry business software',
+    'jewelry retail software',
+    'jewelry wholesale software',
+    'jewellery ERP software',
+    'jewellery store management software',
+    'jewellery inventory management software',
+    'jewellery POS software',
+    'jewellery inventory system',
+    'jewellery store software',
+    'jewellery business software',
+  ],
 };
+
 export default function RootLayout({
   children,
 }: Readonly<{

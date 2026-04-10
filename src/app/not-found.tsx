@@ -30,9 +30,7 @@ export default function NotFound() {
               <Heading as="h1" className="!leading-[1.2]" data-sttr-card>
                 Page Not Found
               </Heading>
-              <p className="mt-4 md:mt-5 text-offWhite/80 overflow-hidden" data-sttr-card>
-                Oops! The page you&apos;re after has drifted away. Head back to RiteFlow&apos;s homepage to discover AI tools, guides, and inspiration waiting for you.
-              </p>
+            
               <div className="mt-5 sm:mt-8 lg:mt-9" data-sttr-card>
                 <Link 
                   href="/" 
