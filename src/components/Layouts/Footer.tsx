@@ -189,7 +189,7 @@ const Footer: React.FC = () => {
                         </div>
                     </div>
                     <div className="mt-4 sm:mt-12 flex items-center justify-center md:justify-between gap-4 flex-col md:flex-row pt-5 lg:pt-6 border-t border-lineColor/50 overflow-hidden relative z-50" data-sttr-card>
-                        <p className="text-black/80 text-center">Copyright &copy; 2026 Technova. All Rights Reserved</p>
+                        <p className="text-black/80 text-center">Copyright &copy; 2026 Technova. All Rights Reserved.</p>
                        
                     </div>
                   

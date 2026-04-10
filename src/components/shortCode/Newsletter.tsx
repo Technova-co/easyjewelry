@@ -64,46 +64,52 @@ const Newsletter: React.FC<NewsletterProps> = ({
       <div className="container">
         <div className="border-container section-spacing-lg">
           <div data-lag="0.15">
-            <div className="bg-blue rounded-20 border border-lineColor/70 px-4 sm:px-6 md:px-9 py-10 sm:py-14 md:py-20 lg:py-[90px] relative z-1 overflow-hidden" >
-              {/* Video Background - Desktop */}
-             
-              <Image 
-                src="/images/home/easyjewelry.png" 
-                alt="EasyJewelry — Jewelry Business Management Software" 
-                className="float-right"
-                width={500}
-                height={500}
-                aria-hidden="true"
-              />
+         <div className="bg-blue rounded-20 border border-lineColor/70 px-4 sm:px-6 md:px-9 py-10 sm:py-14 md:py-20 lg:py-[90px] relative z-[1] overflow-hidden">
+
+  <div className="flex flex-col lg:flex-row items-center justify-between gap-10">
+
+        {/* Image */}
+    <div className="relative w-full lg:w-auto flex-shrink-0">
+      <Image
+        src="/images/home/easyjewelry.png"
+        alt="EasyJewelry — Jewelry Business Management Software"
+        width={500}
+        height={500}
+        className="w-full lg:w-[500px] h-auto object-contain"
+      />
+    </div>
 
 
-              {/* Content */}
-              <div className="w-full sm:w-[80%] lg:w-full max-w-[400px] md:max-w-[580px]">
-                <h3 data-news-title className="gradient-text !leading-[1.2] text-4xl md:text-5xl lg:text-[51px] font-semibold">
-                  {title}
-                </h3>
-                <p data-news-excerpt className="mt-4 sm:mt-5 text-offWhite/80">
-                  {excerpt}
-                </p>
-                <div data-news-button className="mt-5 sm:mt-8 lg:mt-12 flex flex-wrap gap-3 sm:gap-4">
-                  <Button 
-                    href={buttonLink}
-                    variant="primary"
-                    size="md"
-                  >
-                    {buttonText}
-                  </Button>
+    
+    {/* Content */}
+    <div className="w-full sm:w-[80%] lg:w-full max-w-[400px] md:max-w-[580px]">
+      <h3 data-news-title className="gradient-text !leading-[1.2] text-4xl md:text-5xl lg:text-[51px] font-semibold">
+        {title}
+      </h3>
+      <p data-news-excerpt className="mt-4 sm:mt-5 text-offWhite/80">
+        {excerpt}
+      </p>
+      <div data-news-button className="mt-5 sm:mt-8 lg:mt-12 flex flex-wrap gap-3 sm:gap-4">
+        <Button
+          href={buttonLink}
+          variant="primary"
+          size="md"
+        >
+          {buttonText}
+        </Button>
+        <Button
+          href="/watch-video"
+          variant="secondary"
+          size="md"
+        >
+          Watch Video
+        </Button>
+      </div>
+    </div>
 
-                     <Button 
-                    href="/watch-video"
-                    variant="secondary"
-                    size="md"
-                  >
-                    Watch Video
-                  </Button>
-                </div>
-              </div>
-            </div>
+
+  </div>
+</div>
           </div>
         </div>
       </div>
