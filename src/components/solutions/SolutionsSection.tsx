@@ -31,11 +31,11 @@ const SolutionsSection: React.FC = () => {
 
           <SectionBanner
             outlineButtonText="Solutions"
-            title="Built for Every Jewelry Business"
-            description="Whether you run a single retail counter, a wholesale operation, a manufacturing unit, or multiple branches — EasyJewelry adapts to the way you work."
+            title="Built for both retailers & wholesalers"
+            description="Whether you run a single retail store, a wholesale office, or multiple branches, EasyJewelry adapts to the way you work."
           />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-10 md:mt-14" data-sttr-wrapper>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-10 md:mt-14" >
             {solutionsData.map((solution) => {
               const IconComponent = iconMap[solution.iconId];
 
@@ -48,25 +48,22 @@ const SolutionsSection: React.FC = () => {
                   {/* Top row — icon + arrow */}
                   <div className="flex items-center justify-between gap-5 mb-5">
                     <div className="w-10 h-10 flex items-center justify-center bg-primary rounded-[10px] p-2.5">
-                      {IconComponent ? (
-                        <IconComponent className="fill-current text-white max-w-7 max-h-5" />
-                      ) : (
-                        <span className="text-white text-xs">Icon</span>
-                      )}
+                      
+                        <span className="text-white text-xs"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+  <path d="M6 3h12l4 6-10 13L2 9z"/>
+  <path d="M2 9h20"/>
+  <path d="M12 22L6 9l6-6 6 6z"/>
+</svg></span>
+                      
                     </div>
-                    <Link
-                      href={`/solutions/${solution.slug}`}
-                      className="w-11 h-9 flex items-center justify-center bg-gradient-to-b from-primary/20 to-primary/10 rounded-[10px] relative overflow-hidden"
-                    >
-                      <UpArrow className="w-6 h-6 fill-current text-white transition-all duration-300 ease-in-out group-hover:translate-x-6 group-hover:-translate-y-5 group-hover:opacity-0" />
-                      <UpArrow className="w-6 h-6 fill-current text-white absolute transform -translate-x-6 translate-y-5 transition-all duration-300 ease-in-out group-hover:translate-x-0 group-hover:translate-y-0 opacity-0 group-hover:opacity-100" />
-                    </Link>
+                    {/* Title */}
+                      <h3 className="text-xl text-offWhite font-medium leading-normal">
+                        {solution.title}
+                      </h3>
+                  
                   </div>
 
-                  {/* Title */}
-                  <h3 className="text-xl text-offWhite font-medium leading-normal">
-                    {solution.title}
-                  </h3>
+                  
 
                   {/* Divider */}
                   <div className="my-4 gradient-border w-full h-[1px]" />
@@ -95,8 +92,8 @@ const SolutionsSection: React.FC = () => {
 
                   {/* Learn more link */}
                   <Link
-                    href={`/solutions/${solution.slug}`}
-                    className="inline-flex items-center gap-1.5 text-sm text-primary mt-6 hover:gap-2.5 transition-all"
+                    href={`/${solution.slug}`}
+                    className="inline-flex items-center gap-1.5 text-sm text-primary mt-6 hover:gap-2.5 transition-all float-right"
                   >
                     Learn more →
                   </Link>

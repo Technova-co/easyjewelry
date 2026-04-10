@@ -61,7 +61,7 @@ export function useSectionHeadingAnimation(options: UseSectionHeadingAnimationOp
 
     // Set initial state immediately to keep content invisible
     const setInitialState = () => {
-      const demoHeading = document.querySelectorAll<HTMLElement>('[data-section-title]');
+      const demoHeading = document.querySelectorAll<HTMLElement>('[data-section-titles]');
       demoHeading.forEach((section) => {
         const subtitle = section.querySelector<HTMLElement>('[data-subtitle]');
         const title = section.querySelector<HTMLElement>('[data-title]');
@@ -130,7 +130,7 @@ export function useSectionHeadingAnimation(options: UseSectionHeadingAnimationOp
     const initAnimation = async () => {
       await waitForPreloaderFinish();
 
-      const demoHeading = document.querySelectorAll<HTMLElement>('[data-section-title]');
+      const demoHeading = document.querySelectorAll<HTMLElement>('[data-section-titles]');
 
       if (!demoHeading.length) return;
 

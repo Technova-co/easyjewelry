@@ -44,23 +44,12 @@ export const demoBannerStats: DemoStatCard[] = [
 ];
 
 export const demoSliderItems: DemoSliderItem[] = [
-  { href: '/home-v1', image: '/images/demo/slider/slide-01.png', alt: 'Home v1' },
-  { href: '/home-v2', image: '/images/demo/slider/slide-02.png', alt: 'Home v2' },
-  { href: '/about', image: '/images/demo/slider/slide-03.png', alt: 'About' },
-  { href: '/ai-policy', image: '/images/demo/slider/slide-04.png', alt: 'AI Policy' },
-  { href: '/blog', image: '/images/demo/slider/slide-05.png', alt: 'Blog' },
-  { href: '/join-wishlist', image: '/images/demo/slider/slide-06.png', alt: 'Join Wishlist' },
-  { href: '/contact', image: '/images/demo/slider/slide-07.png', alt: 'Contact' },
-  { href: '/pricing', image: '/images/demo/slider/slide-08.png', alt: 'Pricing' },
-  { href: '/integration-category', image: '/images/demo/slider/slide-09.png', alt: 'Integration Category' },
-  { href: '/use-cases', image: '/images/demo/slider/slide-10.png', alt: 'Use Case Details' },
-  { href: '/integration', image: '/images/demo/slider/slide-11.png', alt: 'Integration' },
-  { href: '/use-cases', image: '/images/demo/slider/slide-12.png', alt: 'Use Cases' },
-  { href: '/integration', image: '/images/demo/slider/slide-13.png', alt: 'Integration Details' },
-  { href: '/blog', image: '/images/demo/slider/slide-14.png', alt: 'Blog Details' },
-  { href: '/security-and-privacy', image: '/images/demo/slider/slide-15.png', alt: 'Security & Privacy' },
-  { href: '/password-protected', image: '/images/demo/slider/slide-16.png', alt: 'Password Protected' },
-  { href: '/error', image: '/images/demo/slider/slide-17.png', alt: 'Error' },
+  { href: '/#', image: '/images/demo/slider/easyjewelry-demo-01.png', alt: 'EasyJewelry Demo 1' },
+  { href: '/#', image: '/images/demo/slider/easyjewelry-demo-02.png', alt: 'EasyJewelry Demo 2' },
+  { href: '/#', image: '/images/demo/slider/easyjewelry-demo-03.png', alt: 'EasyJewelry Demo 3' },
+  { href: '/#', image: '/images/demo/slider/easyjewelry-demo-04.png', alt: 'EasyJewelry Demo 4' },
+  { href: '/#', image: '/images/demo/slider/easyjewelry-demo-05.png', alt: 'EasyJewelry Demo 5' },
+
 ];
 
 export const whyChooseData = {

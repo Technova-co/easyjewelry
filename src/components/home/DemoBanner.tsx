@@ -240,41 +240,7 @@ export default function DemoBanner() {
 
   return (
     <section ref={demoBannerRef} className="overflow-hidden demo-banner">
-      <div className="container">
-        <div className="border-container pt-15 sm:pt-20 pb-10 md:pb-15">
-          <div className="max-w-[700px] mx-auto text-center">
-            <h1 className="font-semibold !leading-[1.2] gradient-text lg:tracking-[-0.8px] text-[40px] sm:text-5xl md:text-[52px] lg:text-[64px]">
-              AI Productivity & Automation <span className="font-instrument italic font-medium">SaaS Template</span>
-            </h1>
-            <p className="mt-2 sm:mt-5 text-base sm:text-lg font-medium lg:tracking-[0.3px] text-offWhite/80">
-              RiteFlow is a clean, conversion-focused SaaS Template with AI-powered style. Fast, modern, and built for founders, startups, and product teams.
-            </p>
-            <div className="flex items-center justify-center flex-wrap sm:grid sm:grid-cols-3 gap-3 sm:gap-5 mt-6 sm:mt-8 lg:mt-10">
-              {demoBannerStats.map((stat, i) => (
-                <CounterStat key={i} stat={stat} />
-              ))}
-            </div>
-            <div className="mt-6 sm:mt-8 lg:mt-10 flex justify-center gap-3 sm:gap-4 flex-wrap">
-              <div className="sttr-card">
-                <Link
-                  href="#home"
-                  className="button-primary inline-flex items-center justify-center px-[22px] py-3 text-white font-medium text-sm leading-normal rounded-[10px] relative z-1 overflow-hidden text-center scroll-to-home"
-                >
-                  Explore Homepages
-                </Link>
-              </div>
-              <div className="sttr-card">
-                <Link
-                  href="#inner"
-                  className="button-secondary scroll-to-inner"
-                >
-                  Explore Innerpages
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      
       <div className="relative pb-1" data-lag="0.05">
         <div className="absolute top-0 left-0 w-full h-full">
           <div className="container h-full w-full">

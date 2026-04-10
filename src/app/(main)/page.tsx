@@ -10,9 +10,9 @@ export default function DemoPage() {
     <>
       <HomeV2Banner />
       <ClientLogos />
-      <ComparisonTable />
-      <DemoBanner />
       <SolutionsSection />
+      <DemoBanner />
+      <ComparisonTable />
 
 
 

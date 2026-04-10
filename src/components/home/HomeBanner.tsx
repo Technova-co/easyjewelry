@@ -49,16 +49,16 @@ export interface HomeV2BannerProps {
  */
 const HomeV2Banner: React.FC<HomeV2BannerProps> = ({
   badgeText = 'Retailers & Wholesalers',
-  title = 'Your Jewelry Business',
+  title = 'Run Your Jewelry Business',
   titleHighlight = 'From One Screen',
-  description = 'EasyJewelry handles everything — your inventory, POS, invoices, and finance across all your locations.',
+  description = 'EasyJewelry brings every part of your jewelry business into one place — inventory, billing, accounts & finance, and even your online store, across all your locations.',
   primaryButtonText = 'Request Demo',
   primaryButtonLink = '/request-demo',
   secondaryButtonText = 'Watch Video',
   secondaryButtonLink = '/watch-video',
   features = [
-    { text: 'Works on any device — no installation needed.' },
-    { text: 'Set up and running in less than a day.' },
+    { text: 'Accessible on any device with no installation needed.' },
+    { text: 'Easily customizable to your specific business needs.' },
   ],
   thumbnailImage = '/images/home/easyjewelry.png',
 }) => {
@@ -76,7 +76,7 @@ const HomeV2Banner: React.FC<HomeV2BannerProps> = ({
             <div className="md:max-w-[450px] lg:max-w-[570px] w-full">
               <span className="badge-button" data-subtitle>{badgeText}</span>
               <h1
-                className="font-semibold !leading-[1.1] gradient-text mt-5 text-[40px] lg:text-5xl xl:text-7xl 2xl:text-[80px] tracking-normal sm:-tracking-tight lg:-tracking-tighter xl:tracking-[-1.2px]"
+                className="font-semibold !leading-[1.1] gradient-text mt-5 text-[40px] lg:text-5xl xl:text-6xl 2xl:text-[60px] tracking-normal sm:-tracking-tight lg:-tracking-tighter xl:tracking-[-1.2px]"
                 data-title
               >
                 {title} <span className="font-instrument italic font-medium">{titleHighlight}</span>

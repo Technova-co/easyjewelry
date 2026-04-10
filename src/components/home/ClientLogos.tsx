@@ -27,7 +27,7 @@ export interface ClientLogosProps {
  * />
  */
 const ClientLogos: React.FC<ClientLogosProps> = ({
-  title = 'Trusted by retailers & wholesalers',
+  title = 'Trusted by jewelers worldwide',
   logos = [
     { src: '/images/client-logos/logo-01.avif', alt: 'client logo' },
     { src: '/images/client-logos/logo-02.avif', alt: 'client logo' },

@@ -42,7 +42,7 @@ const FeaturesTable: React.FC = () => {
             variant="two"
             outlineButtonText="Features"
             title="Built for Every Part of Your Jewelry Business"
-            description="From inventory and POS to multi-branch management and financial reporting — see everything EasyJewelry covers."
+            description="From inventory and billing to accounting and finance — see everything EasyJewelry covers."
           />
 
           <div className="mt-10 md:mt-14 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
@@ -100,18 +100,6 @@ const FeaturesTable: React.FC = () => {
             ))}
           </div>
 
-          {/* Legend */}
-          <div className="mt-8 flex flex-wrap items-center gap-6">
-            <div className="flex items-center gap-2 text-sm text-paragraph">
-              <StatusIcon status="yes" /> Available
-            </div>
-            <div className="flex items-center gap-2 text-sm text-paragraph">
-              <StatusIcon status="partial" /> Partial / Coming Soon
-            </div>
-            <div className="flex items-center gap-2 text-sm text-paragraph">
-              <StatusIcon status="no" /> Not Available
-            </div>
-          </div>
 
         </div>
       </div>
