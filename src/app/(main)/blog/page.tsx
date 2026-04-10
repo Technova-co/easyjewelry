@@ -33,11 +33,10 @@ export default function Blog() {
       <div className="container">
         <div className="border-container section-spacing-lg">
           {/* Section Banner */}
-          <SectionBanner
-            title="All Blog"
-            description="Dive into the world of AI innovation, automation, and creativity. Explore every insight, update, and idea shaping the intelligent future of work."
-          />
-
+        <SectionBanner
+  title="Jewelry Business Guides"
+  description="Tips, guides, and industry knowledge for jewelry store owners, wholesalers, and manufacturers. Learn how to manage your business better, grow your sales, and stay ahead."
+/>
           <div data-sttr-wrapper>
 
             {/* Blog Cards */}

@@ -7,11 +7,10 @@ import type { Metadata } from 'next';
  * The page.tsx stays clean and only handles content rendering.
  */
 export const metadata: Metadata = {
-  title: 'Blog',
+  title: 'Blog | EasyJewelry',
   description:
-    'Dive into the world of AI innovation, automation, and creativity. Explore every insight, update, and idea shaping the intelligent future of work.',
+    'Practical guides and tips for jewelry businesses. Learn about inventory management, POS software, multi-branch operations, and growing your jewelry store.',
 };
-
 /**
  * Layout Component
  * This wraps the page content but doesn't add any visual elements.

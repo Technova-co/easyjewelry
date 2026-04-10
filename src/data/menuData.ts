@@ -14,5 +14,9 @@ export const menuData: MenuItem[] = [
     title: "Contact Us",
     link: "/contact",
   },
+  {
+    title: "Blog",
+    link: "/blog",
+  },
   
 ];
