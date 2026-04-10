@@ -55,7 +55,7 @@ const HomeV2Banner: React.FC<HomeV2BannerProps> = ({
   primaryButtonText = 'Request Demo',
   primaryButtonLink = '/request-demo',
   secondaryButtonText = 'Watch Video',
-  secondaryButtonLink = '#demo',
+  secondaryButtonLink = '/watch-video',
   features = [
     { text: 'Works on any device — no installation needed.' },
     { text: 'Set up and running in less than a day.' },

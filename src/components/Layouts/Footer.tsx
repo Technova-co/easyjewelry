@@ -88,7 +88,7 @@ const Footer: React.FC = () => {
                                     />
                                     <ContactInfo
                                       type="address"
-                                      value="255 Primera Blvd., Suite 160, \n Lake Mary, FL 32746"
+                                      value="255 Primera Blvd., Suite 160, Lake Mary, FL 32746"
                                     />
                                 </div>
                             </div>
@@ -119,6 +119,8 @@ const Footer: React.FC = () => {
                                         <li><Link href="/about" className="text-offWhite/80 transition-colors duration-300 hover:text-offWhite">About Us</Link></li>
                                         <li><Link href="/contact" className="text-offWhite/80 transition-colors duration-300 hover:text-offWhite">Contact Us</Link></li>
                                         <li><Link href="/request-demo" className="text-offWhite/80 transition-colors duration-300 hover:text-offWhite">Request Demo</Link></li>
+                                        <li><Link href="/watch-video" className="text-offWhite/80 transition-colors duration-300 hover:text-offWhite">Watch Video</Link></li>
+
                                       </ul>
                                     </motion.div>
                                   )}
