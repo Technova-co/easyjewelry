@@ -1,15 +1,8 @@
 import React from 'react';
-import DemoBanner from '@/components/demo/DemoBanner';
-import WhyChooseSection from '@/components/demo/WhyChooseSection';
-import HomepagesSection from '@/components/demo/HomepagesSection';
-import InnerPagesSection from '@/components/demo/InnerPagesSection';
-import Newsletter from '@/components/shortCode/Newsletter';
-
-
+import DemoBanner from '@/components/home/DemoBanner';
 import HomeV2Banner from '@/components/home/HomeBanner';
 import ClientLogos from '@/components/home/ClientLogos';
 import ComparisonTable from '@/components/home/FeaturesTable';
-import UseCaseSection from '@/components/useCase/UseCaseSection';
 import SolutionsSection from '@/components/solutions/SolutionsSection';
 
 export default function DemoPage() {
@@ -19,7 +12,6 @@ export default function DemoPage() {
       <ClientLogos />
       <ComparisonTable />
       <DemoBanner />
-      <UseCaseSection variant="two" />
       <SolutionsSection />
 
 
