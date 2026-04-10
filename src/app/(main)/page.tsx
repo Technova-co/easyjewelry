@@ -8,6 +8,7 @@ import Newsletter from '@/components/shortCode/Newsletter';
 
 import HomeV2Banner from '@/components/home/HomeBanner';
 import ClientLogos from '@/components/home/ClientLogos';
+import ComparisonTable from '@/components/home/FeaturesTable';
 
 
 export default function DemoPage() {
@@ -15,7 +16,8 @@ export default function DemoPage() {
     <>
       <HomeV2Banner />
       <ClientLogos />
-      
+      <ComparisonTable />
+
 
 
     </>

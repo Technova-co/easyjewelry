@@ -4,7 +4,7 @@ import ClientLogos from '@/components/home-v2/ClientLogos';
 import AboutSection from '@/components/home-v2/AboutSection';
 import IntegrationSection from '@/components/integration/IntegrationSection';
 import TestimonialSection from '@/components/home-v2/TestimonialSection';
-import ComparisonTable from '@/components/home-v2/ComparisonTable';
+import ComparisonTable from '@/components/home/FeaturesTable';
 import PricingSection from '@/components/pricing/PricingSection';
 import Newsletter from '@/components/shortCode/Newsletter';
 import FeaturesSection from '@/components/features/FeaturesSection';
