@@ -2,17 +2,7 @@ import React from 'react';
 import AboutBanner from '@/components/about/AboutBanner';
 import ResearchSection from '@/components/about/ResearchSection';
 
-/**
- * About Page
- * 
- * Displays information about RiteFlow including:
- * - Mission statement and company values
- * - Team members showcase
- * - AI research initiatives
- * - Newsletter signup
- * 
- * All sections are modular and reusable components.
- */
+
 export default function AboutPage() {
   return (
     <>

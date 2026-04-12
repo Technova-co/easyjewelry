@@ -12,10 +12,10 @@ import { useNewsletterAnimation } from '@/hooks/useNewsletterAnimation';
  * Can be overridden via props.
  */
 const newsletterData = {
-  title: "Start automating today. Let us handle the tasks.",
-  excerpt: "Unlock the power of AI with RiteFlow. Simplify your work, boost creativity, and stay ahead — start your smarter journey now.",
-  buttonText: "Start for free",
-  buttonLink: "/get-demo",
+  title: "",
+  excerpt: "",
+  buttonText: "",
+  buttonLink: "",
 };
 
 export interface NewsletterProps {

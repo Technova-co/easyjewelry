@@ -310,7 +310,7 @@ export default function Preloader() {
           ref={titleRef}
           className="loader-title text-white font-semibold !leading-[1.1] gradient-text lg:tracking-[1.8px] text-[32px] sm:text-5xl md:text-[52px] lg:text-[64px] overflow-hidden"
         >
-          RITEFLOW
+          EasyJewelry
         </h4>
 
         {/* Progress Bar */}

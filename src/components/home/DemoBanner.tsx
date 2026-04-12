@@ -16,10 +16,7 @@ if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-/**
- * DemoBanner – Template demo hero section.
- * Matches Riteflow HTML demo: stats, CTAs, Swiper marquee slider (Autoplay + FreeMode).
- */
+
 
 function CounterStat({ stat }: { stat: typeof demoBannerStats[0] }) {
   const { count, ref } = useCounterAnimation(
