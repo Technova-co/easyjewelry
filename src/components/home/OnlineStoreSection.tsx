@@ -268,7 +268,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({
             data-container={variant === 'two' ? 'review-section' : 'trail-section'}
           >
             {/* Video */}
-            <div className="md:max-w-[560px] w-full relative rounded-20 overflow-hidden" >
+            <div className=" w-full relative rounded-20 overflow-hidden" >
               <Image
                 data-lag="0.2"
                 className="md:absolute top-0 left-0 w-full h-full object-cover rounded-20 min-h-[300px]"
@@ -278,7 +278,15 @@ const AboutSection: React.FC<AboutSectionProps> = ({
                 height={315}
                 aria-label="EasyJewlery online store"
               />
+
+                 
+
+            
+              
             </div>
+            
+
+            
 
             {/* Content */}
             <div className="md:max-w-[575px] w-full md:py-5">
@@ -291,6 +299,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({
               <p data-excerpt className="mt-4 md:mt-5 text-offWhite/80 tracking-[0.1px]">
                 {description}
               </p>
+              
 
         
 
@@ -329,6 +338,23 @@ const AboutSection: React.FC<AboutSectionProps> = ({
                 </div>
               )}
 
+                 <a
+                      href="https://alwahdahgold.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 mt-6 text-sm font-medium text-primary hover:gap-3 transition-all duration-200 float-right"
+                    >
+                      View  live example
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+                        <polyline points="15 3 21 3 21 9"/>
+                        <line x1="10" y1="14" x2="21" y2="3"/>
+                      </svg>
+                    </a>
+
+
+            
+                 
            
 
             </div>
