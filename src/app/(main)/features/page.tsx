@@ -1,5 +1,4 @@
 import React from 'react';
-import FeaturesSection from '@/components/features/FeaturesSection';
 import Newsletter from '@/components/shortCode/Newsletter';
 
 /**
@@ -11,8 +10,6 @@ import Newsletter from '@/components/shortCode/Newsletter';
 export default function FeaturesPage() {
   return (
     <>
-      {/* Features Section */}
-      <FeaturesSection />
 
       {/* Newsletter */}
       <Newsletter />
