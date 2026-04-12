@@ -3,7 +3,6 @@
 import React, { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import AboutStatCard from './AboutStatCard';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 // Register ScrollTrigger plugin
@@ -15,7 +14,7 @@ export interface AboutSectionProps {
   variant?: 'one' | 'two';
   title?: string;
   description?: string;
-  videoSrc?: string;
+  imgSrc?: string;
   stats?: Array<{ value: number; suffix?: string; label: string }>;
   listItems?: string[];
   buttonText?: string;
@@ -322,21 +321,6 @@ const AboutSection: React.FC<AboutSectionProps> = ({
                 </ul>
               )}
 
-              {/* Variant Two: Stats Grid */}
-              {variant === 'two' && (
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-5">
-                  {stats.map((stat, index) => (
-                    <div key={index} data-lists>
-                      <AboutStatCard
-                        value={stat.value}
-                        suffix={stat.suffix}
-                        label={stat.label}
-                        delay={index * 100} // Stagger animation for each card
-                      />
-                    </div>
-                  ))}
-                </div>
-              )}
 
                  <a
                       href="https://alwahdahgold.com/"
