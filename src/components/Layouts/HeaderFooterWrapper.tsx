@@ -3,7 +3,6 @@
 import React from 'react';
 import { usePathname } from 'next/navigation';
 import Header from '@/components/Layouts/header/Header';
-import HeaderTwo from '@/components/Layouts/header/HeaderTwo';
 import Footer from '@/components/Layouts/Footer';
 import { useStaggerAnimation } from '@/hooks/useStaggerAnimation';
 
