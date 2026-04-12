@@ -15,12 +15,8 @@ const YoutubeEmbed: React.FC<YoutubeEmbedProps> = ({
 }) => {
   return (
 
-    <section className="section-bottom-border relative z-[1]">
-         <div className="container">
-             <div className="border-container section-spacing-lg">
-      
-
-                <div className={`relative w-full aspect-video rounded-20 overflow-hidden ${className}`}>
+ 
+                <div className={`relative w-full aspect-video rounded-20 overflow-hidden ${className} mt-20`}>
                 <iframe
                     src={url}
                     title={title}
@@ -29,11 +25,7 @@ const YoutubeEmbed: React.FC<YoutubeEmbedProps> = ({
                     className="absolute top-0 left-0 w-full h-full"
                 />
                 </div>
-                </div>
-
-            </div>
-
-    </section>  
+           
   );
 };
 
