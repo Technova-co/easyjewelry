@@ -29,10 +29,10 @@ export const featuresTableData: FeatureGroup[] = [
       { id: 110, name: 'Stock Audit & Physical Count', tooltip: 'Run a full stock count and reconcile against system records.', status: 'yes' },
       { id: 111, name: 'Batch Import via CSV or Barcode Scan', status: 'yes' },
       { id: 112, name: 'Inter-Branch Stock Transfers', tooltip: 'Move stock between locations with a full transfer audit trail.', status: 'yes' },
-      { id: 114, name: 'Vendor & Supplier Stock Management', status: 'yes' },
-      { id: 116, name: 'Repair & Custom Order Tracking', tooltip: 'Track items sent for repair with expected completion date and live status.', status: 'yes' },
+      { id: 113, name: 'Vendor & Supplier Stock Management', status: 'yes' },
+      { id: 114, name: 'Repair & Custom Order Tracking', tooltip: 'Track items sent for repair with expected completion date and live status.', status: 'yes' },
       { id: 115, name: 'Stock Location', status: 'yes' },
-      { id: 112, name: 'Scheme System', status: 'yes' },
+      { id: 116, name: 'Scheme System', status: 'yes' },
 
     ],
   },

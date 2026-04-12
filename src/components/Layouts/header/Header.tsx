@@ -4,7 +4,6 @@ import { X } from "lucide-react";
 import BrandLogo from '../../icons/BrandLogo';
 import Navigation from './Navigation';
 import Link from 'next/link';
-import bgImage from '@/../public/images/home/banner-bg.webp'
 import { AnimatePresence, motion } from "framer-motion";
 import Image from 'next/image';
 import TopBar from '../TopBar';
@@ -115,11 +114,7 @@ const Header: React.FC = () => {
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="fixed top-0 left-0 h-full w-full bg-secondary z-[1000] lg:hidden"
           >
-            <Image
-              src={bgImage}
-              alt="bg"
-              className="absolute top-0 left-0 inset-0 object-cover z-[-1] h-full opacity-10"
-            />
+           
 
             <motion.div
               initial={{ x: '100%' }}

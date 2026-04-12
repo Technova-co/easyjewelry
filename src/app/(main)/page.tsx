@@ -4,6 +4,7 @@ import HomeV2Banner from '@/components/home/HomeBanner';
 import ClientLogos from '@/components/home/ClientLogos';
 import ComparisonTable from '@/components/home/FeaturesTable';
 import SolutionsSection from '@/components/solutions/SolutionsSection';
+import AboutSection from '@/components/home/OnlineStoreSection';
 
 export default function DemoPage() {
   return (
@@ -13,6 +14,7 @@ export default function DemoPage() {
       <SolutionsSection />
       <DemoBanner />
       <ComparisonTable />
+      <AboutSection variant='one'/>
 
 
 
