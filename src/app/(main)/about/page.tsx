@@ -1,8 +1,6 @@
 import React from 'react';
 import AboutBanner from '@/components/about/AboutBanner';
-import TeamSection from '@/components/about/TeamSection';
 import ResearchSection from '@/components/about/ResearchSection';
-import Newsletter from '@/components/shortCode/Newsletter';
 
 /**
  * About Page
