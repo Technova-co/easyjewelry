@@ -8,15 +8,16 @@ export default function DailyReportPage() {
       {/* Hero */}
       <section className="section-bottom-border">
         <div className="container">
-          <div className="border-container section-spacing-lg">
-            <SectionBanner
-              outlineButtonText="Reports"
-              title="Daily Report"
-              description="Everything that happened in your jewelry business today — on one screen."
-            />
+        <div className="border-container section-spacing-lg">
+           <SectionBanner
+  outlineButtonText="Features"
+  title="Daily Report"
+  description="Everything that happened in your jewelry business today — on one screen."
+  variant="two"
+/>
 
             {/* Intro */}
-            <div className="mt-10 md:mt-14 max-w-3xl">
+            <div className="mt-10 md:mt-14 ">
               <p className="text-offWhite/80 leading-relaxed">
                 At the end of every trading day, a jewelry business owner needs to know one thing: exactly what happened. How much was sold, how much was purchased, what payments came in, what went out, which items were returned, and what the metal balance looks like. EasyJewelry's Daily Report gives you all of that — filtered by date, across all your branches — in a single, clean screen.
               </p>
@@ -171,7 +172,7 @@ export default function DailyReportPage() {
       <section className="section-bottom-border">
         <div className="container">
           <div className="border-container section-spacing-lg">
-            <Heading as="h2">Daily Report — full feature list</Heading>
+            <Heading as="h2">Daily Report</Heading>
             <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
               {[
                 'Filter by any date',
@@ -210,7 +211,7 @@ export default function DailyReportPage() {
         <div className="container">
           <div className="border-container section-spacing-lg">
             <Heading as="h2">Frequently asked questions</Heading>
-            <div className="mt-8 space-y-4 max-w-3xl">
+            <div className="mt-8 space-y-4 ">
               {[
                 {
                   q: 'Can I view the Daily Report for a past date?',
@@ -254,21 +255,14 @@ export default function DailyReportPage() {
       <section>
         <div className="container">
           <div className="border-container section-spacing-lg">
-            <div className="max-w-3xl">
+            <div >
               <Heading as="h2">
                 Close every day with complete confidence
               </Heading>
               <p className="text-offWhite/80 mt-4 leading-relaxed">
                 The Daily Report is one of those features that jewelry business owners wonder how they ever managed without. When every transaction type — sales, purchases, payments, returns, cheques, exchanges, and metal movements — is in one place, the end of day stops being a chore and becomes a 60-second review. Whether you run one store or ten branches, EasyJewelry gives you the full picture every single day.
               </p>
-              <div className="mt-8 flex flex-wrap gap-4">
-                <Link href="/request-demo" className="button-primary inline-flex items-center justify-center px-[22px] py-3 text-white font-medium text-sm leading-normal rounded-[10px]">
-                  Book a Free Demo
-                </Link>
-                <Link href="/features" className="button-secondary inline-flex items-center justify-center px-[22px] py-3 font-medium text-sm leading-normal rounded-[10px]">
-                  View All Features
-                </Link>
-              </div>
+           
             </div>
           </div>
         </div>
