@@ -5,7 +5,7 @@ import HeaderFooterWrapper from '@/components/Layouts/HeaderFooterWrapper';
 export const metadata: Metadata = {
   title: 'EasyJewelry — Jewelry Business Management Software',
   description:
-    'The easiest jewelry software for retailers & wholesalers. Manage inventory, POS, invoicing and finance — all from one screen.',
+    'The easiest jewelry software for retailers & wholesalers. Manage inventory, billing, accounts, and even your online store from one screen.',
   keywords: [
     'jewelry ERP software',
     'jewelry store management software',

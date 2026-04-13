@@ -275,7 +275,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({
                 alt="EasyJewelry online store"
                 width={560}
                 height={315}
-                aria-label="EasyJewlery online store"
+                aria-label="EasyJewelry online store"
               />
 
                  

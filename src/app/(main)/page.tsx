@@ -2,7 +2,8 @@ import React from 'react';
 import DemoBanner from '@/components/home/DemoBanner';
 import HomeV2Banner from '@/components/home/HomeBanner';
 import ClientLogos from '@/components/home/ClientLogos';
-import ComparisonTable from '@/components/home/FeaturesTable';
+import FeaturesTable from '@/components/home/FeaturesTable';
+import AddOnesTable from '@/components/home/AddOnesTable';
 import SolutionsSection from '@/components/solutions/SolutionsSection';
 import AboutSection from '@/components/home/OnlineStoreSection';
 
@@ -13,7 +14,8 @@ export default function DemoPage() {
       <ClientLogos />
       <SolutionsSection />
       <DemoBanner />
-      <ComparisonTable />
+      <FeaturesTable />
+      <AddOnesTable />
       <AboutSection variant='one'/>
 
 
