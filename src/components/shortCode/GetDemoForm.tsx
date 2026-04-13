@@ -14,7 +14,7 @@ export interface GetDemoFormData {
   businessType: string[];
   commodities: string[];
   extras: string[];
-  branches: number;
+  branches: number | string;
 }
 
 export interface GetDemoFormProps {
