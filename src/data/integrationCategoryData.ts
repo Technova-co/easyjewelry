@@ -38,5 +38,12 @@ export const integrationCategoryData: IntegrationCategory[] = [
   link: "/features/multi-currency",
   toolsCount: 5,
 },
+{
+  id: 5,
+  title: "User Management and Access Control",
+  description: "Add staff, assign them to branches, and control exactly what each person can see and do in your jewelry store software.",
+  link: "/features/user-management",
+  toolsCount: 6,
+},
  
 ];
