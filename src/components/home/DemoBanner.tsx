@@ -9,7 +9,6 @@ import { demoBannerStats, demoSliderItems } from '@/data/demoData';
 import { useCounterAnimation } from '@/hooks/useCounterAnimation';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import 'swiper/css';
 
 // Register ScrollTrigger plugin
 if (typeof window !== 'undefined') {
