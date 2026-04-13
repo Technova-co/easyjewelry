@@ -6,6 +6,11 @@ export const menuData: MenuItem[] = [
     title: "Home",
     link: "/",
   },
+  ,
+  {
+    title: "Features",
+    link: "/features",
+  },
    {
     title: "About Us",
     link: "/about",

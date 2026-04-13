@@ -1,12 +1,12 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Features',
+  title: 'Features | EasyJewelry',
   description:
-    "Explore EasyJewelry's powerful AI features. From automated customer interactions to smart workflow scheduling, discover how our AI tools simplify work and scale with your business.",
+    'Explore every feature of EasyJewelry — inventory, billing, accounting, and more. Built for jewelry retailers and wholesalers.',
 };
 
-export default function FeaturesLayout({
+export default function IntegrationCategoryLayout({
   children,
 }: {
   children: React.ReactNode;
