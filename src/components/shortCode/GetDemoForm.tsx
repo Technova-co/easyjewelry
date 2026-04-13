@@ -14,6 +14,7 @@ export interface GetDemoFormData {
   businessType: string[];
   commodities: string[];
   extras: string[];
+  branches: number;
 }
 
 export interface GetDemoFormProps {
@@ -28,10 +29,11 @@ interface FormErrors {
   email: string;
   businessType: string;
   commodities: string;
+  branches: string;
 }
 
 const BUSINESS_TYPES = ['Retailer', 'Wholesaler'];
-const COMMODITIES = ['Gold', 'Silver', 'Diamond'];
+const COMMODITIES = ['Gold', 'Silver', 'Diamond', 'Bullion'];
 const EXTRAS = ['Loan', 'Layaway', 'Online Store'];
 
 const GetDemoForm: React.FC<GetDemoFormProps> = ({
@@ -47,6 +49,7 @@ const GetDemoForm: React.FC<GetDemoFormProps> = ({
     businessType: [],
     commodities: [],
     extras: [],
+    branches: 1,
   });
 
   const [errors, setErrors] = useState<FormErrors>({
@@ -56,6 +59,7 @@ const GetDemoForm: React.FC<GetDemoFormProps> = ({
     email: '',
     businessType: '',
     commodities: '',
+    branches: '',
   });
 
   const [submitting, setSubmitting] = useState(false);
@@ -77,6 +81,7 @@ const GetDemoForm: React.FC<GetDemoFormProps> = ({
       email: '',
       businessType: '',
       commodities: '',
+      branches: '',
     };
     let isValid = true;
 
@@ -105,6 +110,11 @@ const GetDemoForm: React.FC<GetDemoFormProps> = ({
 
     if (data.commodities.length === 0) {
       newErrors.commodities = 'Please select at least one commodity';
+      isValid = false;
+    }
+
+    if (data.branches.toString().trim() === '' || isNaN(data.branches) || data.branches < 1) {
+      newErrors. branches = 'Please type a valid number of branches';
       isValid = false;
     }
 
@@ -174,6 +184,7 @@ const GetDemoForm: React.FC<GetDemoFormProps> = ({
         businessType: [],
         commodities: [],
         extras: [],
+        branches: 1,
       });
       setErrors({
         name: '',
@@ -182,6 +193,7 @@ const GetDemoForm: React.FC<GetDemoFormProps> = ({
         email: '',
         businessType: '',
         commodities: '',
+        branches: '',
       });
       form.current.reset();
     } catch (err) {
@@ -307,7 +319,23 @@ const GetDemoForm: React.FC<GetDemoFormProps> = ({
           />
         </div>
 
+          {/* Number of Branches */}
+        <div className="sm:col-span-2" data-sttr-card>
+          <Input
+            type="number"
+            label="Number of Branches *"
+            placeholder="Your branch count"
+            name="branches"
+            min={1}
+            value={formData.branches}
+            onChange={handleChange}
+            error={errors.branches}
+          />
+        </div>
+
       
+
+              
 
         {/* Business Type — required */}
         <div className="sm:col-span-2" data-sttr-card>
@@ -324,7 +352,7 @@ const GetDemoForm: React.FC<GetDemoFormProps> = ({
         {/* Commodities — required */}
         <div className="sm:col-span-2" data-sttr-card>
           <p className="text-sm font-medium text-offWhite mb-3">
-            Which commodities do you deal in?{' '}
+            What do you deal ?{' '}
             <span className="text-red-500">*</span>
           </p>
           {renderCheckboxGroup('commodities', COMMODITIES)}
