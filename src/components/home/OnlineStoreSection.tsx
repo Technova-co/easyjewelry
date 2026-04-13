@@ -290,12 +290,12 @@ const AboutSection: React.FC<AboutSectionProps> = ({
             {/* Content */}
             <div className="md:max-w-[575px] w-full md:py-5">
               <h2
-                data-title
+                
                 className="gradient-text text-3xl sm:text-4xl lg:text-5xl xl:text-[51px] font-semibold -tracking-[0.4px] !leading-[1.2]"
               >
                 {title}
               </h2>
-              <p data-excerpt className="mt-4 md:mt-5 text-offWhite/80 tracking-[0.1px]">
+              <p className="mt-4 md:mt-5 text-offWhite/80 tracking-[0.1px]">
                 {description}
               </p>
               
@@ -304,7 +304,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({
 
               {/* Variant One: List with checkmarks */}
               {variant === 'one' && (
-                <ul data-list className="font-medium text-offWhite/80 space-y-4">
+                <ul  className="font-medium text-offWhite/80 space-y-4">
                   {listItems.map((item, index) => (
                     <li key={index} className="flex items-center gap-3">
                       <Image
