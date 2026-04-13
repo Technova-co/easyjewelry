@@ -16,7 +16,7 @@ export default function IntegrationCategoryPage() {
             <SectionBanner
               outlineButtonText="Features"
               title="  Every Feature Your Jewelry Business Needs"
-              description="From inventory and sales to finance, multi-branch management and store operations — explore every feature EasyJewelry has to offer."
+              description="From inventory and sales to finance, multi-branch management and store operations, explore every feature EasyJewelry has to offer."
             />
 
             {/* Category Grid */}

@@ -42,7 +42,7 @@ const FeaturesTable: React.FC = () => {
             variant="two"
             outlineButtonText="Features"
             title="Built for Every Part of Your Jewelry Business"
-            description="From inventory and billing to accounting and finance — see everything EasyJewelry covers."
+            description="From inventory and billing to accounting and finance EasyJewelry got you covered."
           />
 
           <div className="mt-10 md:mt-14 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">

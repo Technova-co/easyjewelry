@@ -9,7 +9,7 @@ export default function AboutPage() {
       {/* Banner/Mission Section */}
     <AboutBanner
   title="Our Mission"
-  description="At EasyJewelry, our mission is to simplify how jewelry businesses operate. We built software that handles the day-to-day — inventory, sales, invoicing, finance, online store and more so owners can focus on what they do best: serving their customers and growing their business."
+  description="At EasyJewelry, our mission is to simplify how jewelry businesses operate. We built software that handles inventory, billing, finance, online store and more so owners can focus on what they do best: serving their customers and growing their business."
   image="/images/about/office.webp"
 />
 
