@@ -14,7 +14,7 @@ export interface GetDemoFormData {
   businessType: string[];
   commodities: string[];
   extras: string[];
-  branches: number | string;
+  branches: string;
 }
 
 export interface GetDemoFormProps {
@@ -49,7 +49,7 @@ const GetDemoForm: React.FC<GetDemoFormProps> = ({
     businessType: [],
     commodities: [],
     extras: [],
-    branches: 1,
+    branches: "1",
   });
 
   const [errors, setErrors] = useState<FormErrors>({
@@ -104,17 +104,24 @@ const GetDemoForm: React.FC<GetDemoFormProps> = ({
     }
 
     if (data.businessType.length === 0) {
-      newErrors.businessType = 'Please select at least one business type';
+      newErrors.businessType = 'Please select at least one option';
       isValid = false;
     }
+
 
     if (data.commodities.length === 0) {
-      newErrors.commodities = 'Please select at least one commodity';
+      newErrors.commodities = 'Please select at least one option';
       isValid = false;
     }
 
-    if (data.branches.toString().trim() === '' || isNaN(data.branches) || data.branches < 1) {
-      newErrors. branches = 'Please type a valid number of branches';
+    
+    const branchNum = parseInt(formData.branches);
+
+    if (!formData.branches.trim()) {
+      newErrors.branches = 'Number of branches is required';
+      isValid = false;
+    } else if (isNaN(branchNum) || branchNum < 1) {
+      newErrors.branches = 'Please enter a valid number of branches (minimum 1)';
       isValid = false;
     }
 
@@ -184,7 +191,7 @@ const GetDemoForm: React.FC<GetDemoFormProps> = ({
         businessType: [],
         commodities: [],
         extras: [],
-        branches: 1,
+        branches: "1",
       });
       setErrors({
         name: '',
@@ -326,7 +333,6 @@ const GetDemoForm: React.FC<GetDemoFormProps> = ({
             label="Number of Branches *"
             placeholder="Your branch count"
             name="branches"
-            min={1}
             value={formData.branches}
             onChange={handleChange}
             error={errors.branches}
