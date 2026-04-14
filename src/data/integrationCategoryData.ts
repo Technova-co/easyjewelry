@@ -45,5 +45,26 @@ export const integrationCategoryData: IntegrationCategory[] = [
   link: "/features/user-management",
   toolsCount: 6,
 },
+{
+  id: 6,
+  title: "Jewelry Item Management with Barcode and RFID",
+  description: "Define every jewelry item with karat, purity, and item code. Tag with barcodes or RFID via Zebra hardware and scan at point of sale, stock counts, and transfers.",
+  link: "/features/metal-items",
+  toolsCount: 7,
+},
+{
+  id: 7,
+  title: "Metal Sales and Jewelry Invoicing",
+  description: "Create retail and wholesale jewelry invoices with fixed or live gold rate pricing, full metal detail per line item, VAT, and payment collection all in one screen.",
+  link: "/features/metal-sales",
+  toolsCount: 9,
+},
+{
+  id: 8,
+  title: "Jewelry Sales Return Management",
+  description: "Process customer returns with full metal detail. Gross weight, pure weight, VAT reversal, and live rate recording all handled automatically.",
+  link: "/features/metal-sales-return",
+  toolsCount: 6,
+},
  
 ];
