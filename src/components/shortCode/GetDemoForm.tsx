@@ -34,7 +34,7 @@ interface FormErrors {
 
 const BUSINESS_TYPES = ['Retailer', 'Wholesaler'];
 const COMMODITIES = ['Gold', 'Silver', 'Diamond', 'Bullion'];
-const EXTRAS = ['Loan', 'Layaway', 'Online Store'];
+const EXTRAS = ['Loan', 'Layaway', 'Scheme', 'Online Store'];
 
 const GetDemoForm: React.FC<GetDemoFormProps> = ({
   onSubmit,
