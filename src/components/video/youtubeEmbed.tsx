@@ -10,7 +10,7 @@ interface YoutubeEmbedProps {
 
 const YoutubeEmbed: React.FC<YoutubeEmbedProps> = ({
   url = 'https://www.youtube.com/embed/oFSE_APl7ck?si=xOIzQdL0Le66wVLY',
-  title = 'EasyJewelry — Jewelry Store Management Software Demo',
+  title = 'EasyJewelry | Jewelry Store Management Software Demo',
   className = '',
 }) => {
   return (

@@ -72,7 +72,7 @@ const Newsletter: React.FC<NewsletterProps> = ({
     <div className="relative w-full lg:w-auto flex-shrink-0">
       <Image
         src="/images/home/easyjewelry.png"
-        alt="EasyJewelry — Jewelry Business Management Software"
+        alt="EasyJewelry | Jewelry Business Management Software"
         width={500}
         height={500}
         className="w-full lg:w-[500px] h-auto object-contain"

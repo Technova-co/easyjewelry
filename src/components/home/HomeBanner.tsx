@@ -120,7 +120,7 @@ const HomeV2Banner: React.FC<HomeV2BannerProps> = ({
               <Image
                 className="w-full"
                 src={thumbnailImage}
-                alt="EasyJewelry — Jewelry Business Management Software"
+                alt="EasyJewelry | Jewelry Business Management Software"
                 width={608}
                 height={500}
                 priority
