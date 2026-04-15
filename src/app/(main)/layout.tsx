@@ -3,6 +3,7 @@ import React from 'react';
 import HeaderFooterWrapper from '@/components/Layouts/HeaderFooterWrapper';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://easyjewelry.co'),
   title: 'EasyJewelry | Jewelry Business Management Software',
   description:
     'The easiest jewelry software for retailers & wholesalers. Manage inventory, billing, accounts, and even your online store from one screen.',
@@ -24,6 +25,31 @@ export const metadata: Metadata = {
     'jewellery store software',
     'jewellery business software',
   ],
+  authors: [{ name: 'EasyJewelry' }],
+  creator: 'EasyJewelry',
+  publisher: 'EasyJewelry',
+
+   openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://easyjewelry.co',
+    siteName: 'EasyJewelry',
+    title: 'EasyJewelry | Jewelry Business Management Software',
+    description: 'The easiest all-in-one jewelry software to manage your business.',
+    images: [{ url: 'images/home/easyjewelry.png', width: 1200, height: 630, alt: 'EasyJewelry' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'EasyJewelry | Jewelry Business Management Software',
+    description: 'The easiest all-in-one jewelry software to manage your business.',
+    images: ['images/home/easyjewelry.png'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true },
+  },
+
 };
 
 export default function MainLayout({
@@ -31,5 +57,46 @@ export default function MainLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <HeaderFooterWrapper>{children}</HeaderFooterWrapper>;
-}
+return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'SoftwareApplication',
+          name: 'EasyJewelry',
+          url: 'https://easyjewelry.co',
+          operatingSystem: 'Web',
+          applicationCategory: 'BusinessApplication',
+          description: 'Manage your jewelry business inventory, billing, accounts, and even your online store from one screen.',
+          offers: { '@type': 'Offer', priceCurrency: 'USD', price: '0', description: 'Contact for pricing' },
+        })}}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'Organization',
+          name: 'EasyJewelry',
+          url: 'https://easyjewelry.co',
+          logo: 'https://easyjewelry.co/images/home/easyjewelry.png',
+          contactPoint: {
+            '@type': 'ContactPoint',
+            contactType: 'Customer Support',
+            email: 'support@easyjewelry.co',
+            areaServed: 'US',
+          },
+        })}}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'WebSite',
+          name: 'EasyJewelry',
+          url: 'https://easyjewelry.co',
+        })}}
+      />
+      <HeaderFooterWrapper>{children}</HeaderFooterWrapper>
+    </>
+  );}
