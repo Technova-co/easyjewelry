@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useRef, useState, useEffect } from 'react';
-import emailjs from '@emailjs/browser';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
@@ -27,9 +26,9 @@ interface FormErrors {
   message: string;
 }
 
-const ContactForm: React.FC<ContactFormProps> = ({ 
+const ContactForm: React.FC<ContactFormProps> = ({
   onSubmit,
-  className = '' 
+  className = ''
 }) => {
   const form = useRef<HTMLFormElement>(null);
   const [formData, setFormData] = useState<ContactFormData>({
@@ -52,10 +51,9 @@ const ContactForm: React.FC<ContactFormProps> = ({
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // Cleanup success message timeout
   useEffect(() => {
     if (success) {
-      const timer = setTimeout(() => setSuccess(false), 3000);
+      const timer = setTimeout(() => setSuccess(false), 5000);
       return () => clearTimeout(timer);
     }
   }, [success]);
@@ -76,7 +74,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
     }
 
     if (!data.companyName.trim()) {
-      newErrors.companyName = 'Company Name is required';
+      newErrors.companyName = 'Company name is required';
       isValid = false;
     }
 
@@ -96,8 +94,6 @@ const ContactForm: React.FC<ContactFormProps> = ({
       isValid = false;
     }
 
- 
-
     if (!data.message.trim()) {
       newErrors.message = 'Message is required';
       isValid = false;
@@ -114,60 +110,31 @@ const ContactForm: React.FC<ContactFormProps> = ({
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    const updatedData = { ...formData, [name]: value };
-    setFormData(updatedData);
-    
-    // Clear error for this field when user starts typing
+    setFormData((prev) => ({ ...prev, [name]: value }));
     if (errors[name as keyof FormErrors]) {
       setErrors((prev) => ({ ...prev, [name]: '' }));
     }
-    
-    // Optional: Real-time validation (can be removed if you want validation only on submit)
-    // validate(updatedData);
   };
 
   const sendEmail = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError(null);
 
-    // Validate form
-    if (!validate()) {
-      return;
-    }
-
-    if (!form.current) {
-      setError('Form reference is missing');
-      return;
-    }
-
-    // Check if EmailJS environment variables are set
-    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
-    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
-
-    if (!serviceId || !templateId || !publicKey) {
-      setError('Email service configuration is missing. Please check your environment variables.');
-      console.error('Missing EmailJS environment variables');
-      return;
-    }
+    if (!validate()) return;
 
     setSubmitting(true);
 
     try {
-      // Call custom onSubmit if provided
-      if (onSubmit) {
-        onSubmit(formData);
-      }
+      if (onSubmit) onSubmit(formData);
 
-      // Send email via EmailJS
-      await emailjs.sendForm(
-        serviceId,
-        templateId,
-        form.current,
-        { publicKey }
-      );
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
 
-      // Success
+      if (!response.ok) throw new Error('Failed to send message');
+
       setSuccess(true);
       setFormData({
         name: '',
@@ -183,28 +150,24 @@ const ContactForm: React.FC<ContactFormProps> = ({
         phoneNumber: '',
         message: '',
       });
-      form.current.reset();
+      form.current?.reset();
     } catch (err) {
-      console.error('EmailJS error:', err);
-      setError(
-        err instanceof Error 
-          ? err.message 
-          : 'Failed to send message. Please try again later.'
-      );
+      console.error('Contact form error:', err);
+      setError('Failed to send message. Please try again later.');
     } finally {
       setSubmitting(false);
     }
   };
 
   return (
-    <div className={`lg:max-w-[561px] w-full ${className}`} >
+    <div className={`lg:max-w-[561px] w-full ${className}`}>
       <form
         ref={form}
         onSubmit={sendEmail}
         className="grid sm:grid-cols-2 gap-y-4 sm:gap-y-5 gap-x-4"
         noValidate
       >
-        <div className="" data-sttr-card>
+        <div data-sttr-card>
           <Input
             type="text"
             label="Name *"
@@ -215,7 +178,8 @@ const ContactForm: React.FC<ContactFormProps> = ({
             error={errors.name}
           />
         </div>
-        <div className="" data-sttr-card>
+
+        <div data-sttr-card>
           <Input
             type="text"
             label="Company Name *"
@@ -226,7 +190,8 @@ const ContactForm: React.FC<ContactFormProps> = ({
             error={errors.companyName}
           />
         </div>
-        <div className="" data-sttr-card>
+
+        <div data-sttr-card>
           <Input
             type="email"
             label="Email *"
@@ -237,7 +202,8 @@ const ContactForm: React.FC<ContactFormProps> = ({
             error={errors.email}
           />
         </div>
-        <div className="" data-sttr-card>
+
+        <div data-sttr-card>
           <Input
             type="tel"
             label="Phone Number *"
@@ -248,6 +214,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
             error={errors.phoneNumber}
           />
         </div>
+
         <div className="sm:col-span-2" data-sttr-card>
           <Textarea
             label="Message *"
@@ -258,10 +225,11 @@ const ContactForm: React.FC<ContactFormProps> = ({
             error={errors.message}
           />
         </div>
+
         <div className="sm:col-span-2" data-sttr-card>
-          <Button 
-            type="submit" 
-            variant="gradient" 
+          <Button
+            type="submit"
+            variant="gradient"
             fullWidth
             disabled={submitting}
             loading={submitting}
@@ -272,17 +240,15 @@ const ContactForm: React.FC<ContactFormProps> = ({
 
         {success && (
           <div className="sm:col-span-2">
-            <p className="text-base text-primary-500 mt-2">
-              Form submitted! We&apos;ll get back to you soon.
+            <p className="text-base text-green-500 mt-2">
+              Message sent. We will get back to you soon.
             </p>
           </div>
         )}
 
         {error && (
           <div className="sm:col-span-2">
-            <p className="text-base text-red-500 mt-2">
-              {error}
-            </p>
+            <p className="text-base text-red-500 mt-2">{error}</p>
           </div>
         )}
       </form>
@@ -293,4 +259,3 @@ const ContactForm: React.FC<ContactFormProps> = ({
 ContactForm.displayName = 'ContactForm';
 
 export default ContactForm;
-
