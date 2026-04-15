@@ -1,10 +1,8 @@
 'use client';
 
 import React, { useRef, useState, useEffect } from 'react';
-import emailjs from '@emailjs/browser';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-
 
 export interface GetDemoFormData {
   name: string;
@@ -49,7 +47,7 @@ const GetDemoForm: React.FC<GetDemoFormProps> = ({
     businessType: [],
     commodities: [],
     extras: [],
-    branches: "1",
+    branches: '',
   });
 
   const [errors, setErrors] = useState<FormErrors>({
@@ -63,15 +61,7 @@ const GetDemoForm: React.FC<GetDemoFormProps> = ({
   });
 
   const [submitting, setSubmitting] = useState(false);
-  const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    if (success) {
-      const timer = setTimeout(() => setSuccess(false), 3000);
-      return () => clearTimeout(timer);
-    }
-  }, [success]);
 
   const validate = (data: GetDemoFormData = formData): boolean => {
     const newErrors: FormErrors = {
@@ -90,6 +80,11 @@ const GetDemoForm: React.FC<GetDemoFormProps> = ({
       isValid = false;
     }
 
+    if (!data.companyName.trim()) {
+      newErrors.companyName = 'Company name is required';
+      isValid = false;
+    }
+
     if (!data.email.trim()) {
       newErrors.email = 'Email is required';
       isValid = false;
@@ -103,21 +98,8 @@ const GetDemoForm: React.FC<GetDemoFormProps> = ({
       isValid = false;
     }
 
-    if (data.businessType.length === 0) {
-      newErrors.businessType = 'Please select at least one option';
-      isValid = false;
-    }
-
-
-    if (data.commodities.length === 0) {
-      newErrors.commodities = 'Please select at least one option';
-      isValid = false;
-    }
-
-    
-    const branchNum = parseInt(formData.branches);
-
-    if (!formData.branches.trim()) {
+    const branchNum = parseInt(data.branches);
+    if (!data.branches.trim()) {
       newErrors.branches = 'Number of branches is required';
       isValid = false;
     } else if (isNaN(branchNum) || branchNum < 1) {
@@ -125,16 +107,23 @@ const GetDemoForm: React.FC<GetDemoFormProps> = ({
       isValid = false;
     }
 
+    if (data.businessType.length === 0) {
+      newErrors.businessType = 'Please select at least one option';
+      isValid = false;
+    }
+
+    if (data.commodities.length === 0) {
+      newErrors.commodities = 'Please select at least one option';
+      isValid = false;
+    }
+
     setErrors(newErrors);
     return isValid;
   };
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    const updatedData = { ...formData, [name]: value };
-    setFormData(updatedData);
+    setFormData((prev) => ({ ...prev, [name]: value }));
     if (errors[name as keyof FormErrors]) {
       setErrors((prev) => ({ ...prev, [name]: '' }));
     }
@@ -161,56 +150,26 @@ const GetDemoForm: React.FC<GetDemoFormProps> = ({
     setError(null);
 
     if (!validate()) return;
-    if (!form.current) {
-      setError('Form reference is missing');
-      return;
-    }
-
-    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID_DEMO_REQUEST;
-    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
-
-    if (!serviceId || !templateId || !publicKey) {
-      setError('Email service configuration is missing.');
-      return;
-    }
 
     setSubmitting(true);
 
     try {
       if (onSubmit) onSubmit(formData);
 
-      await emailjs.sendForm(serviceId, templateId, form.current, { publicKey });
+      const response = await fetch('/api/demo', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
 
-      setSuccess(true);
-      setFormData({
-        name: '',
-        companyName: '',
-        phoneNumber: '',
-        email: '',
-        businessType: [],
-        commodities: [],
-        extras: [],
-        branches: "1",
-      });
-      setErrors({
-        name: '',
-        companyName: '',
-        phoneNumber: '',
-        email: '',
-        businessType: '',
-        commodities: '',
-        branches: '',
-      });
-      form.current.reset();
+      if (!response.ok) throw new Error('Failed to send');
+
+      // Redirect to Calendly on success
+      window.location.href = 'https://calendly.com/admin-easyjewelry/demo';
+
     } catch (err) {
-      console.error('EmailJS error:', err);
-      setError(
-        err instanceof Error
-          ? err.message
-          : 'Failed to send message. Please try again later.'
-      );
-    } finally {
+      console.error('Demo form error:', err);
+      setError('Failed to send. Please try again later.');
       setSubmitting(false);
     }
   };
@@ -233,13 +192,13 @@ const GetDemoForm: React.FC<GetDemoFormProps> = ({
             onChange={() => handleCheckbox(group, item)}
             className="hidden"
           />
-         <span
-          className={`w-4 h-4 rounded border flex items-center justify-center transition-colors ${
-            formData[group].includes(item)
-              ? 'bg-primary border-primary'
-              : 'border-primary/40 bg-transparent'
-          }`}
-        >
+          <span
+            className={`w-4 h-4 rounded border flex items-center justify-center transition-colors ${
+              formData[group].includes(item)
+                ? 'bg-primary border-primary'
+                : 'border-primary/40 bg-transparent'
+            }`}
+          >
             {formData[group].includes(item) && (
               <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
                 <path
@@ -255,15 +214,8 @@ const GetDemoForm: React.FC<GetDemoFormProps> = ({
           <span className="text-sm text-paragraph">{item}</span>
         </label>
       ))}
-      <input type="hidden" name={group} value={formData[group].join(', ')} />
     </div>
   );
-
-  useEffect(() => {
-  if (success) {
-    window.location.href = 'https://calendly.com/admin-easyjewelry/demo';
-  }
-}, [success]);
 
   return (
     <div className={`lg:max-w-[561px] w-full ${className}`}>
@@ -312,7 +264,6 @@ const GetDemoForm: React.FC<GetDemoFormProps> = ({
           />
         </div>
 
-
         {/* Phone */}
         <div data-sttr-card>
           <Input
@@ -326,12 +277,12 @@ const GetDemoForm: React.FC<GetDemoFormProps> = ({
           />
         </div>
 
-          {/* Number of Branches */}
+        {/* Number of Branches */}
         <div className="sm:col-span-2" data-sttr-card>
           <Input
             type="number"
             label="Number of Branches *"
-            placeholder="Your branch count"
+            placeholder="Your number of branches"
             name="branches"
             value={formData.branches}
             onChange={handleChange}
@@ -339,15 +290,10 @@ const GetDemoForm: React.FC<GetDemoFormProps> = ({
           />
         </div>
 
-      
-
-              
-
-        {/* Business Type — required */}
+        {/* Business Type */}
         <div className="sm:col-span-2" data-sttr-card>
           <p className="text-sm font-medium text-offWhite mb-3">
             I am a <span className="text-red-500">*</span>
-
           </p>
           {renderCheckboxGroup('businessType', BUSINESS_TYPES)}
           {errors.businessType && (
@@ -355,11 +301,10 @@ const GetDemoForm: React.FC<GetDemoFormProps> = ({
           )}
         </div>
 
-        {/* Commodities — required */}
+        {/* Commodities */}
         <div className="sm:col-span-2" data-sttr-card>
           <p className="text-sm font-medium text-offWhite mb-3">
-            What do you deal ?{' '}
-            <span className="text-red-500">*</span>
+            What do you deal in? <span className="text-red-500">*</span>
           </p>
           {renderCheckboxGroup('commodities', COMMODITIES)}
           {errors.commodities && (
@@ -367,7 +312,7 @@ const GetDemoForm: React.FC<GetDemoFormProps> = ({
           )}
         </div>
 
-        {/* Extras — optional */}
+        {/* Extras */}
         <div className="sm:col-span-2" data-sttr-card>
           <p className="text-sm font-medium text-offWhite mb-3">
             Are you interested in any of these?{' '}
@@ -388,8 +333,6 @@ const GetDemoForm: React.FC<GetDemoFormProps> = ({
             {submitting ? 'Booking...' : 'Book'}
           </Button>
         </div>
-
-      
 
         {error && (
           <div className="sm:col-span-2">
