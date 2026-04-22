@@ -184,5 +184,59 @@ export default function sitemap(): MetadataRoute.Sitemap {
   changeFrequency: 'monthly',
   priority: 0.8,
 },
+{
+  url: `${base}/features/stock-aging`,
+  lastModified: new Date(),
+  changeFrequency: 'monthly',
+  priority: 0.8,
+},
+{
+  url: `${base}/features/making-pnl`,
+  lastModified: new Date(),
+  changeFrequency: 'monthly',
+  priority: 0.8,
+},
+{
+  url: `${base}/features/vat-report`,
+  lastModified: new Date(),
+  changeFrequency: 'monthly',
+  priority: 0.8,
+},
+{
+  url: `${base}/features/sales-reports`,
+  lastModified: new Date(),
+  changeFrequency: 'monthly',
+  priority: 0.8,
+},
+{
+  url: `${base}/features/purchase-reports`,
+  lastModified: new Date(),
+  changeFrequency: 'monthly',
+  priority: 0.8,
+},
+{
+  url: `${base}/features/balance-sheet`,
+  lastModified: new Date(),
+  changeFrequency: 'monthly',
+  priority: 0.8,
+},
+{
+  url: `${base}/features/chart-of-accounts`,
+  lastModified: new Date(),
+  changeFrequency: 'monthly',
+  priority: 0.8,
+},
+{
+  url: `${base}/features/party-statement`,
+  lastModified: new Date(),
+  changeFrequency: 'monthly',
+  priority: 0.8,
+},
+{
+  url: `${base}/features/shopify-integration`,
+  lastModified: new Date(),
+  changeFrequency: 'monthly',
+  priority: 0.8,
+},
   ];
 }
