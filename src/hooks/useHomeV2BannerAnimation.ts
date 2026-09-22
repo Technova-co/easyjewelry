@@ -312,6 +312,54 @@ export function useHomeV2BannerAnimation(options: UseHomeV2BannerAnimationOption
         );
       }
 
+      // Draw the gaze line into Request Demo once the product and the button are in place.
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const arrowPaths = Array.from(
+        h4HeroSection.querySelectorAll<SVGPathElement>('[data-hero-arrow-path]')
+      ).filter((path) => path.getClientRects().length > 0);
+      const arrowHeads = Array.from(
+        h4HeroSection.querySelectorAll<SVGPathElement>('[data-hero-arrow-head]')
+      ).filter((path) => path.getClientRects().length > 0);
+      const cta = h4HeroSection.querySelector<HTMLElement>('[data-hero-cta]');
+      const drawableArrows = arrowPaths
+        .map((path) => ({ path, length: path.getTotalLength() }))
+        .filter((item) => item.length > 0);
+
+      if (!reduceMotion && drawableArrows.length) {
+        arrowHeads.forEach((head) => {
+          gsap.set(head, { opacity: 0 });
+        });
+
+        drawableArrows.forEach(({ path, length }) => {
+          gsap.set(path, { strokeDasharray: length, strokeDashoffset: length });
+          tl.to(
+            path,
+            { strokeDashoffset: 0, duration: 0.85, ease: 'power2.out' },
+            '>-0.15'
+          );
+        });
+
+        if (arrowHeads.length) {
+          tl.to(arrowHeads, { opacity: 1, duration: 0.2, ease: 'power1.out' }, '>-0.05');
+        }
+
+        if (cta) {
+          tl.fromTo(
+            cta,
+            { scale: 1 },
+            {
+              scale: 1.045,
+              duration: 0.18,
+              yoyo: true,
+              repeat: 1,
+              ease: 'power1.inOut',
+              transformOrigin: 'center center',
+            },
+            '<'
+          );
+        }
+      }
+
      
 
       timelines.push(tl);

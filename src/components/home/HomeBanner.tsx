@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { useHomeV2BannerAnimation } from '@/hooks/useHomeV2BannerAnimation';
 
@@ -65,7 +66,7 @@ const HomeV2Banner: React.FC<HomeV2BannerProps> = ({
   useHomeV2BannerAnimation();
   
   return (
-    <section className="section-bottom-border overflow-hidden relative z-1" >
+    <section className="section-bottom-border overflow-hidden relative z-1" data-container="homeV2-hero">
       {/* Video Background */}
     
 
@@ -88,14 +89,62 @@ const HomeV2Banner: React.FC<HomeV2BannerProps> = ({
                 {description}
               </p>
 
-              {/* Buttons */}
-              <div className="mt-5 sm:mt-8 lg:mt-12 flex flex-wrap gap-3 sm:gap-4" data-button>
-                <Button href={primaryButtonLink} variant="primary" size="md">
-                  {primaryButtonText}
-                </Button>
-                <Button href={secondaryButtonLink} variant="secondary" size="md">
-                  {secondaryButtonText}
-                </Button>
+              {/* Buttons. The product sits on the right, so the curve points back into Request Demo. */}
+              <div className="mt-5 sm:mt-8 lg:mt-10">
+                <p
+                  className="mb-3 font-instrument text-[1.7rem] italic leading-none text-offWhite md:hidden"
+                  aria-hidden="true"
+                >
+                  See this on your shop
+                </p>
+                <svg
+                  viewBox="0 0 64 58"
+                  fill="none"
+                  className="mb-2 ml-12 h-14 w-16 overflow-visible md:hidden"
+                  aria-hidden="true"
+                >
+                  <path
+                    data-hero-arrow-path
+                    d="M32 4C34 18 32 30 32 44"
+                    stroke="#c9a227"
+                    strokeWidth="3.5"
+                    strokeLinecap="round"
+                  />
+                  <path data-hero-arrow-head d="M18 34L32 54L46 36Z" fill="#c9a227" />
+                </svg>
+
+                <p
+                  className="mb-2 hidden font-instrument text-[1.7rem] italic leading-none text-offWhite md:block"
+                  aria-hidden="true"
+                >
+                  See this on your shop
+                </p>
+
+                <div data-button className="flex flex-col items-start gap-3">
+                  <span data-hero-cta className="relative inline-flex">
+                    <div className="pointer-events-none absolute bottom-[calc(50%-12px)] left-[calc(100%-2px)] hidden md:block" aria-hidden="true">
+                      <svg viewBox="0 0 300 64" fill="none" className="h-16 w-[300px] max-w-none -scale-x-100 overflow-visible">
+                        <path
+                          data-hero-arrow-path
+                          d="M8 20C90 14 170 18 240 34C262 40 280 46 286 48"
+                          stroke="#c9a227"
+                          strokeWidth="4"
+                          strokeLinecap="round"
+                        />
+                        <path data-hero-arrow-head d="M268 34L300 50L264 58Z" fill="#c9a227" />
+                      </svg>
+                    </div>
+                    <Button href={primaryButtonLink} variant="primary" size="lg">
+                      {primaryButtonText}
+                    </Button>
+                  </span>
+                  <Link
+                    href={secondaryButtonLink}
+                    className="px-1 text-sm font-medium text-offWhite/70 underline-offset-4 transition-colors duration-300 hover:text-tertiary hover:underline"
+                  >
+                    {secondaryButtonText}
+                  </Link>
+                </div>
               </div>
 
               {/* Features List */}

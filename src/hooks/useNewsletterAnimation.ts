@@ -100,6 +100,14 @@ export function useNewsletterAnimation(options: UseNewsletterAnimationOptions = 
         const excerpt = sttrWrapper.querySelector<HTMLElement>('[data-news-excerpt]');
         const button = sttrWrapper.querySelector<HTMLElement>('[data-news-button]');
         const video = sttrWrapper.querySelector<HTMLVideoElement>('[data-news-video]');
+        const cta = sttrWrapper.querySelector<HTMLElement>('[data-news-cta]');
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const arrowPaths = Array.from(
+          sttrWrapper.querySelectorAll<SVGPathElement>('[data-news-arrow-path]')
+        ).filter((path) => path.getClientRects().length > 0);
+        const arrowHeads = Array.from(
+          sttrWrapper.querySelectorAll<SVGPathElement>('[data-news-arrow-head]')
+        ).filter((path) => path.getClientRects().length > 0);
 
         // Set initial hidden state
         gsap.set(sttrWrapper, { y: 100, opacity: 0, filter: 'blur(16px)' });
@@ -163,6 +171,46 @@ export function useNewsletterAnimation(options: UseNewsletterAnimationOptions = 
         // Animate button
         if (button) {
           tl.fromTo(button, sharedFrom, sharedTo, position);
+        }
+
+        // Draw the gaze line into the demo button once the CTA has landed.
+        const drawableArrows = arrowPaths
+          .map((path) => ({ path, length: path.getTotalLength() }))
+          .filter((item) => item.length > 0);
+
+        if (!reduceMotion && drawableArrows.length) {
+          arrowHeads.forEach((head) => {
+            gsap.set(head, { opacity: 0 });
+          });
+
+          drawableArrows.forEach(({ path, length }) => {
+            gsap.set(path, { strokeDasharray: length, strokeDashoffset: length });
+            tl.to(
+              path,
+              { strokeDashoffset: 0, duration: 0.85, ease: 'power2.out' },
+              '>-0.15'
+            );
+          });
+
+          if (arrowHeads.length) {
+            tl.to(arrowHeads, { opacity: 1, duration: 0.2, ease: 'power1.out' }, '>-0.05');
+          }
+
+          if (cta) {
+            tl.fromTo(
+              cta,
+              { scale: 1 },
+              {
+                scale: 1.045,
+                duration: 0.18,
+                yoyo: true,
+                repeat: 1,
+                ease: 'power1.inOut',
+                transformOrigin: 'center center',
+              },
+              '<'
+            );
+          }
         }
 
         timelines.push(tl);

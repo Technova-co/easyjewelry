@@ -85,7 +85,7 @@ export default function RootLayout({
       />
 
       </head>
-      <body>
+      <body suppressHydrationWarning>
         {/*<Preloader />*/}
         <NextTopLoader
           color="#1d4ed8"
