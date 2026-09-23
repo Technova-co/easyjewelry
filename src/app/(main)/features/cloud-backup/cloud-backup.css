@@ -1,0 +1,150 @@
+.cloud-backup {
+  --ej-background: oklch(1 0 0);
+  --ej-foreground: oklch(0.245 0.011 94.1);
+  --ej-primary: oklch(0.635 0.137 88.4);
+  --ej-primary-hover: oklch(0.57 0.127 87.4);
+  --ej-muted: oklch(0.969 0.007 85.6);
+  --ej-muted-foreground: oklch(0.52 0.014 88.5);
+  --ej-accent: oklch(0.94 0.025 88.5);
+  --ej-border: oklch(0.89 0.01 85.6);
+  --color-primary: var(--ej-primary);
+  background-color: var(--ej-background);
+  color: var(--ej-foreground);
+  font-family: var(--font-manrope), "Manrope", sans-serif;
+}
+
+@layer base {
+  .cloud-backup :is(h1, h2, h3, h4, h5, h6) {
+    letter-spacing: normal;
+    color: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+    font-family: inherit;
+  }
+
+  .cloud-backup :is(p, ul, ol) {
+    color: inherit;
+  }
+
+  .cloud-backup a {
+    color: inherit;
+  }
+}
+
+.cloud-backup .bg-background {
+  background-color: var(--ej-background);
+}
+
+.cloud-backup .text-background {
+  color: var(--ej-background);
+}
+
+.cloud-backup .bg-foreground {
+  background-color: var(--ej-foreground);
+}
+
+.cloud-backup .text-foreground {
+  color: var(--ej-foreground);
+}
+
+.cloud-backup .bg-muted {
+  background-color: var(--ej-muted);
+}
+
+.cloud-backup .text-muted-foreground {
+  color: var(--ej-muted-foreground);
+}
+
+.cloud-backup .bg-accent {
+  background-color: var(--ej-accent);
+}
+
+.cloud-backup .border-border {
+  border-color: var(--ej-border);
+}
+
+.cloud-backup .font-display {
+  font-family: var(--font-sora), "Sora", sans-serif;
+}
+
+.cloud-backup .font-body {
+  font-family: var(--font-manrope), "Manrope", sans-serif;
+}
+
+.cloud-backup .cb-btn {
+  display: inline-flex;
+  height: 2.25rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  padding-inline: 1rem;
+  font-family: var(--font-manrope), "Manrope", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  transition: background-color 150ms ease, opacity 150ms ease;
+}
+
+.cloud-backup .cb-btn-primary {
+  background-color: var(--ej-primary);
+  color: #fff;
+}
+
+.cloud-backup .cb-btn-primary:hover {
+  background-color: var(--ej-primary-hover);
+}
+
+.cloud-backup .cb-btn-outline {
+  border: 1px solid var(--ej-border);
+  background-color: var(--ej-background);
+  color: var(--ej-foreground);
+}
+
+.cloud-backup .cb-btn-outline:hover {
+  background-color: var(--ej-accent);
+}
+
+.cloud-backup .cb-btn-dark {
+  background-color: var(--ej-foreground);
+  color: var(--ej-background);
+}
+
+.cloud-backup .cb-btn-dark:hover {
+  opacity: 0.9;
+}
+
+@keyframes cloud-backup-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cloud-backup-pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+.cloud-backup .reveal {
+  animation: cloud-backup-fade-up 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.cloud-backup .pulse-dot {
+  animation: cloud-backup-pulse-dot 2.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cloud-backup .reveal,
+  .cloud-backup .pulse-dot {
+    animation: none;
+  }
+}
