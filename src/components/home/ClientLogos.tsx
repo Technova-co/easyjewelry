@@ -35,7 +35,8 @@ const ClientLogos: React.FC<ClientLogosProps> = ({
     { src: '/images/client-logos/logo-04.png', alt: 'client logo' },
     { src: '/images/client-logos/logo-05.webp', alt: 'client logo' },
     { src: '/images/client-logos/logo-06.webp', alt: 'client logo' },
-  
+    { src: '/images/client-logos/logo-07-al-othmaniy.png', alt: 'Al Othmaniy Jewellery' },
+    { src: '/images/client-logos/logo-08-glida.png', alt: 'Glida Chain' },
   ],
 }) => {
     // Custom options
@@ -53,16 +54,16 @@ const ClientLogos: React.FC<ClientLogosProps> = ({
             {title}
           </h2>
           {/* Logos Grid */}
-          <div className="grid grid-cols-3 md:flex items-center justify-center flex-wrap gap-6 sm:gap-10 md:gap-15">
+          <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-8 items-center justify-center gap-x-6 gap-y-8 sm:gap-x-8">
             {logos.map((logo, index) => (
-              <div key={index} className="flex items-center justify-center max-w-[80px] md:max-w-none mx-auto md:mx-0">
+              <div key={index} className="flex h-14 sm:h-16 items-center justify-center mx-auto w-full max-w-[120px]">
                 <Image 
                   src={logo.src} 
                   alt={logo.alt} 
-                  width={100} 
-                  height={30}
+                  width={120} 
+                  height={64}
                   loading="lazy"
-                  className="w-full h-auto"
+                  className="max-h-full w-auto max-w-full object-contain"
                 />
               </div>
             ))}

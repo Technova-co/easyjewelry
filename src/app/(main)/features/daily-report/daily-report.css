@@ -1,0 +1,36 @@
+@layer base {
+  .daily-report :is(h1, h2, h3, h4, h5, h6) {
+    letter-spacing: normal;
+    color: inherit;
+    font-weight: inherit;
+  }
+
+  .daily-report :is(p, ul, ol) {
+    color: inherit;
+  }
+
+  .daily-report a {
+    color: inherit;
+  }
+
+  .daily-report summary {
+    list-style: none;
+  }
+
+  .daily-report summary::-webkit-details-marker {
+    display: none;
+  }
+}
+
+.daily-report details[open] .faq-chevron {
+  transform: rotate(180deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .daily-report *,
+  .daily-report *::before,
+  .daily-report *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
