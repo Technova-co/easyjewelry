@@ -39,17 +39,17 @@ const faqs = [
 
 export default function MultiBranchPage() {
   return (
-    <div className="multi-branch min-h-screen overflow-x-hidden bg-background text-foreground">
+    <div className="multi-branch min-h-screen overflow-x-hidden bg-background font-dmSans text-foreground">
       <main>
         <section className="relative overflow-hidden border-b border-border pt-16 sm:pt-20 lg:pt-24">
           <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
             <div className="mx-auto max-w-4xl text-center">
-              <div className="mb-7 inline-flex items-center gap-3 font-display text-xs font-bold uppercase tracking-[.18em] text-gold-deep">
+              <div className="mb-7 inline-flex items-center gap-3 font-urbanist text-xs font-bold uppercase tracking-[0.18em] text-gold-deep">
                 <span className="h-px w-6 bg-primary" />
                 Built for every branch
                 <span className="h-px w-6 bg-primary" />
               </div>
-              <h1 className="font-display text-[clamp(2.75rem,6vw,5.5rem)] font-semibold leading-[1.05] text-foreground">
+              <h1 className="font-instrument text-[clamp(2.75rem,6vw,5.5rem)] leading-[1.32] tracking-normal text-foreground">
                 Multi-Branch
                 <br />
                 <span className="text-gold-deep">Management</span>
@@ -81,8 +81,8 @@ export default function MultiBranchPage() {
         <section id="explore" className="scroll-mt-24 border-b border-border py-18 sm:py-24">
           <div className="mx-auto grid max-w-7xl gap-10 px-5 sm:px-8 lg:grid-cols-[.8fr_1.2fr] lg:gap-24 lg:px-12">
             <div>
-              <span className="font-display text-xs font-bold uppercase tracking-[.18em] text-gold-deep">Connected by design</span>
-              <h2 className="mt-5 max-w-md font-display text-4xl font-semibold leading-tight sm:text-5xl">
+              <span className="font-urbanist text-xs font-bold uppercase tracking-[0.18em] text-gold-deep">Connected by design</span>
+              <h2 className="mt-5 max-w-md font-instrument text-4xl leading-[1.32] tracking-normal sm:text-5xl">
                 More locations.
                 <br />
                 One clear picture.
@@ -99,8 +99,8 @@ export default function MultiBranchPage() {
           <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
             <div className="mb-10 flex flex-col justify-between gap-5 sm:mb-12 lg:flex-row lg:items-end">
               <div>
-                <span className="font-display text-xs font-bold uppercase tracking-[.18em] text-gold-deep">The essentials</span>
-                <h2 className="mt-4 max-w-xl font-display text-4xl font-semibold leading-tight sm:text-5xl">
+                <span className="font-urbanist text-xs font-bold uppercase tracking-[0.18em] text-gold-deep">The essentials</span>
+                <h2 className="mt-4 max-w-xl font-instrument text-4xl leading-[1.32] tracking-normal sm:text-5xl">
                   Everything in its place.
                   <br />
                   Every branch in view.
@@ -113,9 +113,9 @@ export default function MultiBranchPage() {
             <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
               {benefits.map((item) => (
                 <article key={item.number} className="group flex min-h-60 flex-col border border-border bg-card p-7 transition-colors hover:border-primary sm:p-8">
-                  <span className="font-display text-sm font-semibold text-gold-deep">{item.number} / 06</span>
+                  <span className="font-urbanist text-sm font-bold text-gold-deep">{item.number} / 06</span>
                   <div className="mt-auto pt-12">
-                    <h3 className="font-display text-xl font-semibold">{item.title}</h3>
+                    <h3 className="font-instrument text-xl leading-[1.32] tracking-normal">{item.title}</h3>
                     <p className="mt-3 text-sm leading-6 text-muted-foreground">{item.detail}</p>
                   </div>
                 </article>
@@ -127,8 +127,8 @@ export default function MultiBranchPage() {
         <section className="border-b border-border py-18 sm:py-24">
           <div className="mx-auto grid max-w-7xl gap-10 px-5 sm:px-8 lg:grid-cols-[.85fr_1.15fr] lg:gap-24 lg:px-12">
             <div>
-              <span className="font-display text-xs font-bold uppercase tracking-[.18em] text-gold-deep">Made for jewelry</span>
-              <h2 className="mt-5 max-w-lg font-display text-4xl font-semibold leading-tight sm:text-5xl">
+              <span className="font-urbanist text-xs font-bold uppercase tracking-[0.18em] text-gold-deep">Made for jewelry</span>
+              <h2 className="mt-5 max-w-lg font-instrument text-4xl leading-[1.32] tracking-normal sm:text-5xl">
                 Not all inventory is created equal.
               </h2>
               <div className="mt-8 h-1 w-15 bg-primary" />
@@ -142,15 +142,15 @@ export default function MultiBranchPage() {
 
         <section className="py-18 sm:py-24">
           <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
-            <span className="font-display text-xs font-bold uppercase tracking-[.18em] text-gold-deep">For your kind of business</span>
-            <h2 className="mt-4 font-display text-4xl font-semibold sm:text-5xl">One system, many ways to grow.</h2>
+            <span className="font-urbanist text-xs font-bold uppercase tracking-[0.18em] text-gold-deep">For your kind of business</span>
+            <h2 className="mt-4 font-instrument text-4xl leading-[1.32] tracking-normal sm:text-5xl">One system, many ways to grow.</h2>
             <div className="mt-10 grid border-t border-border md:grid-cols-2">
               {audience.map((item, i) => (
                 <div
                   key={item.title}
                   className={`border-b border-border py-7 md:py-9 ${i % 2 === 0 ? 'md:pr-12' : 'md:border-l md:pl-12'}`}
                 >
-                  <h3 className="font-display text-xl font-semibold">{item.title}</h3>
+                  <h3 className="font-instrument text-xl leading-[1.32] tracking-normal">{item.title}</h3>
                   <p className="mt-3 max-w-md text-sm leading-7 text-muted-foreground">{item.detail}</p>
                 </div>
               ))}
@@ -161,8 +161,8 @@ export default function MultiBranchPage() {
         <section className="bg-secondary py-18 sm:py-24">
           <div className="mx-auto grid max-w-7xl gap-10 px-5 sm:px-8 lg:grid-cols-[.75fr_1.25fr] lg:gap-20 lg:px-12">
             <div>
-              <span className="font-display text-xs font-bold uppercase tracking-[.18em] text-gold-deep">Included as standard</span>
-              <h2 className="mt-4 max-w-sm font-display text-4xl font-semibold leading-tight sm:text-5xl">
+              <span className="font-urbanist text-xs font-bold uppercase tracking-[0.18em] text-gold-deep">Included as standard</span>
+              <h2 className="mt-4 max-w-sm font-instrument text-4xl leading-[1.32] tracking-normal sm:text-5xl">
                 Every branch, fully supported.
               </h2>
             </div>
@@ -180,13 +180,13 @@ export default function MultiBranchPage() {
         <section className="py-18 sm:py-24">
           <div className="mx-auto max-w-4xl px-5 sm:px-8">
             <div className="text-center">
-              <span className="font-display text-xs font-bold uppercase tracking-[.18em] text-gold-deep">Good to know</span>
-              <h2 className="mt-4 font-display text-4xl font-semibold sm:text-5xl">Common questions</h2>
+              <span className="font-urbanist text-xs font-bold uppercase tracking-[0.18em] text-gold-deep">Good to know</span>
+              <h2 className="mt-4 font-instrument text-4xl leading-[1.32] tracking-normal sm:text-5xl">Common questions</h2>
             </div>
             <div className="mt-10 border-t border-border">
               {faqs.map((item) => (
                 <details key={item.question} className="group border-b border-border">
-                  <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-6 font-display text-lg font-semibold marker:hidden [&::-webkit-details-marker]:hidden">
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-6 font-urbanist text-lg font-bold marker:hidden [&::-webkit-details-marker]:hidden">
                     {item.question}
                     <ChevronDown className="size-5 shrink-0 text-gold-deep transition-transform group-open:rotate-180" aria-hidden="true" />
                   </summary>
@@ -200,8 +200,8 @@ export default function MultiBranchPage() {
         <section className="bg-foreground py-18 text-primary-foreground sm:py-24">
           <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-9 px-5 sm:px-8 lg:flex-row lg:items-end lg:px-12">
             <div>
-              <span className="font-display text-xs font-bold uppercase tracking-[.18em] text-primary">Ready when you are</span>
-              <h2 className="mt-5 max-w-xl font-display text-4xl font-semibold leading-tight sm:text-5xl">
+              <span className="font-urbanist text-xs font-bold uppercase tracking-[0.18em] text-primary">Ready when you are</span>
+              <h2 className="mt-5 max-w-xl font-instrument text-4xl leading-[1.32] tracking-normal sm:text-5xl">
                 One system for every location you run.
               </h2>
               <p className="mt-5 max-w-lg text-sm leading-7 text-primary-foreground/75">
