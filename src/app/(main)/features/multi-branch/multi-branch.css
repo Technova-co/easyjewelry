@@ -1,0 +1,166 @@
+.multi-branch {
+  --mb-background: oklch(1 0 0);
+  --mb-foreground: oklch(0.15907 0 0);
+  --mb-primary: oklch(0.6847 0.13784 92.259);
+  --mb-primary-foreground: oklch(1 0 0);
+  --mb-secondary: oklch(0.97015 0 0);
+  --mb-muted-foreground: oklch(0.21779 0 0 / 80%);
+  --mb-border: oklch(0.931 0 0);
+  --mb-gold-deep: oklch(0.54092 0.10413 84.446);
+  --mb-accent: oklch(0.95514 0 0);
+  background-color: var(--mb-background);
+  color: var(--mb-foreground);
+  font-family: "DM Sans", sans-serif;
+}
+
+@layer base {
+  .multi-branch :is(h1, h2, h3, h4, h5, h6) {
+    letter-spacing: 0;
+    color: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    font-family: inherit;
+  }
+
+  .multi-branch :is(p, ul, ol) {
+    color: inherit;
+    font-size: inherit;
+  }
+
+  .multi-branch a {
+    color: inherit;
+  }
+
+  .multi-branch summary {
+    list-style: none;
+  }
+
+  .multi-branch summary::-webkit-details-marker {
+    display: none;
+  }
+}
+
+.multi-branch .bg-background {
+  background-color: var(--mb-background);
+}
+
+.multi-branch .text-foreground {
+  color: var(--mb-foreground);
+}
+
+.multi-branch .bg-foreground {
+  background-color: var(--mb-foreground);
+}
+
+.multi-branch .bg-primary {
+  background-color: var(--mb-primary);
+}
+
+.multi-branch .text-primary {
+  color: var(--mb-primary);
+}
+
+.multi-branch .text-primary-foreground {
+  color: var(--mb-primary-foreground);
+}
+
+.multi-branch .bg-secondary {
+  background-color: var(--mb-secondary);
+}
+
+.multi-branch .bg-card {
+  background-color: var(--mb-background);
+}
+
+.multi-branch .text-muted-foreground {
+  color: var(--mb-muted-foreground);
+}
+
+.multi-branch .text-gold-deep {
+  color: var(--mb-gold-deep);
+}
+
+.multi-branch .border-border {
+  border-color: var(--mb-border);
+}
+
+.multi-branch .font-display {
+  font-family: Urbanist, sans-serif;
+}
+
+.multi-branch .hover\:border-primary:hover {
+  border-color: var(--mb-primary);
+}
+
+.multi-branch .hover\:bg-primary\/90:hover {
+  background-color: color-mix(in oklab, var(--mb-primary) 90%, transparent);
+}
+
+.multi-branch .hover\:bg-primary-foreground:hover {
+  background-color: var(--mb-primary-foreground);
+}
+
+.multi-branch .hover\:text-foreground:hover {
+  color: var(--mb-foreground);
+}
+
+.multi-branch .hover\:bg-accent:hover {
+  background-color: var(--mb-accent);
+}
+
+.multi-branch .mb-btn {
+  display: inline-flex;
+  height: 3rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.5rem;
+  padding-inline: 1.75rem;
+  font-family: Urbanist, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.25rem;
+  transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
+}
+
+.multi-branch .mb-btn-primary {
+  background-color: var(--mb-primary);
+  color: var(--mb-primary-foreground);
+}
+
+.multi-branch .mb-btn-primary:hover {
+  background-color: color-mix(in oklab, var(--mb-primary) 90%, transparent);
+}
+
+.multi-branch .mb-btn-outline {
+  border: 1px solid var(--mb-border);
+  background-color: var(--mb-background);
+  color: var(--mb-foreground);
+  box-shadow: none;
+}
+
+.multi-branch .mb-btn-outline:hover {
+  background-color: var(--mb-accent);
+}
+
+.multi-branch .mb-btn-outline-light {
+  border: 1px solid color-mix(in oklab, var(--mb-primary-foreground) 40%, transparent);
+  background-color: transparent;
+  color: var(--mb-primary-foreground);
+  box-shadow: none;
+}
+
+.multi-branch .mb-btn-outline-light:hover {
+  background-color: var(--mb-primary-foreground);
+  color: var(--mb-foreground);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .multi-branch *,
+  .multi-branch *::before,
+  .multi-branch *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
