@@ -1,0 +1,188 @@
+.user-management {
+  --um-background: oklch(1 0 0);
+  --um-foreground: oklch(0.31 0.015 90);
+  --um-card: oklch(0.965 0.002 90);
+  --um-primary: oklch(0.61 0.119 85);
+  --um-primary-foreground: oklch(1 0 0);
+  --um-muted: oklch(0.968 0.002 90);
+  --um-muted-foreground: oklch(0.51 0.012 90);
+  --um-border: oklch(0.905 0.008 90);
+  --um-gold-soft: oklch(0.975 0.018 88);
+  --um-ink-soft: oklch(0.39 0.012 90);
+  --color-primary: var(--um-primary);
+  --color-primary-foreground: var(--um-primary-foreground);
+  background-color: var(--um-background);
+  color: var(--um-foreground);
+  font-family: var(--font-work-sans), "Work Sans", "DM Sans", sans-serif;
+}
+
+@layer base {
+  .user-management :is(h1, h2, h3, h4, h5, h6) {
+    letter-spacing: 0;
+    color: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    font-family: inherit;
+  }
+
+  .user-management :is(p, ul, ol) {
+    color: inherit;
+    font-size: inherit;
+  }
+
+  .user-management a {
+    color: inherit;
+  }
+
+  .user-management summary {
+    list-style: none;
+  }
+
+  .user-management summary::-webkit-details-marker {
+    display: none;
+  }
+}
+
+.user-management .site-container {
+  width: min(100% - 48px, 1140px);
+  margin-inline: auto;
+}
+
+.user-management .display-title {
+  font-family: "Instrument Serif", serif;
+  font-weight: 400;
+  line-height: 0.98;
+}
+
+.user-management .font-display {
+  font-family: "Instrument Serif", serif;
+  font-weight: 400;
+}
+
+.user-management .section-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--um-primary);
+}
+
+.user-management .text-primary {
+  color: var(--um-primary);
+}
+
+.user-management .bg-primary {
+  background-color: var(--um-primary);
+}
+
+.user-management .border-primary {
+  border-color: var(--um-primary);
+}
+
+.user-management .text-muted-foreground {
+  color: var(--um-muted-foreground);
+}
+
+.user-management .text-ink-soft {
+  color: var(--um-ink-soft);
+}
+
+.user-management .bg-muted {
+  background-color: var(--um-muted);
+}
+
+.user-management .bg-card {
+  background-color: var(--um-card);
+}
+
+.user-management .bg-gold-soft {
+  background-color: var(--um-gold-soft);
+}
+
+.user-management .bg-background {
+  background-color: var(--um-background);
+}
+
+.user-management .bg-background\/95 {
+  background-color: color-mix(in oklab, var(--um-background) 95%, transparent);
+}
+
+.user-management .border-border {
+  border-color: var(--um-border);
+}
+
+.user-management .bg-border {
+  background-color: var(--um-border);
+}
+
+.user-management .role-card {
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.user-management .role-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--um-primary);
+}
+
+.user-management .faq-item summary {
+  list-style: none;
+  cursor: pointer;
+}
+
+.user-management .faq-plus {
+  transition: transform 0.2s ease;
+}
+
+.user-management .faq-item[open] .faq-plus {
+  transform: rotate(45deg);
+}
+
+.user-management .um-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 6px;
+  font-weight: 600;
+  line-height: 1.25rem;
+  transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
+}
+
+.user-management .um-btn-lg {
+  min-height: 2.75rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+}
+
+.user-management .um-btn-brand {
+  background-color: var(--um-primary);
+  color: var(--um-primary-foreground);
+}
+
+.user-management .um-btn-brand:hover {
+  background-color: color-mix(in oklab, var(--um-primary) 88%, black);
+}
+
+.user-management .um-btn-outline {
+  border: 1px solid var(--um-primary);
+  background-color: transparent;
+  color: var(--um-primary);
+}
+
+.user-management .um-btn-outline:hover {
+  background-color: var(--um-gold-soft);
+}
+
+@media (max-width: 640px) {
+  .user-management .site-container {
+    width: min(100% - 36px, 1140px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .user-management .role-card,
+  .user-management .faq-plus {
+    transition: none;
+  }
+}
