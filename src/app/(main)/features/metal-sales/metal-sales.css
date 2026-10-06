@@ -1,0 +1,43 @@
+@layer base {
+  .metal-sales :is(p, ul, ol) {
+    color: inherit;
+    font-size: inherit;
+  }
+
+  .metal-sales summary {
+    list-style: none;
+  }
+
+  .metal-sales summary::-webkit-details-marker {
+    display: none;
+  }
+}
+
+.metal-sales summary {
+  cursor: pointer;
+}
+
+.metal-sales summary:focus-visible,
+.metal-sales a:focus-visible {
+  outline: 2px solid #8b6914;
+  outline-offset: 3px;
+}
+
+.metal-sales .faq-chevron {
+  transition: transform 200ms ease;
+}
+
+.metal-sales details[open] .faq-chevron {
+  transform: rotate(180deg);
+}
+
+.metal-sales .nums {
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .metal-sales .faq-chevron,
+  .metal-sales .text-underline {
+    transition: none;
+  }
+}

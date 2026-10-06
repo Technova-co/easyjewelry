@@ -1,364 +1,365 @@
-import Heading from '@/components/ui/heading';
-import SectionBanner from '@/components/shortCode/SectionBanner';
 import Link from 'next/link';
+import { ChevronDown, Check } from 'lucide-react';
+import Heading from '@/components/ui/heading';
+import { metalPurchaseFaqs, metalPurchaseIncluded } from './content';
+import './metal-purchases.css';
+
+const buyBackSteps = [
+  {
+    title: 'Weigh and record it',
+    body: 'Weigh the piece, enter the karat, and record the gross weight. Pure weight is calculated from the gross weight and purity, so the metal value is clear before you agree a price.',
+  },
+  {
+    title: 'Price it at today’s rate',
+    body: 'The current gold or silver rate per ounce stays at the top of the purchase screen. The buy-back price applies that rate to the pure weight, so both sides can see the basis of the offer.',
+  },
+  {
+    title: 'Tag it or take it as metal',
+    body: 'If the piece will be resold, give it a barcode and an inventory location. If it will be melted, it enters metal stock as pure weight instead of a tagged item.',
+  },
+];
+
+const tagFields = [
+  ['Barcode', 'Scan an existing tag, or let EasyJewelry generate a new one.'],
+  ['Item code', 'The item definition from your catalog.'],
+  ['Gross weight', 'The weight from the scale, in grams.'],
+  ['Tag weight', 'The weight printed on an original tag, when the piece already has one.'],
+  ['Remarks', 'Condition, origin, or anything else worth keeping with the piece.'],
+  ['Location', 'The showcase, safe, or warehouse spot this piece is assigned to.'],
+];
+
+const audiences = [
+  { title: 'Jewelry retailers', body: 'Receive pieces from a manufacturer or supplier, record each one, and print tags as the goods arrive. Old gold from the counter uses the same bill.' },
+  { title: 'Gold and silver wholesalers', body: 'Buy bulk metal at a fixed amount or the live rate, mark raw bullion tax-free, and update the pure-weight balance from the bill.' },
+  { title: 'Old gold buyers', body: 'Keep weight, purity, price, and the person you bought from on every buy-back, so the purchase can be traced later.' },
+  { title: 'Multi-branch stores', body: 'Record the purchase at the branch that received the metal. That location’s stock updates, and transfers can move it afterward.' },
+];
+
+const related = [
+  { href: '/features/metal-sales', label: 'Metal sales' },
+  { href: '/features/metal-purchase-return', label: 'Purchase returns' },
+  { href: '/features/metal-barcodes', label: 'Barcode inventory' },
+  { href: '/features/inventory-locations', label: 'Inventory locations' },
+];
+
+function SampleBill() {
+  return (
+    <figure id="sample-bill" className="scroll-mt-32 border border-lineColor bg-secondary shadow-[0_24px_60px_-36px_rgba(13,13,13,0.35)]">
+      <figcaption className="flex flex-wrap items-center justify-between gap-2 border-b border-lineColor bg-panel px-4 py-3 sm:px-5">
+        <span className="font-urbanist text-sm font-semibold text-gold">Sample purchase bill</span>
+        <span className="nums text-sm text-foreground">Gold 2,640.00 / oz · USD</span>
+      </figcaption>
+
+      <div className="flex flex-wrap items-end justify-between gap-3 px-4 py-5 sm:px-5">
+        <p className="max-w-xs text-sm leading-6 text-muted-foreground">Old gold bought at the counter, then tagged for resale.</p>
+        <dl className="grid grid-cols-[4.25rem_auto] gap-x-3 text-sm leading-6">
+          <dt className="text-muted-foreground">Bill</dt>
+          <dd className="nums font-medium text-foreground">PB-318</dd>
+          <dt className="text-muted-foreground">Party</dt>
+          <dd className="font-medium text-foreground">Walk-in customer</dd>
+        </dl>
+      </div>
+
+      <div className="border-t border-lineColor px-4 py-4 sm:px-5">
+        <div className="flex items-baseline justify-between gap-4">
+          <p className="font-urbanist font-semibold text-foreground">22K bangle</p>
+          <p className="text-sm font-medium text-foreground">Rate</p>
+        </div>
+        <p className="nums mt-2 flex flex-wrap gap-x-3 gap-y-1 text-sm leading-6 text-foreground">
+          <span className="whitespace-nowrap">Gross 12.400 g</span>
+          <span className="whitespace-nowrap">Pure 11.367 g</span>
+          <span className="whitespace-nowrap">Qty 1</span>
+        </p>
+      </div>
+
+      <div className="border-t border-lineColor bg-panel px-4 py-4 sm:px-5">
+        <p className="font-urbanist text-sm font-semibold text-foreground">Piece tag</p>
+        <dl className="mt-3 grid grid-cols-[6.5rem_1fr] gap-x-3 gap-y-1 text-sm">
+          <dt className="text-muted-foreground">Barcode</dt>
+          <dd className="nums font-medium text-foreground">EJ-10482</dd>
+          <dt className="text-muted-foreground">Item code</dt>
+          <dd className="font-medium text-foreground">BNG-22</dd>
+          <dt className="text-muted-foreground">Scale / tag</dt>
+          <dd className="nums text-foreground">12.400 g / 12.350 g</dd>
+          <dt className="text-muted-foreground">Location</dt>
+          <dd className="text-foreground">Showcase A</dd>
+        </dl>
+        <p className="mt-3 text-sm leading-6 text-muted-foreground">Prints to the Zebra printer when the bill is saved.</p>
+      </div>
+
+      <dl className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 border-t border-lineColor px-4 py-4 text-sm sm:px-5">
+        <dt className="text-muted-foreground">Payment</dt>
+        <dd className="text-foreground">Cash</dd>
+        <dt className="text-muted-foreground">Balance</dt>
+        <dd className="nums text-foreground">0.00</dd>
+      </dl>
+      <p className="border-t border-lineColor px-4 py-3 text-sm leading-6 text-muted-foreground sm:px-5">
+        Illustrative only. Purity, rate, currency, and VAT follow your item records and settings.
+      </p>
+    </figure>
+  );
+}
+
+const demoButton =
+  'button-primary inline-flex min-h-11 items-center justify-center px-[22px] py-3 text-center text-sm font-medium leading-normal tracking-[0.1px] text-white rounded-[10px] relative z-1 overflow-hidden';
+
+const secondaryButton =
+  'button-secondary inline-flex min-h-11 items-center justify-center px-[22px] py-3 text-sm font-medium leading-normal rounded-[10px]';
 
 export default function MetalPurchasesPage() {
   return (
-    <>
-      {/* Hero */}
-      <section className="section-bottom-border">
-        <div className="container">
-          <div className="border-container section-spacing-lg">
-            <SectionBanner
-              variant="two"
-              outlineButtonText="Features"
-              title="Metal Purchases and Gold Buying"
-              description="Record every metal purchase with full detail. Retail buying, wholesale purchasing, old gold buy-back, and vendor bills all handled in one system with barcode tag generation and Zebra printer integration."
-            />
+    <div className="metal-purchases bg-secondary font-dmSans text-foreground">
+      <main>
+        <section>
+          <div className="container">
+            <div className="border-container section-spacing-lg">
+              <div className="grid items-start gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-14 xl:gap-16">
+                <div>
+                  <nav aria-label="Breadcrumb">
+                    <ol className="flex flex-wrap items-center gap-2 text-sm">
+                      <li>
+                        <Link href="/" className="text-gold">Home</Link>
+                      </li>
+                      <li aria-hidden="true" className="text-muted-foreground">/</li>
+                      <li>
+                        <Link href="/features" className="text-gold">Features</Link>
+                      </li>
+                      <li aria-hidden="true" className="text-muted-foreground">/</li>
+                      <li aria-current="page">Metal purchases</li>
+                    </ol>
+                  </nav>
 
-            <div className="mt-10 md:mt-14">
-              <p className="text-offWhite/80 leading-relaxed">
-                Purchasing metal is as important as selling it in any jewelry business. Whether you are buying finished jewelry from a manufacturer, purchasing raw gold from a supplier, accepting old gold from a customer at the counter, or receiving a bulk wholesale consignment from a trade vendor, every gram of metal that comes into your business needs to be recorded with its full details — karat, gross weight, pure weight, purity, source, and price. EasyJewelry's Metal Purchases module captures all of this in a structured purchase bill, generates barcode tags for every item received, and creates a complete traceability trail from the moment the metal enters your business.
-              </p>
-              <p className="text-offWhite/80 leading-relaxed mt-4">
-                Looking at the screenshots above, you can see two layers of this process. The main purchase bill screen captures the supplier, pricing basis, tax treatment, currency, and the full line item detail for everything being purchased. The Enter Bill popup is what makes EasyJewelry unique for jewelry businesses — when barcodeable items are being purchased, each individual piece gets its own row with its barcode, item code, gross weight, gross weight from the tag, remarks, and inventory location. Once saved, EasyJewelry generates a barcode tag for each piece that is printed directly to a Zebra label printer. Every tag carries the details of that specific purchase, creating a permanent link between the physical piece and its origin record.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Two types of purchases */}
-      <section className="section-bottom-border">
-        <div className="container">
-          <div className="border-container section-spacing-lg">
-            <Heading as="h2">Two types of metal purchase bills</Heading>
-            <p className="text-offWhite/80 mt-4 mb-10">
-              EasyJewelry supports both retail jewelry buying and wholesale metal purchasing, each with the right structure for how those transactions work in practice.
-            </p>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-blue rounded-20 border border-lineColor/50 p-6">
-                <h3 className="text-base font-semibold text-offWhite mb-3">
-                  Retail purchase bill
-                </h3>
-                <p className="text-sm text-paragraph leading-relaxed mb-4">
-                  The retail purchase bill is used when buying individual jewelry pieces, whether from a manufacturer, a supplier, or directly from a customer at the counter in the case of old gold buy-back. Each piece is entered as a line item with its item, description, purity, quantity, gross weight, pure weight, subtotal making, subtotal, VAT, and total.
-                </p>
-                <p className="text-sm text-paragraph leading-relaxed mb-4">
-                  For barcodeable items, the Enter Bill popup takes the process further. Each piece gets its own row where the barcode is either scanned from an existing tag or generated as new. The item code, gross weight, gross weight from the physical tag, remarks about the piece, and the inventory location it is being assigned to are all entered per piece. This means every individual ring, necklace, or bracelet being purchased is fully documented at the point of entry.
-                </p>
-                <p className="text-sm text-paragraph leading-relaxed">
-                  Once the purchase bill is saved, EasyJewelry generates a unique barcode label for each piece and sends it directly to the connected Zebra printer. The label is attached to the piece, and from that moment the barcode links the physical item to its full purchase history in the system.
-                </p>
-              </div>
-
-              <div className="bg-blue rounded-20 border border-lineColor/50 p-6">
-                <h3 className="text-base font-semibold text-offWhite mb-3">
-                  Wholesale purchase bill
-                </h3>
-                <p className="text-sm text-paragraph leading-relaxed mb-4">
-                  The wholesale purchase bill is used when buying bulk metal by weight from trade suppliers, gold refineries, or other wholesale sources. Wholesale metal is typically sold in lots rather than individual tagged pieces, so the bill captures the item, purity, quantity in grams, gross weight, and pure weight for each lot in the consignment.
-                </p>
-                <p className="text-sm text-paragraph leading-relaxed mb-4">
-                  Wholesale purchases support both fixed pricing and rate-based pricing. A fixed-price purchase is agreed at a set amount regardless of the market rate. A rate-based purchase is calculated by multiplying the pure weight of the metal by the current gold or silver rate per ounce, which is displayed at the top of the screen at the time of the transaction.
-                </p>
-                <p className="text-sm text-paragraph leading-relaxed">
-                  The hedge option is available on wholesale purchase bills for businesses that trade with hedged pricing arrangements. The bill also supports tax-free designation for bullion and other exempt metal purchases, which is essential for wholesale operations in VAT-registered jurisdictions where raw metal is often zero-rated.
-                </p>
+                  <Heading as="h1" size="large" gradient={false} className="mt-6 max-w-[12em] text-foreground">
+                    Metal purchases and gold buying
+                    <span className="mt-2 block font-instrument text-[0.92em] font-normal italic leading-[1.05] text-gold">from the first gram.</span>
+                  </Heading>
+                  <p className="mt-5 max-w-[38rem] text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8">
+                    Record finished jewelry, raw gold, old gold buy-back, and wholesale lots on one purchase bill. Each line keeps karat, gross weight, and pure weight. Barcodeable pieces get a tag that prints to a Zebra printer when you save.
+                  </p>
+                  <div className="mt-8 flex flex-wrap items-center gap-4">
+                    <Link href="/request-demo" className={demoButton}>
+                      Request Demo
+                    </Link>
+                    <a href="#buy-back" className="group inline-flex min-h-11 items-center text-sm font-medium text-offWhite">
+                      <span className="text-underline">How buy-back works</span>
+                    </a>
+                  </div>
+                </div>
+                <SampleBill />
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Old gold buy-back */}
-      <section className="section-bottom-border">
-        <div className="container">
-          <div className="border-container section-spacing-lg">
-            <Heading as="h2">
-              Old gold and scrap metal buy-back
-            </Heading>
-            <p className="text-offWhite/80 mt-4 mb-10">
-              Buying old gold from customers is one of the most common transactions in a jewelry retail business. EasyJewelry handles this through the Metal Purchases module with the same level of detail as any other purchase.
-            </p>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {[
-                {
-                  title: 'Weigh and record the old gold',
-                  desc: 'The customer brings in old jewelry or scrap gold. The piece is weighed, the karat is tested or estimated, and the gross weight and purity are entered into the purchase bill. Pure weight is calculated automatically from the gross weight and purity, giving you the exact metal value of what is being bought.',
-                },
-                {
-                  title: 'Price it at today\'s rate',
-                  desc: 'The buy-back price is calculated by applying the current gold rate to the pure weight of the metal. EasyJewelry displays the current rate per ounce at the top of the purchase screen. The price the customer is offered is calculated transparently based on real market data, giving both parties a clear basis for the transaction.',
-                },
-                {
-                  title: 'Tag it and put it back in stock',
-                  desc: 'If the old gold piece is going to be resold as is, it can be tagged with a new barcode label through the Enter Bill popup. The tag records that this piece was purchased as old gold, the weight it was bought at, the price paid, and the location it has been assigned to in your inventory. If it is being melted for raw metal, it enters your metal stock as pure weight.',
-                },
-              ].map((item) => (
-                <div
-                  key={item.title}
-                  className="bg-blue rounded-20 border border-lineColor/50 p-6"
-                >
-                  <h3 className="text-base font-semibold text-offWhite mb-2">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm text-paragraph leading-relaxed">
-                    {item.desc}
+        <section id="bill-types" className="scroll-mt-32 border-t border-lineColor" aria-labelledby="bill-types-title">
+          <div className="container">
+            <div className="border-container section-spacing-lg">
+              <div className="grid gap-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-16">
+                <div>
+                  <Heading as="h2" id="bill-types-title" gradient={false} className="max-w-[10em] text-foreground">
+                    Retail pieces and wholesale lots.
+                  </Heading>
+                  <p className="mt-4 max-w-md text-base leading-7 text-muted-foreground">
+                    The same Metal Purchases module covers a single bangle at the counter and a consignment of gold bought by weight.
                   </p>
                 </div>
-              ))}
+                <div className="divide-y divide-lineColor border-y border-lineColor">
+                  <article className="py-7">
+                    <h3 className="font-urbanist text-xl font-semibold text-foreground">Retail purchase bill</h3>
+                    <p className="mt-3 max-w-xl text-base leading-7 text-muted-foreground">
+                      Use it for individual pieces from a manufacturer, a supplier, or a customer bringing in old gold. Each line keeps the item, description, purity, quantity, gross weight, pure weight, making, subtotal, VAT, and total. Barcodeable pieces then open into a row of their own, so the ring or necklace is documented before it reaches the showcase.
+                    </p>
+                  </article>
+                  <article className="py-7">
+                    <h3 className="font-urbanist text-xl font-semibold text-foreground">Wholesale purchase bill</h3>
+                    <p className="mt-3 max-w-xl text-base leading-7 text-muted-foreground">
+                      Use it for bulk metal from a trade supplier or refinery. Each lot keeps item, purity, quantity, gross weight, and pure weight. Price the lot at a fixed amount or from the rate per ounce on the screen. Record a hedge reference when the purchase is hedged, and mark the bill tax-free when the metal is zero-rated bullion.
+                    </p>
+                  </article>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Barcode tag generation and Zebra */}
-      <section className="section-bottom-border">
-        <div className="container">
-          <div className="border-container section-spacing-lg">
-            <Heading as="h2">
-              Barcode tag generation and Zebra printer integration
-            </Heading>
-            <p className="text-offWhite/80 mt-4 mb-10">
-              Every barcodeable item purchased through EasyJewelry gets a unique barcode tag generated at the point of purchase and printed directly to a Zebra label printer.
-            </p>
+        <section id="buy-back" className="scroll-mt-32 bg-panel" aria-labelledby="buy-back-title">
+          <div className="container">
+            <div className="border-container section-spacing-lg">
+              <Heading as="h2" id="buy-back-title" gradient={false} className="max-w-[12em] text-foreground">
+                Old gold and scrap, bought at the counter.
+              </Heading>
+              <p className="mt-4 max-w-2xl text-base leading-7 text-muted-foreground">
+                A customer buy-back uses the same purchase bill as any other metal coming in. The customer is the party, and the rate on the screen is the basis of the price.
+              </p>
+              <ol className="mt-10 grid border border-lineColor bg-secondary md:grid-cols-3" aria-label="How an old gold buy-back is recorded">
+                {buyBackSteps.map((step, index) => (
+                  <li key={step.title} className={`p-6 sm:p-7 ${index < buyBackSteps.length - 1 ? 'border-b border-lineColor md:border-b-0 md:border-r' : ''}`}>
+                    <span className="font-instrument text-3xl text-gold" aria-hidden="true">0{index + 1}</span>
+                    <h3 className="mt-4 font-urbanist text-lg font-semibold text-foreground">{step.title}</h3>
+                    <p className="mt-2 text-base leading-7 text-muted-foreground">{step.body}</p>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </div>
+        </section>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-blue rounded-20 border border-lineColor/50 p-6">
-                <h3 className="text-base font-semibold text-offWhite mb-3">
-                  Per-piece entry in the Enter Bill popup
-                </h3>
-                <p className="text-sm text-paragraph leading-relaxed mb-4">
-                  When a purchase bill contains barcodeable items, EasyJewelry opens the Enter Bill popup for detailed per-piece entry. Each piece gets its own row in the popup with the following fields recorded individually.
-                </p>
-                <ul className="space-y-2">
-                  {[
-                    'Barcode — scanned from existing tag or auto-generated as new',
-                    'Item code — the item definition from your catalog',
-                    'Gross weight in grams — actual scale weight of the piece',
-                    'Gross weight from tag — weight declared on the original tag if present',
-                    'Remarks — any notes about the condition, origin, or characteristics of the piece',
-                    'Inventory location — the specific location within your store or warehouse this piece is being assigned to',
-                  ].map((point) => (
-                    <li key={point} className="flex items-start gap-2 text-sm text-paragraph">
-                      <svg className="mt-1 flex-shrink-0" width="14" height="14" viewBox="0 0 14 14" fill="none">
-                        <circle cx="7" cy="7" r="7" fill="#b8960c" fillOpacity="0.15" />
-                        <path d="M3.5 7L5.5 9L10.5 4.5" stroke="#b8960c" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                      {point}
+        <section id="tags" className="scroll-mt-32" aria-labelledby="tags-title">
+          <div className="container">
+            <div className="border-container section-spacing-lg">
+              <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+                <div>
+                  <Heading as="h2" id="tags-title" gradient={false} className="max-w-[12em] text-foreground">
+                    A tag for every piece you can resell.
+                  </Heading>
+                  <p className="mt-4 max-w-xl text-base leading-7 text-muted-foreground">
+                    When the bill includes barcodeable items, each piece is entered on its own row before the label is printed.
+                  </p>
+                  <dl className="mt-8 divide-y divide-lineColor border-y border-lineColor">
+                    {tagFields.map(([term, detail]) => (
+                      <div key={term} className="grid gap-1 py-4 sm:grid-cols-[8.5rem_1fr] sm:gap-6">
+                        <dt className="font-urbanist font-semibold text-foreground">{term}</dt>
+                        <dd className="text-base leading-7 text-muted-foreground">{detail}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                </div>
+                <div>
+                  <h3 className="font-urbanist text-2xl font-semibold text-foreground sm:text-3xl">Print the label, then trace the piece.</h3>
+                  <div className="mt-6 space-y-5 text-base leading-7 text-muted-foreground">
+                    <p>
+                      Saving the bill generates a barcode label for each piece and sends it to the connected Zebra printer. Attach the label before the piece goes to the display or the stockroom.
+                    </p>
+                    <p>
+                      The barcode links to the item code and the purchase record. A later scan shows who you bought it from, what you paid, when it arrived, where it was placed, and the transactions after that.
+                    </p>
+                    <p>
+                      That origin record matters for high-value pieces, certified stones, and hallmarked items, where you need to show where the piece entered the business.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="border-t border-lineColor bg-panel" aria-labelledby="why-title">
+          <div className="container">
+            <div className="border-container section-spacing-lg">
+              <div className="grid gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-16">
+                <div>
+                  <Heading as="h2" id="why-title" gradient={false} className="max-w-[11em] text-foreground">
+                    A purchase bill is a metal entry.
+                  </Heading>
+                  <div className="mt-5 space-y-4 text-base leading-7 text-muted-foreground">
+                    <p>
+                      Fifty grams of 22 karat gold is not only a supplier invoice. The pure-metal balance rises by about 45.8 grams, the amount owed or the bank balance changes, and a tax-free bullion purchase records no VAT. Those updates happen from the bill.
+                    </p>
+                    <p>
+                      There is no second metal entry, inventory adjustment, or vendor payment to post by hand. The piece tag then keeps the origin attached to the item, so a scan can still show what was paid and where it came from.
+                    </p>
+                  </div>
+                </div>
+                <div className="divide-y divide-lineColor border-y border-lineColor">
+                  {audiences.map((audience) => (
+                    <article key={audience.title} className="py-5">
+                      <h3 className="font-urbanist text-lg font-semibold text-foreground">{audience.title}</h3>
+                      <p className="mt-2 text-base leading-7 text-muted-foreground">{audience.body}</p>
+                    </article>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section aria-labelledby="included-title">
+          <div className="container">
+            <div className="border-container section-spacing-lg">
+              <div className="grid gap-10 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)] lg:gap-16">
+                <div>
+                  <Heading as="h2" id="included-title" gradient={false} className="max-w-[8em] text-foreground">
+                    What is included.
+                  </Heading>
+                  <p className="mt-4 max-w-sm text-base leading-7 text-muted-foreground">
+                    The bill, the metal, the tag, and the printer.
+                  </p>
+                </div>
+                <ul className="grid gap-x-10 sm:grid-cols-2">
+                  {metalPurchaseIncluded.map((item) => (
+                    <li key={item} className="flex items-start gap-3 border-b border-lineColor py-3.5 text-base text-foreground">
+                      <span className="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full bg-panel text-gold" aria-hidden="true">
+                        <Check size={13} strokeWidth={2.5} />
+                      </span>
+                      {item}
                     </li>
                   ))}
                 </ul>
               </div>
-
-              <div className="bg-blue rounded-20 border border-lineColor/50 p-6">
-                <h3 className="text-base font-semibold text-offWhite mb-3">
-                  Tag printing and full traceability
-                </h3>
-                <p className="text-sm text-paragraph leading-relaxed mb-4">
-                  Once the purchase bill is saved, EasyJewelry automatically generates a barcode label for each piece and sends the print job directly to the connected Zebra label printer. The label is attached to the piece immediately, before it goes into the display or stockroom.
-                </p>
-                <p className="text-sm text-paragraph leading-relaxed mb-4">
-                  The barcode on the label encodes the item code, which links back to the full purchase record in EasyJewelry. At any point in the future, scanning that barcode will show you the complete history of that piece: which vendor it was purchased from, what was paid for it, when it arrived, which location it was assigned to, and every transaction it has been involved in since.
-                </p>
-                <p className="text-sm text-paragraph leading-relaxed">
-                  This level of traceability is particularly valuable for jewelry businesses dealing in high-value pieces, certified gemstones, or hallmarked items where provenance documentation is important. Every piece in your inventory has a verifiable history from the day it entered your business.
-                </p>
-              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Why it matters */}
-      <section className="section-bottom-border">
-        <div className="container">
-          <div className="border-container section-spacing-lg">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-              <div>
-                <Heading as="h2">
-                  Why metal purchase management matters for jewelry businesses
-                </Heading>
-                <div className="mt-6 space-y-5 text-offWhite/80 leading-relaxed">
-                  <p>
-                    In most retail businesses, purchasing means raising a purchase order and receiving goods. In jewelry, every purchase is also a metal accounting event. When 50 grams of 22 karat gold comes in, your pure metal balance increases by 45.8 grams. Your accounts payable increases by the purchase amount. If the gold came from a vendor on credit, the vendor balance updates. If you paid by bank transfer, your bank balance decreases. If the purchase was tax-free because it was raw bullion, no VAT is recorded. All of these implications need to happen simultaneously and accurately.
-                  </p>
-                  <p>
-                    EasyJewelry's Metal Purchases module handles all of this automatically from a single purchase bill. There is no separate metal accounting entry to make, no separate inventory update to run, and no separate vendor payment to record. Everything flows from the bill.
-                  </p>
-                  <p>
-                    The addition of per-piece barcode tag generation at the point of purchase is what separates EasyJewelry from generic inventory software for jewelry businesses. Knowing that a piece is in stock is one thing. Knowing exactly where it came from, what was paid for it, and being able to verify that at any time by scanning a tag is what gives a jewelry business owner real control over their inventory.
+        <section id="faq" className="scroll-mt-32 border-t border-lineColor" aria-labelledby="faq-title">
+          <div className="container">
+            <div className="border-container section-spacing-lg">
+              <div className="grid gap-10 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)] lg:gap-16">
+                <div>
+                  <Heading as="h2" id="faq-title" gradient={false} className="max-w-[8em] text-foreground">
+                    Common questions.
+                  </Heading>
+                  <p className="mt-4 max-w-sm text-base leading-7 text-muted-foreground">
+                    Barcodes, old gold, metal balance, tax-free bills, and hedges.
                   </p>
                 </div>
-              </div>
-
-              <div>
-                <Heading as="h2">
-                  Who benefits most
-                </Heading>
-                <div className="mt-6 space-y-4">
-                  {[
-                    {
-                      type: 'Jewelry Retailers',
-                      desc: 'Record every piece purchased from manufacturers or suppliers with full per-piece detail and generate barcode tags immediately upon receipt. Old gold bought from customers is recorded through the same process.',
-                    },
-                    {
-                      type: 'Gold and Silver Wholesalers',
-                      desc: 'Record bulk metal purchases at fixed or live rates with tax-free designation for raw metal. Pure weight calculations are automatic and the purchase updates your metal balance immediately.',
-                    },
-                    {
-                      type: 'Old Gold Buyers',
-                      desc: 'Record every piece of old gold or scrap metal purchased from customers with the weight, purity, price paid, and origin. Every buy-back is documented and traceable, which is important for regulatory compliance in many jurisdictions.',
-                    },
-                    {
-                      type: 'Multi-Branch Operations',
-                      desc: 'Purchases are recorded at branch level. Stock received at one branch updates that branch inventory. Inter-branch transfers can move that stock to other locations if needed.',
-                    },
-                  ].map((item) => (
-                    <div
-                      key={item.type}
-                      className="bg-blue rounded-20 border border-lineColor/50 p-5"
-                    >
-                      <h3 className="text-sm font-semibold text-offWhite mb-1">
-                        {item.type}
-                      </h3>
-                      <p className="text-sm text-paragraph leading-relaxed">
-                        {item.desc}
-                      </p>
-                    </div>
+                <div className="border-t border-lineColor">
+                  {metalPurchaseFaqs.map((faq) => (
+                    <details key={faq.question} className="group border-b border-lineColor">
+                      <summary className="flex min-h-11 items-center justify-between gap-6 py-5 text-left font-urbanist text-base font-semibold text-foreground">
+                        {faq.question}
+                        <ChevronDown className="faq-chevron size-4 shrink-0 text-gold" aria-hidden="true" />
+                      </summary>
+                      <p className="max-w-2xl pb-5 pr-8 text-base leading-7 text-muted-foreground">{faq.answer}</p>
+                    </details>
                   ))}
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* What is included */}
-      <section className="section-bottom-border">
-        <div className="container">
-          <div className="border-container section-spacing-lg">
-            <Heading as="h2">What is included</Heading>
-            <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-              {[
-                'Retail and wholesale purchase bills',
-                'Fixed and rate-based purchase pricing',
-                'Tax-free designation for raw metal',
-                'Hedge reference for wholesale purchases',
-                'Vendor and supplier selection',
-                'Multi-currency purchase bills',
-                'Exchange rate recorded per bill',
-                'Live gold rate displayed on purchase screen',
-                'Item, purity, gross weight, pure weight per line',
-                'Subtotal making per line item',
-                'VAT calculation per line and bill total',
-                'Rounding adjustment on bill total',
-                'Payment method and bank recording',
-                'Per-piece entry with barcode and item code',
-                'Gross weight and tag weight per piece',
-                'Remarks field per piece',
-                'Inventory location assignment per piece',
-                'Barcode tag generation per piece on save',
-                'Direct print to Zebra label printer',
-                'Full purchase history with search and filter',
-                'Old gold and scrap metal buy-back support',
-                'Branch-level purchase tracking',
-              ].map((item) => (
-                <div
-                  key={item}
-                  className="flex items-center gap-3 bg-blue border border-lineColor/50 rounded-xl px-4 py-3"
-                >
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <circle cx="8" cy="8" r="8" fill="#b8960c" fillOpacity="0.15" />
-                    <path d="M4.5 8L6.5 10L11.5 5.5" stroke="#b8960c" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                  <span className="text-sm text-paragraph">{item}</span>
-                </div>
-              ))}
+        <section className="border-t border-lineColor" aria-labelledby="close-title">
+          <div className="container">
+            <div className="border-container section-spacing-lg">
+              <Heading as="h2" id="close-title" gradient={false} className="max-w-[14em] text-foreground">
+                Every gram that comes in, documented from day one.
+              </Heading>
+              <p className="mt-4 max-w-3xl text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8">
+                Metal Purchases records what you bought, from whom, at what weight and price, then keeps that origin on the piece through the barcode tag.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-4">
+                <Link href="/request-demo" className={demoButton}>
+                  Request Demo
+                </Link>
+                <Link href="/features" className={secondaryButton}>
+                  View All Features
+                </Link>
+              </div>
+              <nav aria-label="Related features" className="mt-10 border-t border-lineColor pt-6">
+                <ul className="flex flex-wrap gap-x-6 gap-y-3">
+                  {related.map((item) => (
+                    <li key={item.href}>
+                      <Link href={item.href} className="group inline-flex min-h-11 items-center text-sm font-medium text-offWhite">
+                        <span className="text-underline">{item.label}</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="section-bottom-border">
-        <div className="container">
-          <div className="border-container section-spacing-lg">
-            <Heading as="h2">Common questions</Heading>
-            <div className="mt-8 space-y-4">
-              {[
-                {
-                  q: 'How does the per-piece barcode entry work for purchased items?',
-                  a: 'When a purchase bill contains barcodeable items, EasyJewelry opens a per-piece entry screen where each individual piece gets its own row. You enter the barcode, item code, gross weight, tag weight, remarks, and inventory location for each piece. When the bill is saved, a barcode label is generated for every piece and sent to the Zebra printer automatically.',
-                },
-                {
-                  q: 'Can I buy old gold from customers through the Metal Purchases module?',
-                  a: 'Yes. Old gold and scrap metal bought from customers is recorded through the same purchase bill process. The customer is selected as the party, the piece is entered with its weight and purity, and the buy-back price is calculated at the current gold rate. If the piece is being resold, a barcode tag is generated for it on the spot.',
-                },
-                {
-                  q: 'What happens to my metal balance when I record a purchase?',
-                  a: 'Your metal inventory increases by the gross weight and pure weight of everything on the purchase bill. The pure weight calculation is automatic based on the gross weight and purity entered. Your vendor balance or cash balance is updated simultaneously depending on how the purchase was paid.',
-                },
-                {
-                  q: 'How does a piece purchased today get traced later?',
-                  a: 'The barcode tag generated at purchase encodes the item code. Scanning that barcode at any future point shows the full purchase record, including which vendor it came from, what was paid, when it arrived, and every transaction it has been in since. The purchase bill is the permanent origin record for every tagged piece.',
-                },
-                {
-                  q: 'Can I designate a purchase as tax-free for raw bullion?',
-                  a: 'Yes. The tax treatment can be set to tax-free on the purchase bill for raw metal, bullion, and other purchases that are exempt from VAT. This is applied at the bill level and affects all line items on that bill.',
-                },
-                {
-                  q: 'Does the wholesale purchase bill support hedged pricing?',
-                  a: 'Yes. The hedge option is available on wholesale purchase bills. When a purchase is being made under a hedged pricing arrangement, the hedge reference is recorded on the bill alongside the rate used.',
-                },
-              ].map((faq) => (
-                <div
-                  key={faq.q}
-                  className="bg-blue border border-lineColor/50 rounded-20 p-6"
-                >
-                  <h3 className="text-sm font-semibold text-offWhite mb-2">
-                    {faq.q}
-                  </h3>
-                  <p className="text-sm text-paragraph leading-relaxed">
-                    {faq.a}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Outro + CTA */}
-      <section>
-        <div className="container">
-          <div className="border-container section-spacing-lg">
-            <Heading as="h2">
-              Every gram that enters your business, documented from day one
-            </Heading>
-            <p className="text-offWhite/80 mt-4 leading-relaxed">
-              The metal that comes into your jewelry business is your most valuable asset. Knowing exactly what you bought, from whom, at what price, at what weight, and being able to trace every individual piece through its complete journey from purchase to sale is not a luxury — it is how a professional jewelry business operates. EasyJewelry's Metal Purchases module, combined with per-piece barcode tag generation and Zebra printer integration, gives you that level of control and traceability as a standard part of your daily purchasing workflow.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Link
-                href="/request-demo"
-                className="button-primary inline-flex items-center justify-center px-[22px] py-3 text-white font-medium text-sm leading-normal rounded-[10px]"
-              >
-                Book a Free Demo
-              </Link>
-              <Link
-                href="/features"
-                className="button-secondary inline-flex items-center justify-center px-[22px] py-3 font-medium text-sm leading-normal rounded-[10px]"
-              >
-                View All Features
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-    </>
+        </section>
+      </main>
+    </div>
   );
 }

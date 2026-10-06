@@ -1,0 +1,43 @@
+@layer base {
+  .metal-purchases :is(p, ul, ol) {
+    color: inherit;
+    font-size: inherit;
+  }
+
+  .metal-purchases summary {
+    list-style: none;
+  }
+
+  .metal-purchases summary::-webkit-details-marker {
+    display: none;
+  }
+}
+
+.metal-purchases summary {
+  cursor: pointer;
+}
+
+.metal-purchases summary:focus-visible,
+.metal-purchases a:focus-visible {
+  outline: 2px solid #8b6914;
+  outline-offset: 3px;
+}
+
+.metal-purchases .faq-chevron {
+  transition: transform 200ms ease;
+}
+
+.metal-purchases details[open] .faq-chevron {
+  transform: rotate(180deg);
+}
+
+.metal-purchases .nums {
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .metal-purchases .faq-chevron,
+  .metal-purchases .text-underline {
+    transition: none;
+  }
+}
