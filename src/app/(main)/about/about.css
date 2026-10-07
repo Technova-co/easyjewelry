@@ -1,0 +1,36 @@
+@layer base {
+  .about-page :is(p, ul, ol) {
+    color: inherit;
+    font-size: inherit;
+  }
+}
+
+.about-page a:focus-visible,
+.about-page summary:focus-visible {
+  outline: 2px solid #8b6914;
+  outline-offset: 3px;
+}
+
+.about-page summary {
+  list-style: none;
+  cursor: pointer;
+}
+
+.about-page summary::-webkit-details-marker {
+  display: none;
+}
+
+.about-page .faq-chevron {
+  transition: transform 200ms ease;
+}
+
+.about-page details[open] .faq-chevron {
+  transform: rotate(180deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-page .faq-chevron,
+  .about-page .text-underline {
+    transition: none;
+  }
+}
