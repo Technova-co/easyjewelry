@@ -76,6 +76,7 @@ export const featuresTableData: FeatureGroup[] = [
       { id: 314, name: 'Consolidated Financial Reports Across Branches', status: 'yes' },
       { id: 315, name: 'Trail Balance', status: 'yes' },
       { id: 316, name: 'Balance Sheet', status: 'yes' },
+      { id: 317, name: 'Audit Log', tooltip: 'Admins see who added, edited, deleted, or printed invoices, bills, fixings, vouchers, and items, with the old and new value.', status: 'yes' },
     ],
   },
 ];

@@ -89,6 +89,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: `${base}/features/audit-log`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
   url: `${base}/features/metal-purchases`,
   lastModified: new Date(),
   changeFrequency: 'monthly',

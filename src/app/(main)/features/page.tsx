@@ -25,6 +25,7 @@ const features = [
   { category: 'Scale', title: 'Multi-Branch Management', href: '/features/multi-branch', description: 'Manage unlimited locations, staff, stock, sales, and finance from one central system.' },
   { category: 'Finance', title: 'Multi-Currency Support', href: '/features/multi-currency', description: 'Set exchange rates and buy, sell, or settle accounts in any currency.' },
   { category: 'Security', title: 'User Access Control', href: '/features/user-management', description: 'Assign staff to branches and control exactly what each person can see and do.' },
+  { category: 'Security', title: 'Audit Log', href: '/features/audit-log', description: 'See who added, edited, deleted or printed every invoice, bill, fixing, voucher and item, with the old and new value.' },
   { category: 'Sales', title: 'Metal Sales & Jewelry Invoicing', href: '/features/metal-sales', description: 'Create retail and wholesale invoices with live gold rates, VAT, and payment collection.' },
   { category: 'Purchasing', title: 'Metal Purchases & Gold Buying', href: '/features/metal-purchases', description: 'Buy old gold, purchase from vendors, print tags, and trace every piece to its source.' },
   { category: 'Sales', title: 'Jewelry Sales Returns', href: '/features/metal-sales-return', description: 'Process returns with full metal detail, VAT reversal, and live rate recording.' },
